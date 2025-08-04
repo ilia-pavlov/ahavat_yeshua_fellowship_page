@@ -845,7 +845,7 @@
               </svg>
               Watch Sermons
             </a>
-            <a href="#" class="cta-button" style="background: #FFD700; color: #000; border: 2px solid #FFD700; font-weight: 500;">
+            <a href="#" class="cta-button" style="background: #FFD700; color: #000; border: 2px solid #FFD700; font-weight: 500;" data-section="donation">
               Donation
             </a>
           </div>
@@ -854,16 +854,16 @@
     </section>
     
     <!-- Donation Section -->
-    <section id="donation" class="section" style="background: var(--card-bg); border-radius: 12px; margin: 2rem auto; max-width: 1000px; padding: 0 1rem;">
+    <section id="donation" class="section" style="background: var(--card-bg); border-radius: 12px; margin: 2rem auto; max-width: 1000px; padding: 0 1rem; scroll-margin-top: 80px;">
       <div class="contact-section" style="padding: 2rem 0;">
         <!-- Main Heading -->
         <div style="text-align: center; margin-bottom: 2.5rem;">
-          <h2 style="color: var(--light-text); margin-bottom: 1rem; font-size: 2rem;">Support Our Ministry</h2>
+          <h2 style="color: var(--light-text); margin-bottom: 1rem; font-size: 2rem;">Get Involved</h2>
           <p style="color: var(--lighter-text); max-width: 600px; margin: 0 auto 1.5rem;">
-            Your generous support helps us continue our mission and serve our community.
+            Giving is never about pressure — it's a choice!
           </p>
           <a href="#" class="cta-button" style="background: #FFD700; color: #000; border: none; padding: 0.8rem 2.5rem; font-size: 1.1rem; border-radius: 30px; font-weight: 600; text-decoration: none; display: inline-block; margin: 0.5rem;">
-            Donate Now
+            Donate
           </a>
         </div>
 
@@ -905,39 +905,6 @@
             46 10th St<br>
             Staten Island, NY 10306
           </p>
-        </div>
-        
-        <!-- Donation Options - Bottom -->
-        <div style="display: flex; gap: 2rem; margin-top: 1.5rem;">
-          <!-- Online Giving -->
-          <div style="flex: 1; background: var(--card-bg); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color);">
-            <div style="display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem;">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--accent-color)">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.31-8.86c-1.77-.45-2.34-.75-2.34-1.6 0-.68.5-1.14 1.22-1.14.86 0 1.15.4 1.15 1.25h2.01c0-1.56-.9-2.89-2.96-3.22V5H10.9v1.69c-1.11.21-2.5.89-2.5 2.81 0 2.01 1.4 2.76 3.5 3.25 1.75.43 2.34.8 2.34 1.67 0 .77-.62 1.33-1.5 1.33-1.1 0-1.45-.49-1.45-1.25H8.04c0 .75.5 2.51 3.96 2.86V19h2.34v-1.73c1.5-.15 2.66-.84 2.66-2.82 0-1.87-1.4-2.51-3.69-3.01z"/>
-              </svg>
-              <h3 style="margin: 0; color: var(--light-text);">Online Giving</h3>
-            </div>
-            <p style="margin-top: 0; color: var(--light-text);">Securely give online through our donation portal</p>
-            <a href="#" class="cta-button" style="background: var(--accent-color); color: #000; border: 2px solid var(--accent-color); font-weight: 500; margin-top: 1rem; display: inline-block; text-decoration: none; padding: 0.5rem 1.5rem; border-radius: 4px; transition: all 0.3s ease;">
-              Donate Now
-            </a>
-          </div>
-          
-          <!-- Mailing Address -->
-          <div style="flex: 1; background: var(--card-bg); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color);">
-            <div style="display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem;">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--accent-color)">
-                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-              </svg>
-              <h3 style="margin: 0; color: var(--light-text);">Mailing Address</h3>
-            </div>
-            <p style="margin-top: 0; color: var(--light-text);">For check donations, please make payable to:</p>
-            <p style="margin: 0.5rem 0; color: var(--light-text);">
-              <strong style="color: var(--light-text);">Ahavat Yeshua Fellowship</strong><br>
-              46 10th St<br>
-              Staten Island, NY 10306
-            </p>
-          </div>
         </div>
         </div>
       </div>
@@ -1021,31 +988,61 @@
         // Start typing effect
         setTimeout(typeEffect, 1000);
         
-        // Tab switching
+        // Tab switching functionality
         const navLinks = document.querySelectorAll('.nav-link');
         const sections = document.querySelectorAll('.section');
         
-        navLinks.forEach(link => {
-          link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetSection = this.getAttribute('data-section');
-            
-            // Update active tab
-            navLinks.forEach(navLink => navLink.classList.remove('active'));
+        // Function to handle navigation
+        function handleNavigation(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href') || this.getAttribute('data-section');
+          
+          // If it's a hash link (like #donation)
+          if (targetId.startsWith('#')) {
+            const targetSection = document.querySelector(targetId);
+            if (targetSection) {
+              // Update active tab if it's a nav link
+              if (this.classList.contains('nav-link')) {
+                navLinks.forEach(nav => nav.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Show target section and hide others
+                sections.forEach(section => {
+                  section.classList.remove('active');
+                  if (section.id === targetId.substring(1)) {
+                    section.classList.add('active');
+                  }
+                });
+              }
+              
+              // Smooth scroll to the section
+              targetSection.scrollIntoView({ behavior: 'smooth' });
+            }
+          } else {
+            // Handle regular tab switching
+            navLinks.forEach(nav => nav.classList.remove('active'));
             this.classList.add('active');
             
-            // Show target section
             sections.forEach(section => {
               section.classList.remove('active');
-              if (section.id === targetSection) {
+              if (section.id === targetId) {
                 section.classList.add('active');
+                section.scrollIntoView({ behavior: 'smooth' });
               }
             });
-            
-            // Scroll to top when switching tabs
-            window.scrollTo(0, 0);
-          });
+          }
+        }
+
+        // Add click event to navigation links
+        navLinks.forEach(link => {
+          link.addEventListener('click', handleNavigation);
         });
+        
+        // Add click event to donation button
+        const donationButton = document.querySelector('a[data-section="donation"]');
+        if (donationButton) {
+          donationButton.addEventListener('click', handleNavigation);
+        }
         
         // Handle Join Us This Week button click
         document.getElementById('joinUsButton').addEventListener('click', function(e) {
