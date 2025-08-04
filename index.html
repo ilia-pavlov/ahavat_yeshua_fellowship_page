@@ -789,6 +789,16 @@
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
+    
+    .logo img {
+      height: 120px;  /* Increased from default size */
+      width: auto;   /* Maintains aspect ratio */
+      transition: transform 0.3s ease;
+    }
+    
+    .logo img:hover {
+      transform: scale(1.05);
+    }
   </style>
 </head>
 <body>
