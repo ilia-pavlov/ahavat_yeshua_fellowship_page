@@ -663,7 +663,7 @@
             <span class="dynamic-text" id="dynamicText"></span>
           </p>
           <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-            <a href="#contact" class="cta-button" style="background: var(--accent-color); color: #fff;">
+            <a href="#" class="cta-button" style="background: var(--accent-color); color: #fff;" id="joinUsButton">
               Join Us This Week
             </a>
             <a href="https://www.youtube.com/@AhavatYeshua" target="_blank" rel="noopener noreferrer" class="cta-button" style="background: transparent; border: 2px solid var(--accent-color);">
@@ -779,6 +779,13 @@
             // Scroll to top when switching tabs
             window.scrollTo(0, 0);
           });
+        });
+        
+        // Handle Join Us This Week button click
+        document.getElementById('joinUsButton').addEventListener('click', function(e) {
+          e.preventDefault();
+          // Find and click the Contact tab
+          document.querySelector('a[data-section="contact"]').click();
         });
       });
     </script>
