@@ -845,7 +845,7 @@
               </svg>
               Watch Sermons
             </a>
-            <a href="#" class="cta-button" style="background: #FFD700; color: #000; border: 2px solid #FFD700; font-weight: 500;" data-section="donation">
+            <a href="#donation" class="cta-button" style="background: #FFD700; color: #000; border: 2px solid #FFD700; font-weight: 500;" data-section="donation">
               Donation
             </a>
           </div>
@@ -1038,11 +1038,29 @@
           link.addEventListener('click', handleNavigation);
         });
         
-        // Add click event to donation button
-        const donationButton = document.querySelector('a[data-section="donation"]');
-        if (donationButton) {
-          donationButton.addEventListener('click', handleNavigation);
-        }
+        // Add click event to donation buttons
+        document.querySelectorAll('a[href="#donation"]').forEach(button => {
+          button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetSection = document.getElementById('donation');
+            if (targetSection) {
+              // Update active tab
+              navLinks.forEach(nav => nav.classList.remove('active'));
+              document.querySelector('a[href="#donation"].nav-link')?.classList.add('active');
+              
+              // Show target section and hide others
+              sections.forEach(section => {
+                section.classList.remove('active');
+                if (section.id === 'donation') {
+                  section.classList.add('active');
+                }
+              });
+              
+              // Smooth scroll to the section
+              targetSection.scrollIntoView({ behavior: 'smooth' });
+            }
+          });
+        });
         
         // Handle Join Us This Week button click
         document.getElementById('joinUsButton').addEventListener('click', function(e) {
