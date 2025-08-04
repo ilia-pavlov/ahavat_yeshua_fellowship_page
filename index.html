@@ -96,21 +96,63 @@
     }
     
     .hero {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: center;
-      margin-bottom: 6rem;
-      max-width: 1200px;
-      margin-left: auto;
-      margin-right: auto;
-      text-align: left;
+      position: relative;
+      padding: 8rem 2rem;
+      margin-bottom: 4rem;
+      overflow: hidden;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(18, 18, 18, 0.9) 0%, rgba(40, 40, 40, 0.9) 100%);
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjAzKSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==') center/cover no-repeat;
+      opacity: 0.3;
+      z-index: -1;
     }
     
     .hero-content {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .hero-tagline {
+      font-size: 1.1rem;
+      color: var(--accent-color);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 1.5rem;
+      display: block;
+      font-weight: 600;
+    }
+    
+    .dynamic-text {
+      position: relative;
+      display: inline-block;
+      color: var(--accent-color);
+      font-weight: 600;
+    }
+    
+    .dynamic-text::after {
+      content: '|';
+      position: absolute;
+      right: -10px;
+      color: var(--accent-color);
+      animation: blink 1s step-end infinite;
+    }
+    
+    @keyframes blink {
+      from, to { opacity: 1; }
+      50% { opacity: 0; }
     }
     
     .youtube-embed {
@@ -137,14 +179,35 @@
       border: none;
     }
     
-    .youtube-cta {
-      margin-top: 1rem;
-      font-size: 0.9rem;
-      color: var(--lighter-text);
-      display: flex;
+    .youtube-link {
+      margin-top: 1.5rem;
+      text-align: center;
+    }
+    
+    .youtube-channel-link {
+      display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      justify-content: center;
+      color: var(--accent-color);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.2s ease, opacity 0.2s ease;
+      padding: 8px 16px;
+      border-radius: 4px;
+    }
+    
+    .youtube-channel-link:hover {
+      color: var(--light-text);
+      background: rgba(255, 255, 255, 0.05);
+    }
+    
+    .youtube-channel-link svg {
+      margin-right: 8px;
+      transition: transform 0.2s ease;
+    }
+    
+    .youtube-channel-link:hover svg {
+      transform: scale(1.1);
     }
     
     .youtube-cta svg {
@@ -259,11 +322,48 @@
     }
     
     h1 {
-      font-size: 3rem;
-      font-weight: 700;
-      color: var(--primary-color);
-      margin-bottom: 1.5rem;
-      line-height: 1.2;
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin: 0 0 1.5rem;
+      line-height: 1.1;
+      color: var(--light-text);
+      letter-spacing: -0.5px;
+    }
+    
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+      text-align: center;
+    }
+    
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    @media (max-width: 768px) {
+      .hero {
+        padding: 6rem 1.5rem;
+      }
+      
+      h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero p {
+        font-size: 1.1rem;
+      }
+      
+      .cta-button {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.95rem;
+      }
     }
     
     p {
@@ -381,32 +481,61 @@
   <main class="container">
     <section class="hero">
       <div class="hero-content">
-        <h1>Welcome to Ahavat Yeshua Fellowship</h1>
-        <p>We are a community dedicated to fellowship and spiritual growth. Join us for our weekly gatherings and special events as we grow together in faith and love.</p>
-        <div class="youtube-cta">
-          <svg viewBox="0 0 24 24">
-            <path d="M10 15l5.19-3L10 9v6m11.56-7.83c.13.47.22 1.1.28 1.9.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83-.25.9-.83 1.48-1.73 1.73-.47.13-1.33.22-2.65.28-1.3.07-2.49.1-3.59.1L12 19c-4.19 0-6.8-.17-7.83-.45-.9-.25-1.48-.83-1.73-1.73-.13-.47-.22-1.1-.28-1.9-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83.25-.9.83-1.48 1.73-1.73.47-.13 1.33-.22 2.65-.28 1.3-.07 2.49-.1 3.59-.1L12 5c4.19 0 6.8.17 7.83.45.9.25 1.48.83 1.73 1.73z"/>
-          </svg>
-          <span>Subscribe to our YouTube channel for weekly sermons</span>
-        </div>
-      </div>
-      <div class="youtube-embed">
-        <iframe 
-          src="https://www.youtube.com/embed?listType=user_uploads&list=UUAhavatyeshua" 
-          title="Latest from Ahavat Yeshua Fellowship" 
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-          allowfullscreen>
-        </iframe>
-        <div class="youtube-cta">
-          <a href="https://www.youtube.com/@AhavatYeshua" target="_blank" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24">
-              <path d="M10 15l5.19-3L10 9v6m11.56-7.83c.13.47.22 1.1.28 1.9.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83-.25.9-.83 1.48-1.73 1.73-.47.13-1.33.22-2.65.28-1.3.07-2.49.1-3.59.1L12 19c-4.19 0-6.8-.17-7.83-.45-.9-.25-1.48-.83-1.73-1.73-.13-.47-.22-1.1-.28-1.9-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83.25-.9.83-1.48 1.73-1.73.47-.13 1.33-.22 2.65-.28 1.3-.07 2.49-.1 3.59-.1L12 5c4.19 0 6.8.17 7.83.45.9.25 1.48.83 1.73 1.73z"/>
+        <span class="hero-tagline">Welcome to Our Community</span>
+        <h1 style="font-size: 3.5rem; line-height: 1.2; margin-bottom: 1.5rem;">
+          Ahavat <span style="color: var(--accent-color);">Yeshua</span> Fellowship
+        </h1>
+        <p style="font-size: 1.25rem; max-width: 700px; margin: 0 auto 2.5rem; color: var(--lighter-text);">
+          A vibrant community where faith comes alive through worship, fellowship, and service. 
+          <span class="dynamic-text" id="dynamicText"></span>
+        </p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <a href="#contact" class="cta-button" style="background: var(--accent-color); color: #fff;">
+            Join Us This Week
+          </a>
+          <a href="https://www.youtube.com/@AhavatYeshua" target="_blank" rel="noopener noreferrer" class="cta-button" style="background: transparent; border: 2px solid var(--accent-color);">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="margin-right: 8px;">
+              <path d="M10 15l5.19-3L10 9v6zm11.56-7.83c.13.47.22 1.1.28 1.9.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83-.25.9-.83 1.48-1.73 1.73-.47.13-1.33.22-2.65.28-1.3.07-2.49.1-3.59.1L12 19c-4.19 0-6.8-.17-7.83-.45-.9-.25-1.48-.83-1.73-1.73-.13-.47-.22-1.1-.28-1.9-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83.25-.9.83-1.48 1.73-1.73.47-.13 1.33-.22 2.65-.28 1.3-.07 2.49-.1 3.59-.1L12 5c4.19 0 6.8.17 7.83.45.9.25 1.48.83 1.73 1.73z"/>
             </svg>
-            Watch more on our YouTube channel
+            Watch Sermons
           </a>
         </div>
       </div>
     </section>
+    
+    <script>
+      const words = ['love grows', 'faith deepens', 'lives change', 'hope rises'];
+      let wordIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+      let typeSpeed = 100;
+      
+      function typeEffect() {
+        const currentWord = words[wordIndex];
+        const currentChar = currentWord.substring(0, charIndex);
+        
+        document.getElementById('dynamicText').textContent = currentChar;
+        
+        if (!isDeleting && charIndex < currentWord.length) {
+          charIndex++;
+          setTimeout(typeEffect, typeSpeed);
+        } else if (isDeleting && charIndex > 0) {
+          charIndex--;
+          setTimeout(typeEffect, typeSpeed / 2);
+        } else {
+          isDeleting = !isDeleting;
+          if (!isDeleting) {
+            wordIndex = (wordIndex + 1) % words.length;
+          }
+          setTimeout(typeEffect, isDeleting ? 2000 : 500);
+        }
+      }
+      
+      // Start the typing effect when the page loads
+      window.onload = function() {
+        setTimeout(typeEffect, 1000);
+      };
+    </script>
     
     <section class="contact-section">
       <div class="contact-container">
