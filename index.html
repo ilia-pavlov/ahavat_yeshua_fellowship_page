@@ -669,6 +669,78 @@
     .social-links .instagram svg { 
       fill: white;
     }
+    
+    /* Responsive styles for Other Ways to Give section */
+    @media (max-width: 768px) {
+      .donation-options {
+        padding: 1.25rem !important;
+        margin-top: 2rem !important;
+      }
+      
+      .donation-cards {
+        gap: 1.25rem !important;
+        margin-top: 1.25rem !important;
+      }
+      
+      .donation-card {
+        padding: 1.25rem !important;
+        margin-top: 0 !important;
+      }
+      
+      .donation-card h4 {
+        font-size: 1.15rem !important;
+      }
+      
+      .donation-card p {
+        font-size: 0.9rem !important;
+        margin: 1rem 0 !important;
+      }
+      
+      .donation-card img {
+        max-width: 160px !important;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .donation-options {
+        padding: 1rem 0.75rem !important;
+        margin: 1.5rem -0.75rem 0 !important;
+        border-radius: 0 !important;
+      }
+      
+      .donation-options h3 {
+        font-size: 1.35rem !important;
+        padding: 0 0.5rem;
+      }
+      
+      .donation-cards {
+        flex-direction: column;
+        gap: 1.5rem !important;
+        margin-top: 1.25rem !important;
+      }
+      
+      .donation-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 1.25rem 1rem !important;
+        margin: 0 !important;
+        border-radius: 8px !important;
+      }
+      
+      .donation-card h4 {
+        font-size: 1.1rem !important;
+      }
+      
+      .donation-card p {
+        font-size: 0.9rem !important;
+        margin: 0.75rem 0 !important;
+      }
+      
+      .donation-card img {
+        max-width: 150px !important;
+        height: auto !important;
+      }
+    }
     .social-links .tiktok {
       background: #000000;
     }
@@ -941,31 +1013,31 @@
         </div>
 
         <!-- Donation Options -->
-        <div style="margin-top: 2.5rem; padding: 2rem; background: rgba(255, 255, 255, 0.03); border-radius: 8px;">
-          <h3 style="color: var(--light-text); margin-top: 0; text-align: center;">Other Ways to Give</h3>
+        <div class="donation-options" style="margin-top: 2.5rem; padding: 1.5rem; background: rgba(255, 255, 255, 0.03); border-radius: 8px;">
+          <h3 style="color: var(--light-text); margin-top: 0; text-align: center; font-size: 1.5rem;">Other Ways to Give</h3>
           
-          <div style="display: flex; gap: 2rem; margin-top: 2rem; flex-wrap: wrap; justify-content: center;">
+          <div class="donation-cards" style="display: flex; gap: 1.5rem; margin-top: 1.5rem; flex-wrap: wrap; justify-content: center;">
             <!-- Check Donations -->
-            <div style="flex: 1; min-width: 300px; padding: 2rem; background: rgba(255, 255, 255, 0.05); border-radius: 12px; text-align: center;">
-              <h4 style="color: var(--light-text); margin-top: 0; border-bottom: 2px solid var(--accent-color); padding-bottom: 0.5rem; display: inline-block;">Check Donations</h4>
-              <p style="color: var(--lighter-text); margin: 1.5rem 0;">
+            <div class="donation-card" style="flex: 1; min-width: 0; width: 100%; max-width: 400px; padding: 1.5rem; background: rgba(255, 255, 255, 0.05); border-radius: 12px; text-align: center; box-sizing: border-box;">
+              <h4 style="color: var(--light-text); margin-top: 0; border-bottom: 2px solid var(--accent-color); padding-bottom: 0.5rem; display: inline-block; font-size: 1.25rem;">Check Donations</h4>
+              <p style="color: var(--lighter-text); margin: 1.25rem 0; font-size: 0.95rem;">
                 Please make checks payable to:
               </p>
-              <div style="background: rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 8px; margin-top: 1rem;">
-                <p style="color: var(--light-text); margin: 0.5rem 0; font-size: 1.1rem;">Ahavat Yeshua Fellowship</p>
-                <p style="color: var(--lighter-text); margin: 0.5rem 0;">46 10th St</p>
-                <p style="color: var(--lighter-text); margin: 0.5rem 0 0;">Staten Island, NY 10306</p>
+              <div style="background: rgba(255, 255, 255, 0.05); padding: 1.25rem; border-radius: 8px; margin-top: 1rem;">
+                <p style="color: var(--light-text); margin: 0.5rem 0; font-size: 1.05rem; font-weight: 500;">Ahavat Yeshua Fellowship</p>
+                <p style="color: var(--lighter-text); margin: 0.5rem 0; font-size: 0.95rem;">46 10th St</p>
+                <p style="color: var(--lighter-text); margin: 0.5rem 0 0; font-size: 0.95rem;">Staten Island, NY 10306</p>
               </div>
             </div>
             
             <!-- QR Code Donation -->
-            <div style="flex: 1; min-width: 300px; padding: 2rem; background: rgba(255, 255, 255, 0.05); border-radius: 12px; text-align: center;">
-              <h4 style="color: var(--light-text); margin-top: 0; border-bottom: 2px solid var(--accent-color); padding-bottom: 0.5rem; display: inline-block;">Scan to Donate</h4>
-              <p style="color: var(--lighter-text); margin: 1.5rem 0 1rem;">
+            <div class="donation-card" style="flex: 1; min-width: 0; width: 100%; max-width: 400px; padding: 1.5rem; background: rgba(255, 255, 255, 0.05); border-radius: 12px; text-align: center; box-sizing: border-box; margin-top: 1.5rem;">
+              <h4 style="color: var(--light-text); margin-top: 0; border-bottom: 2px solid var(--accent-color); padding-bottom: 0.5rem; display: inline-block; font-size: 1.25rem;">Scan to Donate</h4>
+              <p style="color: var(--lighter-text); margin: 1.25rem 0 1rem; font-size: 0.95rem;">
                 Use your mobile device to scan the QR code
               </p>
-              <div style="background: white; padding: 1.5rem; border-radius: 8px; display: inline-block;">
-                <img src="images/donation.png" alt="Donation QR Code" style="width: 200px; height: 200px; display: block;">
+              <div style="background: white; padding: 1.25rem; border-radius: 8px; display: inline-block; max-width: 100%;">
+                <img src="images/donation.png" alt="Donation QR Code" style="max-width: 180px; height: auto; display: block; margin: 0 auto;">
               </div>
             </div>
           </div>
