@@ -882,6 +882,9 @@
             <a href="#donation" class="cta-button" style="background: #FFD700; color: #000; border: 2px solid #FFD700; font-weight: 500;" data-section="donation">
               Donation
             </a>
+            <script async
+              src="https://js.stripe.com/v3/buy-button.js">
+            </script>
           </div>
         </div>
       </div>
@@ -896,9 +899,12 @@
           <p style="color: var(--lighter-text); max-width: 600px; margin: 0 auto 1.5rem;">
             Giving is never about pressure — it's a choice!
           </p>
-          <a href="#" class="cta-button" style="background: #FFD700; color: #000; border: none; padding: 0.8rem 2.5rem; font-size: 1.1rem; border-radius: 30px; font-weight: 600; text-decoration: none; display: inline-block; margin: 0.5rem;">
-            Donate
-          </a>
+          <stripe-buy-button
+            buy-button-id="buy_btn_1RsdgERynoiGMx2BXYC0gOCL"
+            publishable-key="pk_live_51RscyERynoiGMx2BE3FovRFW85aWS3cfB3rnoiEwTBa8JhKPZ8p1WBZ6t1um8BRduxAhycl4KLBE6Z3hx9ByhPGe007zGOA0CC"
+            style="margin: 1rem 0;"
+          >
+          </stripe-buy-button>
         </div>
 
         <!-- Bilingual Content -->
