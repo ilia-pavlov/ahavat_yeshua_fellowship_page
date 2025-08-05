@@ -72,6 +72,8 @@
       height: 60px;
       width: auto;
       margin-right: 1.5rem;
+      display: flex;
+      align-items: center;
     }
     
     .header-container {
@@ -425,7 +427,8 @@
     @media (max-width: 480px) {
       .logo {
         height: 50px;
-        margin-right: 1rem;
+        margin-right: auto;  /* Pushes logo to the left on mobile */
+        margin-left: 1rem;   /* Adds some spacing from the left edge */
       }
       
       h1 {
@@ -793,8 +796,11 @@
     
     .logo img {
       height: 100px;  /* Increased from default size */
-      width: auto;   /* Maintains aspect ratio */
+      width: 100px;   /* Make width and height equal for perfect circle */
+      border-radius: 50%;  /* Makes the image round */
+      object-fit: cover;  /* Ensures the image covers the area properly */
       transition: transform 0.3s ease;
+      border: 2px solid rgba(255, 255, 255, 0.1);  /* Subtle border */
     }
     
     .logo img:hover {
