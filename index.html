@@ -969,41 +969,44 @@
     </section>
     
     <!-- Donation Section -->
-    <section id="donation" class="section" style="margin: 0 auto; max-width: 1200px; padding: 0 1.5rem; scroll-margin-top: 80px;">
-      <div class="contact-section" style="padding: 3rem 1.5rem; margin: 2rem 0;">
+    <section id="donation" class="section" style="margin: 0 auto; max-width: 1200px; padding: 0 1rem; scroll-margin-top: 80px;">
+      <div class="contact-section" style="padding: 2rem 0; margin: 0;">
         <!-- Main Heading -->
-        <div style="text-align: center; margin-bottom: 2.5rem;">
-          <h2 style="color: var(--light-text); margin-bottom: 1rem; font-size: 2rem;">Get Involved</h2>
-          <p style="color: var(--lighter-text); max-width: 600px; margin: 0 auto 1.5rem;">
+        <div style="text-align: center; margin-bottom: 2rem;">
+          <h2 style="color: var(--light-text); margin-bottom: 0.75rem; font-size: clamp(1.75rem, 5vw, 2rem);">Get Involved</h2>
+          <p style="color: var(--lighter-text); max-width: 600px; margin: 0 auto 1.5rem; padding: 0 1rem;">
             Giving is never about pressure — it's a choice!
           </p>
           
           <!-- Donation Type Tabs -->
-          <div style="max-width: 500px; margin: 0 auto 2rem; background: rgba(255, 255, 255, 0.05); border-radius: 12px; padding: 0.5rem; display: flex;">
-            <button class="donation-tab active" data-tab="one-time" style="flex: 1; padding: 0.75rem; border: none; background: var(--accent-color); color: white; font-weight: 500; border-radius: 8px; cursor: pointer; transition: all 0.3s ease; font-size: 0.95rem;">
+          <div style="max-width: 500px; margin: 0 auto 2rem; background: rgba(255, 255, 255, 0.05); border-radius: 12px; padding: 0.5rem; display: flex; width: 90%;">
+            <button class="donation-tab active" data-tab="one-time" style="flex: 1; padding: 0.75rem; border: none; background: var(--accent-color); color: white; font-weight: 500; border-radius: 8px; cursor: pointer; transition: all 0.3s ease; font-size: clamp(0.9rem, 3.5vw, 1rem);">
               One-Time
             </button>
-            <button class="donation-tab" data-tab="recurring" style="flex: 1; padding: 0.75rem; border: none; background: transparent; color: var(--lighter-text); font-weight: 500; border-radius: 8px; cursor: pointer; transition: all 0.3s ease; font-size: 0.95rem;">
+            <button class="donation-tab" data-tab="recurring" style="flex: 1; padding: 0.75rem; border: none; background: transparent; color: var(--lighter-text); font-weight: 500; border-radius: 8px; cursor: pointer; transition: all 0.3s ease; font-size: clamp(0.9rem, 3.5vw, 1rem);">
               Scheduled
             </button>
           </div>
           
           <!-- One-Time Donation (Default Visible) -->
-          <div id="one-time-donation" class="donation-option" style="display: block; max-width: 500px; margin: 0 auto 2rem;">
-            <stripe-buy-button
-              buy-button-id="buy_btn_1RsdgERynoiGMx2BXYC0gOCL"
-              publishable-key="pk_live_51RscyERynoiGMx2BE3FovRFW85aWS3cfB3rnoiEwTBa8JhKPZ8p1WBZ6t1um8BRduxAhycl4KLBE6Z3hx9ByhPGe007zGOA0CC"
-            ></stripe-buy-button>
+          <div id="one-time-donation" class="donation-option" style="display: block; max-width: 500px; margin: 0 auto 2rem; width: 100%;">
+            <div style="display: flex; justify-content: center; transform: scale(0.9); transform-origin: center; width: 100%; overflow: hidden;">
+              <stripe-buy-button
+                buy-button-id="buy_btn_1RsdgERynoiGMx2BXYC0gOCL"
+                publishable-key="pk_live_51RscyERynoiGMx2BE3FovRFW85aWS3cfB3rnoiEwTBa8JhKPZ8p1WBZ6t1um8BRduxAhycl4KLBE6Z3hx9ByhPGe007zGOA0CC"
+                style="width: 100%; max-width: 300px;"
+              ></stripe-buy-button>
+            </div>
           </div>
           
           <!-- Recurring Donation (Hidden by default) -->
-          <div id="recurring-donation" class="donation-option" style="display: none; max-width: 500px; margin: 0 auto 2rem;">
-            <div style="margin-bottom: 1.5rem; background: rgba(255, 255, 255, 0.03); border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+          <div id="recurring-donation" class="donation-option" style="display: none; max-width: 500px; margin: 0 auto 2rem; width: 100%;">
+            <div style="margin-bottom: 1.5rem; background: rgba(255, 255, 255, 0.03); border-radius: 12px; padding: 1.25rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
               <!-- Stripe Buy Buttons Carousel -->
-              <div style="margin-bottom: 1.5rem; overflow: hidden;">
-                <p style="color: var(--lighter-text); margin-bottom: 1.5rem; text-align: center; font-size: 0.95rem;">Select a frequency for your donation</p>
+              <div style="margin-bottom: 1.25rem; overflow: hidden;">
+                <p style="color: var(--lighter-text); margin-bottom: 1.25rem; text-align: center; font-size: clamp(0.9rem, 3.5vw, 1rem);">Select a frequency for your donation</p>
                 
-                <div class="carousel-container" style="position: relative; width: 100%;">
+                <div class="carousel-container" style="position: relative; width: 100%; padding: 0 1rem;">
                   <div class="carousel-track" style="display: flex; transition: transform 0.3s ease; width: 300%;">
                     <!-- Weekly Donation -->
                     <div class="carousel-slide" style="flex: 0 0 33.333%; padding: 0 0.5rem; box-sizing: border-box;">
@@ -1047,13 +1050,13 @@
                   </div>
                   
                   <!-- Navigation Arrows -->
-                  <button class="carousel-arrow prev" style="position: absolute; top: 50%; left: 0; transform: translateY(-50%); background: rgba(0,0,0,0.3); border: none; color: white; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10;">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <button class="carousel-arrow prev" style="position: absolute; top: 50%; left: -5px; transform: translateY(-50%); background: rgba(0,0,0,0.5); border: none; color: white; width: 28px; height: 28px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10; padding: 0;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                       <path d="M15 18l-6-6 6-6"/>
                     </svg>
                   </button>
-                  <button class="carousel-arrow next" style="position: absolute; top: 50%; right: 0; transform: translateY(-50%); background: rgba(0,0,0,0.3); border: none; color: white; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10;">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <button class="carousel-arrow next" style="position: absolute; top: 50%; right: -5px; transform: translateY(-50%); background: rgba(0,0,0,0.5); border: none; color: white; width: 28px; height: 28px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10; padding: 0;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                       <path d="M9 18l6-6-6-6"/>
                     </svg>
                   </button>
@@ -1062,7 +1065,7 @@
               
               <!-- Adjust Amount Note -->
               <div style="margin: 1.5rem 0; padding: 0.75rem; background: rgba(77, 171, 247, 0.1); border-radius: 8px; border-left: 3px solid var(--accent-color);">
-                <p style="font-size: 0.85rem; color: var(--light-text); margin: 0; line-height: 1.5;">
+                <p style="font-size: clamp(0.8rem, 3vw, 0.9rem); color: var(--light-text); margin: 0; line-height: 1.5;">
                   <strong>Note:</strong> You can adjust your donation amount in the Stripe checkout by changing the quantity. For example, selecting 3 will multiply the amount by 3 (e.g., $5 × 3 = $15).
                 </p>
               </div>
@@ -1081,45 +1084,45 @@
         </div>
 
         <!-- Bilingual Content -->
-        <div style="display: flex; gap: 2rem; margin: 3rem 0; flex-wrap: wrap; justify-content: center;">
+        <div style="display: flex; gap: 1.5rem; margin: 2.5rem 0; flex-wrap: wrap; justify-content: center; padding: 0 0.5rem;">
           <!-- English Version -->
-          <div style="flex: 1; min-width: 300px; padding: 1.5rem; background: rgba(255, 255, 255, 0.05); border-radius: 8px;">
-            <h3 style="color: var(--light-text); margin-top: 0; border-bottom: 2px solid var(--accent-color); padding-bottom: 0.5rem; display: inline-block;">English</h3>
-            <p style="color: var(--light-text); line-height: 1.6; margin: 1rem 0;">
+          <div style="flex: 1; min-width: 0; width: 100%; max-width: 500px; padding: 1.5rem; background: rgba(255, 255, 255, 0.05); border-radius: 8px; margin-bottom: 1rem;">
+            <h3 style="color: var(--light-text); margin-top: 0; border-bottom: 2px solid var(--accent-color); padding-bottom: 0.5rem; display: inline-block; font-size: 1.25rem;">English</h3>
+            <p style="color: var(--light-text); line-height: 1.6; margin: 1rem 0; font-size: clamp(0.9rem, 3.5vw, 1rem);">
               Each one must give as he has decided in his heart, not reluctantly or under compulsion, for God loves a cheerful giver.
-              <span style="display: block; text-align: right; font-style: italic; margin-top: 0.5rem; color: var(--lighter-text);">2 Corinthians 9:7</span>
+              <span style="display: block; text-align: right; font-style: italic; margin-top: 0.5rem; color: var(--lighter-text); font-size: 0.9em;">2 Corinthians 9:7</span>
             </p>
-            <p style="color: var(--light-text); line-height: 1.6;">
+            <p style="color: var(--light-text); line-height: 1.6; font-size: clamp(0.9rem, 3.5vw, 1rem);">
               We don't collect tithes or pressure anyone to give. Giving is never about pressure — it's a choice, not a requirement. If you want to be involved in what we do and support our services, you're welcome to donate from the heart.
             </p>
           </div>
           
           <!-- Russian Version -->
-          <div style="flex: 1; min-width: 300px; padding: 1.5rem; background: rgba(255, 255, 255, 0.05); border-radius: 8px;">
-            <h3 style="color: var(--light-text); margin-top: 0; border-bottom: 2px solid var(--accent-color); padding-bottom: 0.5rem; display: inline-block;">Русский</h3>
-            <p style="color: var(--light-text); line-height: 1.6; margin: 1rem 0;">
+          <div style="flex: 1; min-width: 0; width: 100%; max-width: 500px; padding: 1.5rem; background: rgba(255, 255, 255, 0.05); border-radius: 8px;">
+            <h3 style="color: var(--light-text); margin-top: 0; border-bottom: 2px solid var(--accent-color); padding-bottom: 0.5rem; display: inline-block; font-size: 1.25rem;">Русский</h3>
+            <p style="color: var(--light-text); line-height: 1.6; margin: 1rem 0; font-size: clamp(0.9rem, 3.5vw, 1rem);">
               Каждый уделяй по расположению сердца, не с огорчением и не с принуждением, ибо доброхотно дающего любит Бог.
-              <span style="display: block; text-align: right; font-style: italic; margin-top: 0.5rem; color: var(--lighter-text);">2 Коринфянам 9:7</span>
+              <span style="display: block; text-align: right; font-style: italic; margin-top: 0.5rem; color: var(--lighter-text); font-size: 0.9em;">2 Коринфянам 9:7</span>
             </p>
-            <p style="color: var(--light-text); line-height: 1.6;">
+            <p style="color: var(--light-text); line-height: 1.6; font-size: clamp(0.9rem, 3.5vw, 1rem);">
               Мы не собираем десятины и не оказываем давления на людей. Пожертвование — это не обязанность, а свободный выбор. Если вы хотите быть частью нашего служения и поддержать то, что мы делаем, вы можете пожертвовать от сердца.
             </p>
           </div>
         </div>
 
         <!-- Other Donation Options -->
-        <div style="margin-top: 2.5rem; padding: 1.5rem; background: rgba(255, 255, 255, 0.03); border-radius: 8px;">
-          <h3 style="color: var(--light-text); margin-top: 0; text-align: center; font-size: 1.5rem;">Other Ways to Give</h3>
+        <div style="margin-top: 2rem; padding: 1.5rem 1rem; background: rgba(255, 255, 255, 0.03); border-radius: 8px; max-width: 100%; overflow: hidden;">
+          <h3 style="color: var(--light-text); margin-top: 0; text-align: center; font-size: 1.5rem; margin-bottom: 1.5rem;">Other Ways to Give</h3>
           
-          <div style="display: flex; gap: 1.5rem; margin-top: 1.5rem; flex-wrap: wrap; justify-content: center;">
+          <div style="display: flex; gap: 1.5rem; margin-top: 1rem; flex-wrap: wrap; justify-content: center; width: 100%;">
             <!-- Check Donations -->
             <div style="flex: 1; min-width: 0; width: 100%; max-width: 400px; padding: 1.5rem; background: rgba(255, 255, 255, 0.05); border-radius: 12px; text-align: center; box-sizing: border-box;">
               <h4 style="color: var(--light-text); margin-top: 0; border-bottom: 2px solid var(--accent-color); padding-bottom: 0.5rem; display: inline-block; font-size: 1.25rem;">Check Donations</h4>
-              <p style="color: var(--lighter-text); margin: 1.25rem 0; font-size: 0.95rem;">
+              <p style="color: var(--lighter-text); margin: 1.25rem 0; font-size: clamp(0.9rem, 3.5vw, 1rem);">
                 Please make checks payable to:
               </p>
               <div style="background: rgba(255, 255, 255, 0.05); padding: 1.25rem; border-radius: 8px; margin-top: 1rem;">
-                <p style="color: var(--light-text); margin: 0.5rem 0; font-size: 1.05rem; font-weight: 500;">Ahavat Yeshua Fellowship</p>
+                <p style="color: var(--light-text); margin: 0.5rem 0; font-size: 1.05rem; font-weight: 500; word-break: break-word;">Ahavat Yeshua Fellowship</p>
                 <p style="color: var(--lighter-text); margin: 0.5rem 0; font-size: 0.95rem;">46 10th St</p>
                 <p style="color: var(--lighter-text); margin: 0.5rem 0 0; font-size: 0.95rem;">Staten Island, NY 10306</p>
               </div>
@@ -1128,11 +1131,11 @@
             <!-- QR Code Donation -->
             <div style="flex: 1; min-width: 0; width: 100%; max-width: 400px; padding: 1.5rem; background: rgba(255, 255, 255, 0.05); border-radius: 12px; text-align: center; box-sizing: border-box; margin-top: 1.5rem;">
               <h4 style="color: var(--light-text); margin-top: 0; border-bottom: 2px solid var(--accent-color); padding-bottom: 0.5rem; display: inline-block; font-size: 1.25rem;">Scan to Donate</h4>
-              <p style="color: var(--lighter-text); margin: 1.25rem 0 1rem; font-size: 0.95rem;">
+              <p style="color: var(--lighter-text); margin: 1.25rem 0 1rem; font-size: clamp(0.9rem, 3.5vw, 1rem);">
                 Use your mobile device to scan the QR code
               </p>
               <div style="background: white; padding: 1.25rem; border-radius: 8px; display: inline-block; max-width: 100%;">
-                <img src="images/donation.png" alt="Donation QR Code" style="max-width: 180px; height: auto; display: block; margin: 0 auto;">
+                <img src="images/donation.png" alt="Donation QR Code" style="max-width: 180px; height: auto; display: block; margin: 0 auto; width: 100%;">
               </div>
             </div>
           </div>
