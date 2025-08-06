@@ -977,17 +977,104 @@
           <p style="color: var(--lighter-text); max-width: 600px; margin: 0 auto 1.5rem;">
             Giving is never about pressure — it's a choice!
           </p>
-          <div style="display: flex; justify-content: center; width: 100%;">
+          
+          <!-- Donation Type Tabs -->
+          <div style="max-width: 500px; margin: 0 auto 2rem; background: rgba(255, 255, 255, 0.05); border-radius: 12px; padding: 0.5rem; display: flex;">
+            <button class="donation-tab active" data-tab="one-time" style="flex: 1; padding: 0.75rem; border: none; background: var(--accent-color); color: white; font-weight: 500; border-radius: 8px; cursor: pointer; transition: all 0.3s ease; font-size: 0.95rem;">
+              One-Time Gift
+            </button>
+            <button class="donation-tab" data-tab="recurring" style="flex: 1; padding: 0.75rem; border: none; background: transparent; color: var(--lighter-text); font-weight: 500; border-radius: 8px; cursor: pointer; transition: all 0.3s ease; font-size: 0.95rem;">
+              Recurring Gift
+            </button>
+          </div>
+          
+          <!-- One-Time Donation (Default Visible) -->
+          <div id="one-time-donation" class="donation-option" style="display: block; max-width: 500px; margin: 0 auto 2rem;">
             <stripe-buy-button
               buy-button-id="buy_btn_1RsdgERynoiGMx2BXYC0gOCL"
               publishable-key="pk_live_51RscyERynoiGMx2BE3FovRFW85aWS3cfB3rnoiEwTBa8JhKPZ8p1WBZ6t1um8BRduxAhycl4KLBE6Z3hx9ByhPGe007zGOA0CC"
-            >
-            </stripe-buy-button>
+            ></stripe-buy-button>
+          </div>
+          
+          <!-- Recurring Donation (Hidden by default) -->
+          <div id="recurring-donation" class="donation-option" style="display: none; max-width: 500px; margin: 0 auto 2rem;">
+            <div style="margin-bottom: 1.5rem; background: rgba(255, 255, 255, 0.03); border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+              <!-- Stripe Buy Buttons Carousel -->
+              <div style="margin-bottom: 1.5rem; overflow: hidden;">
+                <p style="color: var(--lighter-text); margin-bottom: 1.5rem; text-align: center; font-size: 0.95rem;">Select a frequency for your donation</p>
+                
+                <div class="carousel-container" style="position: relative; width: 100%;">
+                  <div class="carousel-track" style="display: flex; transition: transform 0.3s ease; width: 300%;">
+                    <!-- Weekly Donation -->
+                    <div class="carousel-slide" style="flex: 0 0 33.333%; padding: 0 0.5rem; box-sizing: border-box;">
+                      <div style="margin-bottom: 1rem; text-align: center;">
+                        <stripe-buy-button
+                          buy-button-id="buy_btn_1Rsy4RRynoiGMx2BBIhzQJnu"
+                          publishable-key="pk_live_51RscyERynoiGMx2BE3FovRFW85aWS3cfB3rnoiEwTBa8JhKPZ8p1WBZ6t1um8BRduxAhycl4KLBE6Z3hx9ByhPGe007zGOA0CC"
+                        >
+                        </stripe-buy-button>
+                      </div>
+                    </div>
+                    
+                    <!-- Bi-Weekly Donation -->
+                    <div class="carousel-slide" style="flex: 0 0 33.333%; padding: 0 0.5rem; box-sizing: border-box;">
+                      <div style="margin-bottom: 1rem; text-align: center;">
+                        <stripe-buy-button
+                          buy-button-id="buy_btn_1Rsy7hRynoiGMx2BoqRT7W2U"
+                          publishable-key="pk_live_51RscyERynoiGMx2BE3FovRFW85aWS3cfB3rnoiEwTBa8JhKPZ8p1WBZ6t1um8BRduxAhycl4KLBE6Z3hx9ByhPGe007zGOA0CC"
+                        >
+                        </stripe-buy-button>
+                      </div>
+                    </div>
+                    
+                    <!-- Monthly Donation -->
+                    <div class="carousel-slide" style="flex: 0 0 33.333%; padding: 0 0.5rem; box-sizing: border-box;">
+                      <div style="text-align: center;">
+                        <stripe-buy-button
+                          buy-button-id="buy_btn_1Rsy97RynoiGMx2BCFbqA6Q3"
+                          publishable-key="pk_live_51RscyERynoiGMx2BE3FovRFW85aWS3cfB3rnoiEwTBa8JhKPZ8p1WBZ6t1um8BRduxAhycl4KLBE6Z3hx9ByhPGe007zGOA0CC"
+                        >
+                        </stripe-buy-button>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Carousel Navigation -->
+                  <div class="carousel-nav" style="display: flex; justify-content: center; margin-top: 1.5rem; gap: 0.5rem;">
+                    <button class="carousel-dot active" data-slide="0" style="width: 10px; height: 10px; border-radius: 50%; border: none; padding: 0; background: var(--accent-color); cursor: pointer; opacity: 1; transition: opacity 0.3s ease;"></button>
+                    <button class="carousel-dot" data-slide="1" style="width: 10px; height: 10px; border-radius: 50%; border: none; padding: 0; background: var(--lighter-text); cursor: pointer; opacity: 0.3; transition: opacity 0.3s ease;"></button>
+                    <button class="carousel-dot" data-slide="2" style="width: 10px; height: 10px; border-radius: 50%; border: none; padding: 0; background: var(--lighter-text); cursor: pointer; opacity: 0.3; transition: opacity 0.3s ease;"></button>
+                  </div>
+                  
+                  <!-- Navigation Arrows -->
+                  <button class="carousel-arrow prev" style="position: absolute; top: 50%; left: 0; transform: translateY(-50%); background: rgba(0,0,0,0.3); border: none; color: white; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M15 18l-6-6 6-6"/>
+                    </svg>
+                  </button>
+                  <button class="carousel-arrow next" style="position: absolute; top: 50%; right: 0; transform: translateY(-50%); background: rgba(0,0,0,0.3); border: none; color: white; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M9 18l6-6-6-6"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              
+              <!-- Security Badge -->
+              <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255, 255, 255, 0.05);">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0;">
+                  <path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3zm0 15.07c-3.32-.73-5.72-3.7-5.72-7.07V6.31l5.72 2.12 5.72-2.12v3.69c0 3.37-2.4 6.34-5.72 7.07z" fill="var(--accent-color)" />
+                </svg>
+                <p style="font-size: 0.8rem; color: var(--lighter-text); margin: 0; text-align: center; line-height: 1.4;">
+                  Your donation is secure and encrypted with SSL
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 
         <!-- Bilingual Content -->
-        <div style="display: flex; gap: 2rem; margin-top: 2rem; flex-wrap: wrap; justify-content: center;">
+        <div style="display: flex; gap: 2rem; margin: 3rem 0; flex-wrap: wrap; justify-content: center;">
           <!-- English Version -->
           <div style="flex: 1; min-width: 300px; padding: 1.5rem; background: rgba(255, 255, 255, 0.05); border-radius: 8px;">
             <h3 style="color: var(--light-text); margin-top: 0; border-bottom: 2px solid var(--accent-color); padding-bottom: 0.5rem; display: inline-block;">English</h3>
@@ -1013,13 +1100,13 @@
           </div>
         </div>
 
-        <!-- Donation Options -->
-        <div class="donation-options" style="margin-top: 2.5rem; padding: 1.5rem; background: rgba(255, 255, 255, 0.03); border-radius: 8px;">
+        <!-- Other Donation Options -->
+        <div style="margin-top: 2.5rem; padding: 1.5rem; background: rgba(255, 255, 255, 0.03); border-radius: 8px;">
           <h3 style="color: var(--light-text); margin-top: 0; text-align: center; font-size: 1.5rem;">Other Ways to Give</h3>
           
-          <div class="donation-cards" style="display: flex; gap: 1.5rem; margin-top: 1.5rem; flex-wrap: wrap; justify-content: center;">
+          <div style="display: flex; gap: 1.5rem; margin-top: 1.5rem; flex-wrap: wrap; justify-content: center;">
             <!-- Check Donations -->
-            <div class="donation-card" style="flex: 1; min-width: 0; width: 100%; max-width: 400px; padding: 1.5rem; background: rgba(255, 255, 255, 0.05); border-radius: 12px; text-align: center; box-sizing: border-box;">
+            <div style="flex: 1; min-width: 0; width: 100%; max-width: 400px; padding: 1.5rem; background: rgba(255, 255, 255, 0.05); border-radius: 12px; text-align: center; box-sizing: border-box;">
               <h4 style="color: var(--light-text); margin-top: 0; border-bottom: 2px solid var(--accent-color); padding-bottom: 0.5rem; display: inline-block; font-size: 1.25rem;">Check Donations</h4>
               <p style="color: var(--lighter-text); margin: 1.25rem 0; font-size: 0.95rem;">
                 Please make checks payable to:
@@ -1032,7 +1119,7 @@
             </div>
             
             <!-- QR Code Donation -->
-            <div class="donation-card" style="flex: 1; min-width: 0; width: 100%; max-width: 400px; padding: 1.5rem; background: rgba(255, 255, 255, 0.05); border-radius: 12px; text-align: center; box-sizing: border-box; margin-top: 1.5rem;">
+            <div style="flex: 1; min-width: 0; width: 100%; max-width: 400px; padding: 1.5rem; background: rgba(255, 255, 255, 0.05); border-radius: 12px; text-align: center; box-sizing: border-box; margin-top: 1.5rem;">
               <h4 style="color: var(--light-text); margin-top: 0; border-bottom: 2px solid var(--accent-color); padding-bottom: 0.5rem; display: inline-block; font-size: 1.25rem;">Scan to Donate</h4>
               <p style="color: var(--lighter-text); margin: 1.25rem 0 1rem; font-size: 0.95rem;">
                 Use your mobile device to scan the QR code
@@ -1042,7 +1129,6 @@
               </div>
             </div>
           </div>
-        </div>
         </div>
       </div>
     </section>
@@ -1220,6 +1306,117 @@
     </script>
   </main>
   
+  <script>
+    // Donation Interface Functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      // Tab switching
+      const donationTabs = document.querySelectorAll('.donation-tab');
+      const donationOptions = document.querySelectorAll('.donation-option');
+      
+      donationTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+          // Remove active class from all tabs
+          donationTabs.forEach(t => {
+            t.style.background = 'transparent';
+            t.style.color = 'var(--lighter-text)';
+          });
+          
+          // Add active class to clicked tab
+          this.style.background = 'var(--accent-color)';
+          this.style.color = 'white';
+          
+          // Show corresponding content
+          const targetTab = this.getAttribute('data-tab');
+          donationOptions.forEach(option => {
+            option.style.display = 'none';
+          });
+          document.getElementById(`${targetTab}-donation`).style.display = 'block';
+        });
+      });
+
+      // Carousel functionality
+      const carouselTrack = document.querySelector('.carousel-track');
+      const slides = document.querySelectorAll('.carousel-slide');
+      const dots = document.querySelectorAll('.carousel-dot');
+      const prevBtn = document.querySelector('.carousel-arrow.prev');
+      const nextBtn = document.querySelector('.carousel-arrow.next');
+      let currentSlide = 0;
+      const slideCount = slides.length;
+
+      // Set initial slide position
+      function updateCarousel() {
+        const slideWidth = 100 / slideCount;
+        carouselTrack.style.transform = `translateX(-${currentSlide * (100 / 3)}%)`;
+        
+        // Update dots
+        dots.forEach((dot, index) => {
+          if (index === currentSlide) {
+            dot.style.opacity = '1';
+            dot.style.background = 'var(--accent-color)';
+          } else {
+            dot.style.opacity = '0.3';
+            dot.style.background = 'var(--lighter-text)';
+          }
+        });
+      }
+
+      // Next slide
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % slideCount;
+        updateCarousel();
+      }
+
+      // Previous slide
+      function prevSlide() {
+        currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+        updateCarousel();
+      }
+
+      // Event listeners for navigation
+      nextBtn.addEventListener('click', nextSlide);
+      prevBtn.addEventListener('click', prevSlide);
+
+      // Dot navigation
+      dots.forEach(dot => {
+        dot.addEventListener('click', function() {
+          currentSlide = parseInt(this.getAttribute('data-slide'));
+          updateCarousel();
+        });
+      });
+
+      // Touch events for mobile swiping
+      let touchStartX = 0;
+      let touchEndX = 0;
+      
+      carouselTrack.addEventListener('touchstart', e => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+      
+      carouselTrack.addEventListener('touchend', e => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+      }, { passive: true });
+      
+      function handleSwipe() {
+        const swipeThreshold = 50; // Minimum swipe distance
+        const swipeDistance = touchEndX - touchStartX;
+        
+        if (Math.abs(swipeDistance) > swipeThreshold) {
+          if (swipeDistance > 0) {
+            // Swipe right - go to previous slide
+            prevSlide();
+          } else {
+            // Swipe left - go to next slide
+            nextSlide();
+          }
+        }
+      }
+
+      // Initialize carousel
+      updateCarousel();
+    });
+  </script>
+
   <footer>
     <div class="footer-content">
       <div class="copyright">&copy; 2025 Ahavat Yeshua Fellowship. All rights reserved.</div>
