@@ -503,7 +503,7 @@
       background: linear-gradient(135deg, rgba(18, 18, 18, 0.95) 0%, rgba(30, 30, 30, 0.95) 100%);
       border-radius: 12px;
       padding: 3rem 2rem;
-      margin: 4rem 0;
+      margin: 4rem 0 2rem; /* Reduced bottom margin to create space before footer */
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
     }
     
@@ -1465,9 +1465,9 @@
     });
   </script>
 
-  <footer>
-    <div class="footer-content">
-      <div class="copyright">&copy; 2025 Ahavat Yeshua Fellowship. All rights reserved.</div>
+  <footer style="margin-top: 2rem; padding: 2rem 1rem; background: var(--light-bg);">
+    <div class="footer-content" style="max-width: 1200px; margin: 0 auto; text-align: center;">
+      <div class="copyright" style="color: var(--lighter-text); font-size: 0.9rem;">&copy; 2025 Ahavat Yeshua Fellowship. All rights reserved.</div>
     </div>
   </footer>
 </body>
