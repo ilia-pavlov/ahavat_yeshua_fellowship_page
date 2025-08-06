@@ -1006,10 +1006,10 @@
               <div style="margin-bottom: 1.25rem; overflow: hidden;">
                 <p style="color: var(--lighter-text); margin-bottom: 1.25rem; text-align: center; font-size: clamp(0.9rem, 3.5vw, 1rem);">Select a frequency for your donation</p>
                 
-                <div class="carousel-container" style="position: relative; width: 100%; padding: 0 1rem;">
-                  <div class="carousel-track" style="display: flex; transition: transform 0.3s ease; width: 300%;">
+                <div class="carousel-container" style="position: relative; width: 100%; padding: 0 0.5rem; overflow: hidden;">
+                  <div class="carousel-track" style="display: flex; transition: transform 0.3s ease; width: 300%; gap: 0.5rem;">
                     <!-- Weekly Donation -->
-                    <div class="carousel-slide" style="flex: 0 0 33.333%; padding: 0 0.5rem; box-sizing: border-box;">
+                    <div class="carousel-slide" style="flex: 0 0 calc(33.333% - 0.5rem); padding: 0; box-sizing: border-box; margin: 0; transform: translateX(0.25rem);">
                       <div style="margin-bottom: 1rem; text-align: center;">
                         <stripe-buy-button
                           buy-button-id="buy_btn_1Rsy4RRynoiGMx2BBIhzQJnu"
@@ -1020,7 +1020,7 @@
                     </div>
                     
                     <!-- Bi-Weekly Donation -->
-                    <div class="carousel-slide" style="flex: 0 0 33.333%; padding: 0 0.5rem; box-sizing: border-box;">
+                    <div class="carousel-slide" style="flex: 0 0 calc(33.333% - 0.5rem); padding: 0; box-sizing: border-box; margin: 0;">
                       <div style="margin-bottom: 1rem; text-align: center;">
                         <stripe-buy-button
                           buy-button-id="buy_btn_1Rsy7hRynoiGMx2BoqRT7W2U"
@@ -1031,7 +1031,7 @@
                     </div>
                     
                     <!-- Monthly Donation -->
-                    <div class="carousel-slide" style="flex: 0 0 33.333%; padding: 0 0.5rem; box-sizing: border-box;">
+                    <div class="carousel-slide" style="flex: 0 0 calc(33.333% - 0.5rem); padding: 0; box-sizing: border-box; margin: 0; transform: translateX(-0.25rem);">
                       <div style="text-align: center;">
                         <stripe-buy-button
                           buy-button-id="buy_btn_1Rsy97RynoiGMx2BCFbqA6Q3"
@@ -1050,12 +1050,12 @@
                   </div>
                   
                   <!-- Navigation Arrows -->
-                  <button class="carousel-arrow prev" style="position: absolute; top: 50%; left: -5px; transform: translateY(-50%); background: rgba(0,0,0,0.5); border: none; color: white; width: 28px; height: 28px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10; padding: 0;">
+                  <button class="carousel-arrow prev" style="position: absolute; top: 50%; left: 0; transform: translateY(-50%); background: rgba(0,0,0,0.6); border: none; color: white; width: 24px; height: 24px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10; padding: 0;">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                       <path d="M15 18l-6-6 6-6"/>
                     </svg>
                   </button>
-                  <button class="carousel-arrow next" style="position: absolute; top: 50%; right: -5px; transform: translateY(-50%); background: rgba(0,0,0,0.5); border: none; color: white; width: 28px; height: 28px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10; padding: 0;">
+                  <button class="carousel-arrow next" style="position: absolute; top: 50%; right: 0; transform: translateY(-50%); background: rgba(0,0,0,0.6); border: none; color: white; width: 24px; height: 24px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10; padding: 0;">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                       <path d="M9 18l6-6-6-6"/>
                     </svg>
