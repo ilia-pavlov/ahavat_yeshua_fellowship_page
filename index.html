@@ -362,8 +362,9 @@
       fill: #ff0000;
     }
     
-    /* Bilingual Section Responsive */
-    .bilingual-container {
+    /* Responsive Sections */
+    /* Bilingual and Giving Options Sections */
+    .bilingual-container, .giving-options {
       display: flex;
       flex-direction: column;
       gap: 1.5rem;
@@ -375,7 +376,7 @@
       margin-right: auto;
     }
     
-    .bilingual-container > div {
+    .bilingual-container > div, .giving-options > div {
       width: 100%;
       max-width: 800px;
       margin: 0 auto;
@@ -385,14 +386,14 @@
     }
     
     @media (min-width: 768px) {
-      .bilingual-container {
+      .bilingual-container, .giving-options {
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-between;
         padding: 0 0.5rem;
       }
       
-      .bilingual-container > div {
+      .bilingual-container > div, .giving-options > div {
         width: calc(50% - 0.75rem);
         max-width: none;
         margin: 0;
@@ -1148,12 +1149,12 @@
         </div>
 
         <!-- Other Donation Options -->
-        <div style="margin-top: 2rem; padding: 1.5rem 1rem; background: rgba(255, 255, 255, 0.03); border-radius: 8px; max-width: 100%; overflow: hidden;">
+        <div class="giving-section" style="margin-top: 2rem; max-width: 100%;">
           <h3 style="color: var(--light-text); margin-top: 0; text-align: center; font-size: 1.5rem; margin-bottom: 1.5rem;">Other Ways to Give</h3>
           
-          <div style="display: flex; gap: 1.5rem; margin-top: 1rem; flex-wrap: wrap; justify-content: center; width: 100%;">
+          <div class="giving-options">
             <!-- Check Donations -->
-            <div style="flex: 1; min-width: 0; width: 100%; max-width: 400px; padding: 1.5rem; background: rgba(255, 255, 255, 0.05); border-radius: 12px; text-align: center; box-sizing: border-box;">
+            <div style="background: rgba(255, 255, 255, 0.05); border-radius: 12px; padding: 1.5rem; box-sizing: border-box;">
               <h4 style="color: var(--light-text); margin-top: 0; border-bottom: 2px solid var(--accent-color); padding-bottom: 0.5rem; display: inline-block; font-size: 1.25rem;">Check Donations</h4>
               <p style="color: var(--lighter-text); margin: 1.25rem 0; font-size: clamp(0.9rem, 3.5vw, 1rem);">
                 Please make checks payable to:
@@ -1166,7 +1167,7 @@
             </div>
             
             <!-- QR Code Donation -->
-            <div style="flex: 1; min-width: 0; width: 100%; max-width: 400px; padding: 1.5rem; background: rgba(255, 255, 255, 0.05); border-radius: 12px; text-align: center; box-sizing: border-box; margin-top: 1.5rem;">
+            <div style="background: rgba(255, 255, 255, 0.05); border-radius: 12px; padding: 1.5rem; box-sizing: border-box;">
               <h4 style="color: var(--light-text); margin-top: 0; border-bottom: 2px solid var(--accent-color); padding-bottom: 0.5rem; display: inline-block; font-size: 1.25rem;">Scan to Donate</h4>
               <p style="color: var(--lighter-text); margin: 1.25rem 0 1rem; font-size: clamp(0.9rem, 3.5vw, 1rem);">
                 Use your mobile device to scan the QR code
