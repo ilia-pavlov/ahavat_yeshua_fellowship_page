@@ -362,6 +362,43 @@
       fill: #ff0000;
     }
     
+    /* Bilingual Section Responsive */
+    .bilingual-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin: 2.5rem 0;
+      padding: 0 1rem;
+      width: 100%;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .bilingual-container > div {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+    }
+    
+    @media (min-width: 768px) {
+      .bilingual-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 0 0.5rem;
+      }
+      
+      .bilingual-container > div {
+        width: calc(50% - 0.75rem);
+        max-width: none;
+        margin: 0;
+      }
+    }
+    
     /* Responsive adjustments */
     @media (max-width: 1024px) {
       .hero {
@@ -1084,9 +1121,9 @@
         </div>
 
         <!-- Bilingual Content -->
-        <div style="display: flex; gap: 1.5rem; margin: 2.5rem 0; flex-wrap: wrap; justify-content: center; padding: 0 0.5rem;">
+        <div class="bilingual-container">
           <!-- English Version -->
-          <div style="flex: 1; min-width: 0; width: 100%; max-width: 500px; padding: 1.5rem; background: rgba(255, 255, 255, 0.05); border-radius: 8px; margin-bottom: 1rem;">
+          <div>
             <h3 style="color: var(--light-text); margin-top: 0; border-bottom: 2px solid var(--accent-color); padding-bottom: 0.5rem; display: inline-block; font-size: 1.25rem;">English</h3>
             <p style="color: var(--light-text); line-height: 1.6; margin: 1rem 0; font-size: clamp(0.9rem, 3.5vw, 1rem);">
               Each one must give as he has decided in his heart, not reluctantly or under compulsion, for God loves a cheerful giver.
@@ -1098,7 +1135,7 @@
           </div>
           
           <!-- Russian Version -->
-          <div style="flex: 1; min-width: 0; width: 100%; max-width: 500px; padding: 1.5rem; background: rgba(255, 255, 255, 0.05); border-radius: 8px;">
+          <div>
             <h3 style="color: var(--light-text); margin-top: 0; border-bottom: 2px solid var(--accent-color); padding-bottom: 0.5rem; display: inline-block; font-size: 1.25rem;">Русский</h3>
             <p style="color: var(--light-text); line-height: 1.6; margin: 1rem 0; font-size: clamp(0.9rem, 3.5vw, 1rem);">
               Каждый уделяй по расположению сердца, не с огорчением и не с принуждением, ибо доброхотно дающего любит Бог.
