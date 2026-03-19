@@ -1467,13 +1467,13 @@
           </h2>
           
           <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap;">
-            <button onclick="scrollToAlbum('kids')" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: rgba(77, 171, 247, 0.1); border: 1px solid var(--accent-color); border-radius: 25px; backdrop-filter: blur(10px); cursor: pointer; transition: all 0.3s ease; text-decoration: none; font-family: inherit; font-size: inherit;">
-              <span style="font-size: 1.2rem;">👶</span>
-              <span style="color: var(--accent-color); font-weight: 500;">Kids Ministry</span>
-            </button>
             <button onclick="scrollToAlbum('main')" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: rgba(248, 249, 250, 0.05); border: 1px solid var(--border-color); border-radius: 25px; backdrop-filter: blur(10px); cursor: pointer; transition: all 0.3s ease; text-decoration: none; font-family: inherit; font-size: inherit;">
               <span style="font-size: 1.2rem;">⛪</span>
               <span style="color: var(--light-text); font-weight: 500;">Main Service</span>
+            </button>
+            <button onclick="scrollToAlbum('kids')" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: rgba(77, 171, 247, 0.1); border: 1px solid var(--accent-color); border-radius: 25px; backdrop-filter: blur(10px); cursor: pointer; transition: all 0.3s ease; text-decoration: none; font-family: inherit; font-size: inherit;">
+              <span style="font-size: 1.2rem;">👶</span>
+              <span style="color: var(--accent-color); font-weight: 500;">Kids Ministry</span>
             </button>
             <button onclick="scrollToAlbum('evangelistic')" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: rgba(248, 249, 250, 0.05); border: 1px solid var(--border-color); border-radius: 25px; backdrop-filter: blur(10px); cursor: pointer; transition: all 0.3s ease; text-decoration: none; font-family: inherit; font-size: inherit;">
               <span style="font-size: 1.2rem;">📢</span>
@@ -1508,49 +1508,7 @@
 
         <div class="gallery-albums" style="display: flex; flex-direction: column; gap: 3rem; max-width: 1200px; margin: 0 auto 3rem;">
 
-          <!-- Album 1: Kids Ministry -->
-          <div class="album-section">
-            <div class="album-header" style="text-align: center; margin-bottom: 2rem;">
-              <h3 style="color: var(--light-text); font-size: 2rem; margin-bottom: 0.5rem;">Kids Ministry</h3>
-              <p style="color: var(--lighter-text); font-size: 1rem;">8 Photos</p>
-            </div>
-            <div class="album-carousel-container" style="position: relative; max-width: 1200px; margin: 0 auto; padding: 0 60px;">
-              <button class="album-nav album-nav-left" onclick="navigateAlbumPreview('kids', -1)" style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); background: var(--accent-color); color: white; border: none; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 20px; font-weight: bold; z-index: 10; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">‹</button>
-              <button class="album-nav album-nav-right" onclick="navigateAlbumPreview('kids', 1)" style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); background: var(--accent-color); color: white; border: none; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 20px; font-weight: bold; z-index: 10; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">›</button>
-              
-              <div class="album-carousel" id="kids-carousel" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; overflow: hidden;">
-                <div class="album-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openAlbum('kids', 0)">
-                  <img src="images/kids-ministry/gallery1.jpg" alt="Kids Ministry" style="width: 100%; height: 200px; object-fit: cover; display: block; transition: transform 0.5s ease;">
-                  <div class="album-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9)); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease;">
-                    <div style="text-align: center; color: white;">
-                      <div style="font-size: 2rem; margin-bottom: 0.5rem;">👶</div>
-                      <div style="font-size: 1.2rem; font-weight: 600;">8 Photos</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="album-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openAlbum('kids', 1)">
-                  <img src="images/kids-ministry/gallery2.jpg" alt="Kids Ministry" style="width: 100%; height: 200px; object-fit: cover; display: block; transition: transform 0.5s ease;">
-                  <div class="album-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9)); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease;">
-                    <div style="text-align: center; color: white;">
-                      <div style="font-size: 2rem; margin-bottom: 0.5rem;">👶</div>
-                      <div style="font-size: 1.2rem; font-weight: 600;">8 Photos</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="album-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openAlbum('kids', 2)">
-                  <img src="images/kids-ministry/gallery3.jpg" alt="Kids Ministry" style="width: 100%; height: 200px; object-fit: cover; display: block; transition: transform 0.5s ease;">
-                  <div class="album-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9)); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease;">
-                    <div style="text-align: center; color: white;">
-                      <div style="font-size: 2rem; margin-bottom: 0.5rem;">👶</div>
-                      <div style="font-size: 1.2rem; font-weight: 600;">8 Photos</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Album 2: Main Service -->
+          <!-- Album 1: Main Service -->
           <div class="album-section">
             <div class="album-header" style="text-align: center; margin-bottom: 2rem;">
               <h3 style="color: var(--light-text); font-size: 2rem; margin-bottom: 0.5rem;">Main Service</h3>
@@ -1584,6 +1542,48 @@
                   <div class="album-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9)); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease;">
                     <div style="text-align: center; color: white;">
                       <div style="font-size: 2rem; margin-bottom: 0.5rem;">⛪</div>
+                      <div style="font-size: 1.2rem; font-weight: 600;">8 Photos</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Album 2: Kids Ministry -->
+          <div class="album-section">
+            <div class="album-header" style="text-align: center; margin-bottom: 2rem;">
+              <h3 style="color: var(--light-text); font-size: 2rem; margin-bottom: 0.5rem;">Kids Ministry</h3>
+              <p style="color: var(--lighter-text); font-size: 1rem;">8 Photos</p>
+            </div>
+            <div class="album-carousel-container" style="position: relative; max-width: 1200px; margin: 0 auto; padding: 0 60px;">
+              <button class="album-nav album-nav-left" onclick="navigateAlbumPreview('kids', -1)" style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); background: var(--accent-color); color: white; border: none; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 20px; font-weight: bold; z-index: 10; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">‹</button>
+              <button class="album-nav album-nav-right" onclick="navigateAlbumPreview('kids', 1)" style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); background: var(--accent-color); color: white; border: none; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 20px; font-weight: bold; z-index: 10; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">›</button>
+              
+              <div class="album-carousel" id="kids-carousel" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; overflow: hidden;">
+                <div class="album-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openAlbum('kids', 0)">
+                  <img src="images/kids-ministry/gallery1.jpg" alt="Kids Ministry" style="width: 100%; height: 200px; object-fit: cover; display: block; transition: transform 0.5s ease;">
+                  <div class="album-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9)); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease;">
+                    <div style="text-align: center; color: white;">
+                      <div style="font-size: 2rem; margin-bottom: 0.5rem;">👶</div>
+                      <div style="font-size: 1.2rem; font-weight: 600;">8 Photos</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="album-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openAlbum('kids', 1)">
+                  <img src="images/kids-ministry/gallery2.jpg" alt="Kids Ministry" style="width: 100%; height: 200px; object-fit: cover; display: block; transition: transform 0.5s ease;">
+                  <div class="album-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9)); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease;">
+                    <div style="text-align: center; color: white;">
+                      <div style="font-size: 2rem; margin-bottom: 0.5rem;">👶</div>
+                      <div style="font-size: 1.2rem; font-weight: 600;">8 Photos</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="album-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openAlbum('kids', 2)">
+                  <img src="images/kids-ministry/gallery3.jpg" alt="Kids Ministry" style="width: 100%; height: 200px; object-fit: cover; display: block; transition: transform 0.5s ease;">
+                  <div class="album-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9)); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease;">
+                    <div style="text-align: center; color: white;">
+                      <div style="font-size: 2rem; margin-bottom: 0.5rem;">👶</div>
                       <div style="font-size: 1.2rem; font-weight: 600;">8 Photos</div>
                     </div>
                   </div>
