@@ -726,6 +726,56 @@
       opacity: 1;
     }
     
+    /* Album hover effects */
+
+.contact-item h3 {
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+    /* Album hover effects */
+    .album-photo:hover .album-overlay {
+      opacity: 1;
+    }
+
+    .album-photo:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    /* Album navigation arrow hover effects */
+    .album-nav:hover {
+      background: var(--primary-color) !important;
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    .album-nav:active {
+      transform: translateY(-50%) scale(0.95);
+    }
+
+    /* Mobile touch support */
+    .album-nav {
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .album-nav:hover,
+    .album-nav:focus {
+      outline: none;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+    }
+
+    @media (max-width: 768px) {
+      .album-nav {
+        width: 50px !important;
+        height: 50px !important;
+        font-size: 22px !important;
+      }
+    }
+    
     /* Lightbox Styles */
     .lightbox {
       display: none;
@@ -1226,126 +1276,132 @@
           <div class="gallery-divider-line" style="flex: 1; height: 1px; background: var(--border-color);"></div>
         </div>
 
-        <div class="gallery-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; max-width: 1200px; margin: 0 auto 3rem;">
+        <div class="gallery-albums" style="display: flex; flex-direction: column; gap: 3rem; max-width: 1200px; margin: 0 auto 3rem;">
 
-          <div class="gallery-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox('gallery', 0)">
-            <img src="images/gallery1.jpg" alt="Church photo 1" style="width: 100%; height: 280px; object-fit: cover; display: block; transition: transform 0.5s ease;">
-            <div class="gallery-photo-caption" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); color: var(--light-text); font-family: 'Inter', sans-serif; font-weight: 500; font-size: 0.9rem; padding: 1.5rem 1rem 1rem; opacity: 0; transition: opacity 0.3s ease;">Shabbat Service</div>
+          <!-- Album 1: Kids Ministry -->
+          <div class="album-section">
+            <div class="album-header" style="text-align: center; margin-bottom: 2rem;">
+              <h3 style="color: var(--light-text); font-size: 2rem; margin-bottom: 0.5rem;">Kids Ministry</h3>
+              <p style="color: var(--lighter-text); font-size: 1rem;">8 Photos</p>
+            </div>
+            <div class="album-carousel-container" style="position: relative; max-width: 1200px; margin: 0 auto; padding: 0 60px;">
+              <button class="album-nav album-nav-left" onclick="navigateAlbumPreview('kids', -1)" style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); background: var(--accent-color); color: white; border: none; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 20px; font-weight: bold; z-index: 10; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">‹</button>
+              <button class="album-nav album-nav-right" onclick="navigateAlbumPreview('kids', 1)" style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); background: var(--accent-color); color: white; border: none; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 20px; font-weight: bold; z-index: 10; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">›</button>
+              
+              <div class="album-carousel" id="kids-carousel" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; overflow: hidden;">
+                <div class="album-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openAlbum('kids', 0)">
+                  <img src="images/kids-ministry/gallery1.jpg" alt="Kids Ministry" style="width: 100%; height: 200px; object-fit: cover; display: block; transition: transform 0.5s ease;">
+                  <div class="album-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9)); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease;">
+                    <div style="text-align: center; color: white;">
+                      <div style="font-size: 2rem; margin-bottom: 0.5rem;">👶</div>
+                      <div style="font-size: 1.2rem; font-weight: 600;">8 Photos</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="album-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openAlbum('kids', 1)">
+                  <img src="images/kids-ministry/gallery2.jpg" alt="Kids Ministry" style="width: 100%; height: 200px; object-fit: cover; display: block; transition: transform 0.5s ease;">
+                  <div class="album-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9)); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease;">
+                    <div style="text-align: center; color: white;">
+                      <div style="font-size: 2rem; margin-bottom: 0.5rem;">👶</div>
+                      <div style="font-size: 1.2rem; font-weight: 600;">8 Photos</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="album-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openAlbum('kids', 2)">
+                  <img src="images/kids-ministry/gallery3.jpg" alt="Kids Ministry" style="width: 100%; height: 200px; object-fit: cover; display: block; transition: transform 0.5s ease;">
+                  <div class="album-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9)); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease;">
+                    <div style="text-align: center; color: white;">
+                      <div style="font-size: 2rem; margin-bottom: 0.5rem;">👶</div>
+                      <div style="font-size: 1.2rem; font-weight: 600;">8 Photos</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div class="gallery-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox('gallery', 1)">
-            <img src="images/gallery2.jpg" alt="Church photo 2" style="width: 100%; height: 280px; object-fit: cover; display: block; transition: transform 0.5s ease;">
-            <div class="gallery-photo-caption" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); color: var(--light-text); font-family: 'Inter', sans-serif; font-weight: 500; font-size: 0.9rem; padding: 1.5rem 1rem 1rem; opacity: 0; transition: opacity 0.3s ease;">Worship &amp; Praise</div>
+          <!-- Album 2: Main Service -->
+          <div class="album-section">
+            <div class="album-header" style="text-align: center; margin-bottom: 2rem;">
+              <h3 style="color: var(--light-text); font-size: 2rem; margin-bottom: 0.5rem;">Main Service</h3>
+              <p style="color: var(--lighter-text); font-size: 1rem;">8 Photos</p>
+            </div>
+            <div class="album-carousel-container" style="position: relative; max-width: 1200px; margin: 0 auto; padding: 0 60px;">
+              <button class="album-nav album-nav-left" onclick="navigateAlbumPreview('main', -1)" style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); background: var(--accent-color); color: white; border: none; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 20px; font-weight: bold; z-index: 10; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">‹</button>
+              <button class="album-nav album-nav-right" onclick="navigateAlbumPreview('main', 1)" style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); background: var(--accent-color); color: white; border: none; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 20px; font-weight: bold; z-index: 10; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">›</button>
+              
+              <div class="album-carousel" id="main-carousel" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; overflow: hidden;">
+                <div class="album-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openAlbum('main', 0)">
+                  <img src="images/main-service/gallery7.jpg" alt="Main Service" style="width: 100%; height: 200px; object-fit: cover; display: block; transition: transform 0.5s ease;">
+                  <div class="album-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9)); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease;">
+                    <div style="text-align: center; color: white;">
+                      <div style="font-size: 2rem; margin-bottom: 0.5rem;">⛪</div>
+                      <div style="font-size: 1.2rem; font-weight: 600;">8 Photos</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="album-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openAlbum('main', 1)">
+                  <img src="images/main-service/gallery8.jpg" alt="Main Service" style="width: 100%; height: 200px; object-fit: cover; display: block; transition: transform 0.5s ease;">
+                  <div class="album-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9)); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease;">
+                    <div style="text-align: center; color: white;">
+                      <div style="font-size: 2rem; margin-bottom: 0.5rem;">⛪</div>
+                      <div style="font-size: 1.2rem; font-weight: 600;">8 Photos</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="album-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openAlbum('main', 2)">
+                  <img src="images/main-service/gallery9.jpg" alt="Main Service" style="width: 100%; height: 200px; object-fit: cover; display: block; transition: transform 0.5s ease;">
+                  <div class="album-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9)); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease;">
+                    <div style="text-align: center; color: white;">
+                      <div style="font-size: 2rem; margin-bottom: 0.5rem;">⛪</div>
+                      <div style="font-size: 1.2rem; font-weight: 600;">8 Photos</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div class="gallery-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox('gallery', 2)">
-            <img src="images/gallery3.jpg" alt="Church photo 3" style="width: 100%; height: 280px; object-fit: cover; display: block; transition: transform 0.5s ease;">
-            <div class="gallery-photo-caption" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); color: var(--light-text); font-family: 'Inter', sans-serif; font-weight: 500; font-size: 0.9rem; padding: 1.5rem 1rem 1rem; opacity: 0; transition: opacity 0.3s ease;">Community Life</div>
-          </div>
-
-          <div class="gallery-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox('gallery', 3)">
-            <img src="images/gallery4.jpg" alt="Church photo 4" style="width: 100%; height: 280px; object-fit: cover; display: block; transition: transform 0.5s ease;">
-            <div class="gallery-photo-caption" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); color: var(--light-text); font-family: 'Inter', sans-serif; font-weight: 500; font-size: 0.9rem; padding: 1.5rem 1rem 1rem; opacity: 0; transition: opacity 0.3s ease;">Holiday Celebration</div>
-          </div>
-
-          <div class="gallery-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox('gallery', 4)">
-            <img src="images/gallery5.jpg" alt="Church photo 5" style="width: 100%; height: 280px; object-fit: cover; display: block; transition: transform 0.5s ease;">
-            <div class="gallery-photo-caption" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); color: var(--light-text); font-family: 'Inter', sans-serif; font-weight: 500; font-size: 0.9rem; padding: 1.5rem 1rem 1rem; opacity: 0; transition: opacity 0.3s ease;">Fellowship Meal</div>
-          </div>
-
-          <div class="gallery-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox('gallery', 5)">
-            <img src="images/gallery6.jpg" alt="Church photo 6" style="width: 100%; height: 280px; object-fit: cover; display: block; transition: transform 0.5s ease;">
-            <div class="gallery-photo-caption" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); color: var(--light-text); font-family: 'Inter', sans-serif; font-weight: 500; font-size: 0.9rem; padding: 1.5rem 1rem 1rem; opacity: 0; transition: opacity 0.3s ease;">Community Gathering</div>
-          </div>
-
-          <div class="gallery-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox('gallery', 6)">
-            <img src="images/gallery7.jpg" alt="Church photo 7" style="width: 100%; height: 280px; object-fit: cover; display: block; transition: transform 0.5s ease;">
-            <div class="gallery-photo-caption" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); color: var(--light-text); font-family: 'Inter', sans-serif; font-weight: 500; font-size: 0.9rem; padding: 1.5rem 1rem 1rem; opacity: 0; transition: opacity 0.3s ease;">Prayer Service</div>
-          </div>
-
-          <div class="gallery-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox('gallery', 7)">
-            <img src="images/gallery8.jpg" alt="Church photo 8" style="width: 100%; height: 280px; object-fit: cover; display: block; transition: transform 0.5s ease;">
-            <div class="gallery-photo-caption" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); color: var(--light-text); font-family: 'Inter', sans-serif; font-weight: 500; font-size: 0.9rem; padding: 1.5rem 1rem 1rem; opacity: 0; transition: opacity 0.3s ease;">Bible Study</div>
-          </div>
-
-          <div class="gallery-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox('gallery', 8)">
-            <img src="images/gallery9.jpg" alt="Church photo 9" style="width: 100%; height: 280px; object-fit: cover; display: block; transition: transform 0.5s ease;">
-            <div class="gallery-photo-caption" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); color: var(--light-text); font-family: 'Inter', sans-serif; font-weight: 500; font-size: 0.9rem; padding: 1.5rem 1rem 1rem; opacity: 0; transition: opacity 0.3s ease;">Youth Group</div>
-          </div>
-
-          <div class="gallery-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox('gallery', 9)">
-            <img src="images/gallery10.jpg" alt="Church photo 10" style="width: 100%; height: 280px; object-fit: cover; display: block; transition: transform 0.5s ease;">
-            <div class="gallery-photo-caption" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); color: var(--light-text); font-family: 'Inter', sans-serif; font-weight: 500; font-size: 0.9rem; padding: 1.5rem 1rem 1rem; opacity: 0; transition: opacity 0.3s ease;">Music Ministry</div>
-          </div>
-
-          <div class="gallery-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox('gallery', 10)">
-            <img src="images/gallery11.jpg" alt="Church photo 11" style="width: 100%; height: 280px; object-fit: cover; display: block; transition: transform 0.5s ease;">
-            <div class="gallery-photo-caption" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); color: var(--light-text); font-family: 'Inter', sans-serif; font-weight: 500; font-size: 0.9rem; padding: 1.5rem 1rem 1rem; opacity: 0; transition: opacity 0.3s ease;">Sunday Service</div>
-          </div>
-
-          <div class="gallery-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox('gallery', 11)">
-            <img src="images/gallery12.jpg" alt="Church photo 12" style="width: 100%; height: 280px; object-fit: cover; display: block; transition: transform 0.5s ease;">
-            <div class="gallery-photo-caption" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); color: var(--light-text); font-family: 'Inter', sans-serif; font-weight: 500; font-size: 0.9rem; padding: 1.5rem 1rem 1rem; opacity: 0; transition: opacity 0.3s ease;">Fellowship Time</div>
-          </div>
-
-          <div class="gallery-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox('gallery', 12)">
-            <img src="images/gallery13.jpg" alt="Church photo 13" style="width: 100%; height: 280px; object-fit: cover; display: block; transition: transform 0.5s ease;">
-            <div class="gallery-photo-caption" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); color: var(--light-text); font-family: 'Inter', sans-serif; font-weight: 500; font-size: 0.9rem; padding: 1.5rem 1rem 1rem; opacity: 0; transition: opacity 0.3s ease;">Community Event</div>
-          </div>
-
-          <div class="gallery-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox('gallery', 13)">
-            <img src="images/gallery14.jpg" alt="Church photo 14" style="width: 100%; height: 280px; object-fit: cover; display: block; transition: transform 0.5s ease;">
-            <div class="gallery-photo-caption" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); color: var(--light-text); font-family: 'Inter', sans-serif; font-weight: 500; font-size: 0.9rem; padding: 1.5rem 1rem 1rem; opacity: 0; transition: opacity 0.3s ease;">Celebration</div>
-          </div>
-
-          <div class="gallery-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox('gallery', 14)">
-            <img src="images/gallery15.jpg" alt="Church photo 15" style="width: 100%; height: 280px; object-fit: cover; display: block; transition: transform 0.5s ease;">
-            <div class="gallery-photo-caption" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); color: var(--light-text); font-family: 'Inter', sans-serif; font-weight: 500; font-size: 0.9rem; padding: 1.5rem 1rem 1rem; opacity: 0; transition: opacity 0.3s ease;">Worship Night</div>
-          </div>
-
-          <div class="gallery-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox('gallery', 15)">
-            <img src="images/gallery16.jpg" alt="Church photo 16" style="width: 100%; height: 280px; object-fit: cover; display: block; transition: transform 0.5s ease;">
-            <div class="gallery-photo-caption" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); color: var(--light-text); font-family: 'Inter', sans-serif; font-weight: 500; font-size: 0.9rem; padding: 1.5rem 1rem 1rem; opacity: 0; transition: opacity 0.3s ease;">Church Family</div>
-          </div>
-
-          <div class="gallery-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox('gallery', 16)">
-            <img src="images/gallery17.jpg" alt="Church photo 17" style="width: 100%; height: 280px; object-fit: cover; display: block; transition: transform 0.5s ease;">
-            <div class="gallery-photo-caption" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); color: var(--light-text); font-family: 'Inter', sans-serif; font-weight: 500; font-size: 0.9rem; padding: 1.5rem 1rem 1rem; opacity: 0; transition: opacity 0.3s ease;">Prayer Meeting</div>
-          </div>
-
-          <div class="gallery-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox('gallery', 17)">
-            <img src="images/gallery18.jpg" alt="Church photo 18" style="width: 100%; height: 280px; object-fit: cover; display: block; transition: transform 0.5s ease;">
-            <div class="gallery-photo-caption" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); color: var(--light-text); font-family: 'Inter', sans-serif; font-weight: 500; font-size: 0.9rem; padding: 1.5rem 1rem 1rem; opacity: 0; transition: opacity 0.3s ease;">Bible Study</div>
-          </div>
-
-          <div class="gallery-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox('gallery', 18)">
-            <img src="images/gallery19.jpg" alt="Church photo 19" style="width: 100%; height: 280px; object-fit: cover; display: block; transition: transform 0.5s ease;">
-            <div class="gallery-photo-caption" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); color: var(--light-text); font-family: 'Inter', sans-serif; font-weight: 500; font-size: 0.9rem; padding: 1.5rem 1rem 1rem; opacity: 0; transition: opacity 0.3s ease;">Ministry Team</div>
-          </div>
-
-          <div class="gallery-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox('gallery', 19)">
-            <img src="images/gallery20.jpg" alt="Church photo 20" style="width: 100%; height: 280px; object-fit: cover; display: block; transition: transform 0.5s ease;">
-            <div class="gallery-photo-caption" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); color: var(--light-text); font-family: 'Inter', sans-serif; font-weight: 500; font-size: 0.9rem; padding: 1.5rem 1rem 1rem; opacity: 0; transition: opacity 0.3s ease;">Service Time</div>
-          </div>
-
-          <div class="gallery-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox('gallery', 20)">
-            <img src="images/gallery21.jpg" alt="Church photo 21" style="width: 100%; height: 280px; object-fit: cover; display: block; transition: transform 0.5s ease;">
-            <div class="gallery-photo-caption" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); color: var(--light-text); font-family: 'Inter', sans-serif; font-weight: 500; font-size: 0.9rem; padding: 1.5rem 1rem 1rem; opacity: 0; transition: opacity 0.3s ease;">Community Outreach</div>
-          </div>
-
-          <div class="gallery-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox('gallery', 21)">
-            <img src="images/gallery22.jpg" alt="Church photo 22" style="width: 100%; height: 280px; object-fit: cover; display: block; transition: transform 0.5s ease;">
-            <div class="gallery-photo-caption" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); color: var(--light-text); font-family: 'Inter', sans-serif; font-weight: 500; font-size: 0.9rem; padding: 1.5rem 1rem 1rem; opacity: 0; transition: opacity 0.3s ease;">Fellowship Dinner</div>
-          </div>
-
-          <div class="gallery-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox('gallery', 22)">
-            <img src="images/gallery23.jpg" alt="Church photo 23" style="width: 100%; height: 280px; object-fit: cover; display: block; transition: transform 0.5s ease;">
-            <div class="gallery-photo-caption" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); color: var(--light-text); font-family: 'Inter', sans-serif; font-weight: 500; font-size: 0.9rem; padding: 1.5rem 1rem 1rem; opacity: 0; transition: opacity 0.3s ease;">Special Event</div>
-          </div>
-
-          <div class="gallery-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox('gallery', 23)">
-            <img src="images/gallery24.jpg" alt="Church photo 24" style="width: 100%; height: 280px; object-fit: cover; display: block; transition: transform 0.5s ease;">
-            <div class="gallery-photo-caption" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); color: var(--light-text); font-family: 'Inter', sans-serif; font-weight: 500; font-size: 0.9rem; padding: 1.5rem 1rem 1rem; opacity: 0; transition: opacity 0.3s ease;">Celebration Time</div>
+          <!-- Album 3: Evangelistic Events -->
+          <div class="album-section">
+            <div class="album-header" style="text-align: center; margin-bottom: 2rem;">
+              <h3 style="color: var(--light-text); font-size: 2rem; margin-bottom: 0.5rem;">Evangelistic Events</h3>
+              <p style="color: var(--lighter-text); font-size: 1rem;">8 Photos</p>
+            </div>
+            <div class="album-carousel-container" style="position: relative; max-width: 1200px; margin: 0 auto; padding: 0 60px;">
+              <button class="album-nav album-nav-left" onclick="navigateAlbumPreview('evangelistic', -1)" style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); background: var(--accent-color); color: white; border: none; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 20px; font-weight: bold; z-index: 10; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">‹</button>
+              <button class="album-nav album-nav-right" onclick="navigateAlbumPreview('evangelistic', 1)" style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); background: var(--accent-color); color: white; border: none; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 20px; font-weight: bold; z-index: 10; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">›</button>
+              
+              <div class="album-carousel" id="evangelistic-carousel" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; overflow: hidden;">
+                <div class="album-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openAlbum('evangelistic', 0)">
+                  <img src="images/evangelistic-events/gallery17.jpg" alt="Evangelistic Events" style="width: 100%; height: 200px; object-fit: cover; display: block; transition: transform 0.5s ease;">
+                  <div class="album-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9)); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease;">
+                    <div style="text-align: center; color: white;">
+                      <div style="font-size: 2rem; margin-bottom: 0.5rem;">📢</div>
+                      <div style="font-size: 1.2rem; font-weight: 600;">8 Photos</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="album-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openAlbum('evangelistic', 1)">
+                  <img src="images/evangelistic-events/gallery18.jpg" alt="Evangelistic Events" style="width: 100%; height: 200px; object-fit: cover; display: block; transition: transform 0.5s ease;">
+                  <div class="album-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9)); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease;">
+                    <div style="text-align: center; color: white;">
+                      <div style="font-size: 2rem; margin-bottom: 0.5rem;">📢</div>
+                      <div style="font-size: 1.2rem; font-weight: 600;">8 Photos</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="album-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openAlbum('evangelistic', 2)">
+                  <img src="images/evangelistic-events/gallery19.jpg" alt="Evangelistic Events" style="width: 100%; height: 200px; object-fit: cover; display: block; transition: transform 0.5s ease;">
+                  <div class="album-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9)); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease;">
+                    <div style="text-align: center; color: white;">
+                      <div style="font-size: 2rem; margin-bottom: 0.5rem;">📢</div>
+                      <div style="font-size: 1.2rem; font-weight: 600;">8 Photos</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
         </div>
@@ -1862,16 +1918,102 @@
   updateCarousel();
 });
 
-// Lightbox Gallery functionality
-const galleryImages = [];
-for (let i = 1; i <= 24; i++) {
-  galleryImages.push(`images/gallery${i}.jpg`);
+// Lightbox Gallery functionality - TOP LEVEL DECLARATIONS
+const galleryImages = {
+  kids: ['images/kids-ministry/gallery1.jpg', 'images/kids-ministry/gallery2.jpg', 'images/kids-ministry/gallery3.jpg', 'images/kids-ministry/gallery4.jpg', 'images/kids-ministry/gallery5.jpg', 'images/kids-ministry/gallery6.jpg', 'images/kids-ministry/gallery13.jpg', 'images/kids-ministry/gallery14.jpg'],
+  main: ['images/main-service/gallery7.jpg', 'images/main-service/gallery8.jpg', 'images/main-service/gallery9.jpg', 'images/main-service/gallery10.jpg', 'images/main-service/gallery11.jpg', 'images/main-service/gallery12.jpg', 'images/main-service/gallery15.jpg', 'images/main-service/gallery16.jpg'],
+  evangelistic: ['images/evangelistic-events/gallery17.jpg', 'images/evangelistic-events/gallery18.jpg', 'images/evangelistic-events/gallery19.jpg', 'images/evangelistic-events/gallery20.jpg', 'images/evangelistic-events/gallery21.jpg', 'images/evangelistic-events/gallery22.jpg', 'images/evangelistic-events/gallery23.jpg', 'images/evangelistic-events/gallery24.jpg']
+};
+
+// Album preview navigation state - TOP LEVEL DECLARATION
+const albumPreviewState = {
+  kids: { currentIndex: 0 },
+  main: { currentIndex: 0 },
+  evangelistic: { currentIndex: 0 }
+};
+
+function navigateAlbumPreview(album, direction) {
+  console.log('[carousel] navigateAlbumPreview called:', album, direction);
+  
+  const state = albumPreviewState[album];
+  const images = galleryImages[album];
+  const carousel = document.getElementById(`${album}-carousel`);
+  
+  if (!state || !images || !carousel) {
+    console.error('[carousel] Missing dependency:', {
+      album,
+      hasState: !!state,
+      hasImages: !!images,
+      hasCarousel: !!carousel
+    });
+    return;
+  }
+
+  // Fix wrap-around math to prevent negative index
+  const maxIndex = Math.max(0, images.length - 3);
+  state.currentIndex += direction;
+
+  if (state.currentIndex < 0) {
+    state.currentIndex = maxIndex;
+  } else if (state.currentIndex > maxIndex) {
+    state.currentIndex = 0;
+  }
+
+  console.log('[carousel] New index:', state.currentIndex, 'maxIndex:', maxIndex);
+  
+  // Update carousel content
+  updateAlbumCarousel(album, state.currentIndex);
+}
+
+function updateAlbumCarousel(album, startIndex) {
+  const images = galleryImages[album];
+  const carousel = document.getElementById(`${album}-carousel`);
+  
+  console.log('[carousel] updateAlbumCarousel:', { album, startIndex, imageCount: images?.length });
+
+  if (!images || !carousel) {
+    console.error('[carousel] updateAlbumCarousel: missing data', { images: !!images, carousel: !!carousel });
+    return;
+  }
+
+  // Clear current content
+  carousel.innerHTML = '';
+  
+  // Add 3 photos starting from startIndex
+  for (let i = 0; i < 3; i++) {
+    const imageIndex = (startIndex + i) % images.length;
+    const photoDiv = document.createElement('div');
+    photoDiv.className = 'album-photo';
+    photoDiv.style.cssText = 'overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;';
+    photoDiv.onclick = () => openAlbum(album, imageIndex);
+    
+    const albumIcons = {
+      kids: '👶',
+      main: '⛪',
+      evangelistic: '📢'
+    };
+    
+    photoDiv.innerHTML = `
+      <img src="${images[imageIndex]}" alt="${album}" style="width: 100%; height: 200px; object-fit: cover; display: block; transition: transform 0.5s ease;">
+      <div class="album-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9)); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease;">
+        <div style="text-align: center; color: white;">
+          <div style="font-size: 2rem; margin-bottom: 0.5rem;">${albumIcons[album]}</div>
+          <div style="font-size: 1.2rem; font-weight: 600;">8 Photos</div>
+        </div>
+      </div>
+    `;
+    
+    carousel.appendChild(photoDiv);
+  }
+
+  console.log('[carousel] Carousel updated. Children count:', carousel.children.length);
 }
 
 let currentCategory = '';
 let currentImageIndex = 0;
 
-function openLightbox(category, index = 0) {
+function openAlbum(category, index = 0) {
+  currentCategory = category;
   currentImageIndex = index;
   const lightbox = document.getElementById('lightbox');
   const lightboxImage = document.getElementById('lightbox-image');
@@ -1879,12 +2021,12 @@ function openLightbox(category, index = 0) {
   const prevBtn = document.getElementById('lightbox-prev');
   const nextBtn = document.getElementById('lightbox-next');
   
-  lightboxImage.src = galleryImages[index];
+  lightboxImage.src = galleryImages[category][index];
   
   // Show navigation buttons and counter for multiple images
   prevBtn.style.display = 'flex';
   nextBtn.style.display = 'flex';
-  counter.textContent = `${index + 1} / ${galleryImages.length}`;
+  counter.textContent = `${index + 1} / ${galleryImages[category].length}`;
   counter.style.display = 'block';
   
   lightbox.classList.add('active');
@@ -1898,17 +2040,19 @@ function closeLightbox() {
 }
 
 function navigateLightbox(direction) {
+  const images = galleryImages[currentCategory];
+  
   if (direction === 'next') {
-    currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+    currentImageIndex = (currentImageIndex + 1) % images.length;
   } else {
-    currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+    currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
   }
   
   const lightboxImage = document.getElementById('lightbox-image');
   const counter = document.getElementById('lightbox-counter');
   
-  lightboxImage.src = galleryImages[currentImageIndex];
-  counter.textContent = `${currentImageIndex + 1} / ${galleryImages.length}`;
+  lightboxImage.src = images[currentImageIndex];
+  counter.textContent = `${currentImageIndex + 1} / ${images.length}`;
 }
 
 // Lightbox event listeners
@@ -1968,6 +2112,103 @@ function handleLightboxSwipe() {
     <div class="copyright" style="color: var(--lighter-text); font-size: 0.9rem;">&copy; 2025 Ahavat Yeshua Fellowship. All rights reserved.</div>
   </div>
 </footer>
+
+<!-- Album Carousel Script - CLEAN GLOBAL SCOPE -->
+<script>
+// TOP LEVEL DECLARATIONS - Outside any event listeners
+const galleryImages = {
+  kids: ['images/kids-ministry/gallery1.jpg', 'images/kids-ministry/gallery2.jpg', 'images/kids-ministry/gallery3.jpg', 'images/kids-ministry/gallery4.jpg', 'images/kids-ministry/gallery5.jpg', 'images/kids-ministry/gallery6.jpg', 'images/kids-ministry/gallery13.jpg', 'images/kids-ministry/gallery14.jpg'],
+  main: ['images/main-service/gallery7.jpg', 'images/main-service/gallery8.jpg', 'images/main-service/gallery9.jpg', 'images/main-service/gallery10.jpg', 'images/main-service/gallery11.jpg', 'images/main-service/gallery12.jpg', 'images/main-service/gallery15.jpg', 'images/main-service/gallery16.jpg'],
+  evangelistic: ['images/evangelistic-events/gallery17.jpg', 'images/evangelistic-events/gallery18.jpg', 'images/evangelistic-events/gallery19.jpg', 'images/evangelistic-events/gallery20.jpg', 'images/evangelistic-events/gallery21.jpg', 'images/evangelistic-events/gallery22.jpg', 'images/evangelistic-events/gallery23.jpg', 'images/evangelistic-events/gallery24.jpg']
+};
+
+const albumPreviewState = {
+  kids: { currentIndex: 0 },
+  main: { currentIndex: 0 },
+  evangelistic: { currentIndex: 0 }
+};
+
+// Album carousel navigation function
+function navigateAlbumPreview(album, direction) {
+  console.log('[carousel] navigateAlbumPreview called:', album, direction);
+  
+  const state = albumPreviewState[album];
+  const images = galleryImages[album];
+  const carousel = document.getElementById(`${album}-carousel`);
+  
+  if (!state || !images || !carousel) {
+    console.error('[carousel] Missing dependency:', {
+      album,
+      hasState: !!state,
+      hasImages: !!images,
+      hasCarousel: !!carousel
+    });
+    return;
+  }
+
+  // Fix wrap-around math to prevent negative index
+  const maxIndex = Math.max(0, images.length - 3);
+  state.currentIndex += direction;
+
+  if (state.currentIndex < 0) {
+    state.currentIndex = maxIndex;
+  } else if (state.currentIndex > maxIndex) {
+    state.currentIndex = 0;
+  }
+
+  console.log('[carousel] New index:', state.currentIndex, 'maxIndex:', maxIndex);
+  
+  // Update carousel content
+  updateAlbumCarousel(album, state.currentIndex);
+}
+
+// Update carousel content function
+function updateAlbumCarousel(album, startIndex) {
+  const images = galleryImages[album];
+  const carousel = document.getElementById(`${album}-carousel`);
+  
+  console.log('[carousel] updateAlbumCarousel:', { album, startIndex, imageCount: images?.length });
+
+  if (!images || !carousel) {
+    console.error('[carousel] updateAlbumCarousel: missing data', { images: !!images, carousel: !!carousel });
+    return;
+  }
+
+  // Clear current content
+  carousel.innerHTML = '';
+  
+  // Add 3 photos starting from startIndex
+  for (let i = 0; i < 3; i++) {
+    const imageIndex = (startIndex + i) % images.length;
+    const photoDiv = document.createElement('div');
+    photoDiv.className = 'album-photo';
+    photoDiv.style.cssText = 'overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;';
+    photoDiv.onclick = () => openAlbum(album, imageIndex);
+    
+    const albumIcons = {
+      kids: '👶',
+      main: '⛪',
+      evangelistic: '📢'
+    };
+    
+    photoDiv.innerHTML = `
+      <img src="${images[imageIndex]}" alt="${album}" style="width: 100%; height: 200px; object-fit: cover; display: block; transition: transform 0.5s ease;">
+      <div class="album-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9)); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease;">
+        <div style="text-align: center; color: white;">
+          <div style="font-size: 2rem; margin-bottom: 0.5rem;">${albumIcons[album]}</div>
+          <div style="font-size: 1.2rem; font-weight: 600;">8 Photos</div>
+        </div>
+      </div>
+    `;
+    
+    carousel.appendChild(photoDiv);
+  }
+
+  console.log('[carousel] Carousel updated. Children count:', carousel.children.length);
+}
+
+console.log('[carousel] Script loaded - galleryImages available:', typeof galleryImages !== 'undefined');
+</script>
 
 <!-- Lightbox Modal -->
 <div class="lightbox" id="lightbox">
