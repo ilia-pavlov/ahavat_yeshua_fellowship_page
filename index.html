@@ -744,7 +744,7 @@
       box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
     }
 
-    /* Album navigation arrow hover effects */
+    /* Album navigation button hover effects */
     .album-nav:hover {
       background: var(--primary-color) !important;
       transform: translateY(-50%) scale(1.1);
@@ -752,6 +752,20 @@
 
     .album-nav:active {
       transform: translateY(-50%) scale(0.95);
+    }
+
+    /* Album navigation pills hover effects */
+    button[onclick^="scrollToAlbum"] {
+      transition: all 0.3s ease !important;
+    }
+
+    button[onclick^="scrollToAlbum"]:hover {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 4px 16px rgba(77, 171, 247, 0.3);
+    }
+
+    button[onclick^="scrollToAlbum"]:active {
+      transform: translateY(0) scale(0.98);
     }
 
     /* Mobile touch support */
@@ -936,6 +950,15 @@
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
+    }
+    
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px) scale(1);
+      }
+      50% {
+        transform: translateY(-20px) scale(1.05);
+      }
     }
     
     @media (max-width: 768px) {
@@ -1427,12 +1450,52 @@
     </section>
     
     <!-- Gallery Section -->
-    <section id="gallery" class="section" style="scroll-margin-top: 80px;">
-      <div class="hero">
-        <div class="hero-content">
-          <span class="hero-tagline">Our Community</span>
-          <h2 class="hero-title">Life at Ahavat Yeshua</h2>
-          <p class="hero-subtitle">Worship · Fellowship · Service · Celebration</p>
+    <section id="gallery" class="section" style="scroll-margin-top: 40px;">
+      <div class="hero" style="position: relative; overflow: hidden;">
+        <!-- Smaller animated background elements -->
+        <div style="position: absolute; top: 15%; left: 8%; width: 18px; height: 18px; background: radial-gradient(circle, var(--accent-color) 0%, transparent 70%); opacity: 0.08; border-radius: 50%; animation: float 6s ease-in-out infinite;"></div>
+        <div style="position: absolute; top: 65%; right: 12%; width: 14px; height: 14px; background: radial-gradient(circle, var(--primary-color) 0%, transparent 70%); opacity: 0.06; border-radius: 50%; animation: float 8s ease-in-out infinite reverse;"></div>
+        <div style="position: absolute; bottom: 25%; left: 18%; width: 9px; height: 9px; background: radial-gradient(circle, var(--accent-color) 0%, transparent 70%); opacity: 0.04; border-radius: 50%; animation: float 4s ease-in-out infinite;"></div>
+        
+        <div class="hero-content" style="position: relative; z-index: 2; text-align: center; padding: 1rem 2rem;">
+          <div style="display: inline-block; margin-bottom: 2rem;">
+            <span class="hero-tagline" style="background: linear-gradient(135deg, var(--accent-color), var(--primary-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; font-size: 0.9rem;">✨ Our Community ✨</span>
+          </div>
+          
+          <h2 class="hero-title" style="font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; margin-bottom: 1.5rem; line-height: 1.1; background: linear-gradient(135deg, var(--light-text) 0%, var(--accent-color) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+            Life at Ahavat Yeshua
+          </h2>
+          
+          <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap;">
+            <button onclick="scrollToAlbum('kids')" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: rgba(77, 171, 247, 0.1); border: 1px solid var(--accent-color); border-radius: 25px; backdrop-filter: blur(10px); cursor: pointer; transition: all 0.3s ease; text-decoration: none; font-family: inherit; font-size: inherit;">
+              <span style="font-size: 1.2rem;">👶</span>
+              <span style="color: var(--accent-color); font-weight: 500;">Kids Ministry</span>
+            </button>
+            <button onclick="scrollToAlbum('main')" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: rgba(248, 249, 250, 0.05); border: 1px solid var(--border-color); border-radius: 25px; backdrop-filter: blur(10px); cursor: pointer; transition: all 0.3s ease; text-decoration: none; font-family: inherit; font-size: inherit;">
+              <span style="font-size: 1.2rem;">⛪</span>
+              <span style="color: var(--light-text); font-weight: 500;">Main Service</span>
+            </button>
+            <button onclick="scrollToAlbum('evangelistic')" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: rgba(248, 249, 250, 0.05); border: 1px solid var(--border-color); border-radius: 25px; backdrop-filter: blur(10px); cursor: pointer; transition: all 0.3s ease; text-decoration: none; font-family: inherit; font-size: inherit;">
+              <span style="font-size: 1.2rem;">📢</span>
+              <span style="color: var(--light-text); font-weight: 500;">Evangelistic Events</span>
+            </button>
+          </div>
+          
+          <div style="max-width: 600px; margin: 0 auto;">
+            <p style="font-size: 1.2rem; color: var(--lighter-text); line-height: 1.6; margin-bottom: 2rem;">
+              Experience the warmth and joy of our church family through these captured moments of faith, fellowship, and community life.
+            </p>
+            <div style="display: flex; gap: 1rem; justify-content: center; align-items: center;">
+              <div style="display: flex; align-items: center; gap: 0.5rem; color: var(--accent-color);">
+                <span style="font-size: 1.5rem;">📸</span>
+                <span style="font-weight: 600;">24 Photos</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 0.5rem; color: var(--lighter-text);">
+                <span style="font-size: 1.5rem;">📁</span>
+                <span>3 Albums</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -2404,6 +2467,50 @@ function updateAlbumCarousel(album, startIndex, direction = 1) {
 }
 
 console.log('[carousel] Script loaded - galleryImages available:', typeof galleryImages !== 'undefined');
+
+// Album navigation function
+function scrollToAlbum(albumType) {
+  console.log('[navigation] Scrolling to album:', albumType);
+  
+  // Find the album section using text content
+  const albumSections = document.querySelectorAll('.album-section');
+  let albumElement;
+  
+  albumSections.forEach(section => {
+    const h3 = section.querySelector('h3');
+    if (h3) {
+      const text = h3.textContent.toLowerCase();
+      if ((albumType === 'kids' && text.includes('kids')) ||
+          (albumType === 'main' && text.includes('main')) ||
+          (albumType === 'evangelistic' && text.includes('evangelistic'))) {
+        albumElement = section;
+      }
+    }
+  });
+  
+  if (albumElement) {
+    albumElement.scrollIntoView({ 
+      behavior: 'smooth', 
+      block: 'start' 
+    });
+    
+    // Add highlight effect
+    albumElement.style.transition = 'all 0.3s ease';
+    albumElement.style.transform = 'scale(1.02)';
+    albumElement.style.boxShadow = '0 8px 32px rgba(77, 171, 247, 0.3)';
+    
+    setTimeout(() => {
+      albumElement.style.transform = '';
+      albumElement.style.boxShadow = '';
+    }, 1000);
+  } else {
+    // Fallback: scroll to gallery section
+    const gallerySection = document.getElementById('gallery');
+    if (gallerySection) {
+      gallerySection.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+}
 
 // Lightbox functionality
 let currentCategory = '';
