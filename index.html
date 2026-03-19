@@ -768,6 +768,52 @@
       box-shadow: 0 2px 12px rgba(0,0,0,0.4);
     }
 
+    /* Smooth carousel transitions */
+    .album-carousel {
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .album-photo {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      opacity: 0;
+      transform: translateX(20px) scale(0.95);
+    }
+
+    .album-photo.show {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+    }
+
+    .album-photo.slide-in-left {
+      animation: slideInLeft 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    .album-photo.slide-in-right {
+      animation: slideInRight 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-30px) scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(30px) scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+      }
+    }
+
     @media (max-width: 768px) {
       .album-nav {
         width: 50px !important;
@@ -2158,53 +2204,82 @@ function navigateAlbumPreview(album, direction) {
 
   console.log('[carousel] New index:', state.currentIndex, 'maxIndex:', maxIndex);
   
-  // Update carousel content
-  updateAlbumCarousel(album, state.currentIndex);
+  // Update carousel content with direction for smooth transitions
+  updateAlbumCarousel(album, state.currentIndex, direction);
 }
 
-// Update carousel content function
-function updateAlbumCarousel(album, startIndex) {
+// Update carousel content function with smooth transitions
+function updateAlbumCarousel(album, startIndex, direction = 1) {
   const images = galleryImages[album];
   const carousel = document.getElementById(`${album}-carousel`);
   
-  console.log('[carousel] updateAlbumCarousel:', { album, startIndex, imageCount: images?.length });
+  console.log('[carousel] updateAlbumCarousel:', { album, startIndex, imageCount: images?.length, direction });
 
   if (!images || !carousel) {
     console.error('[carousel] updateAlbumCarousel: missing data', { images: !!images, carousel: !!carousel });
     return;
   }
 
-  // Clear current content
-  carousel.innerHTML = '';
-  
-  // Add 3 photos starting from startIndex
-  for (let i = 0; i < 3; i++) {
-    const imageIndex = (startIndex + i) % images.length;
-    const photoDiv = document.createElement('div');
-    photoDiv.className = 'album-photo';
-    photoDiv.style.cssText = 'overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;';
-    photoDiv.onclick = () => openAlbum(album, imageIndex);
-    
-    const albumIcons = {
-      kids: '👶',
-      main: '⛪',
-      evangelistic: '📢'
-    };
-    
-    photoDiv.innerHTML = `
-      <img src="${images[imageIndex]}" alt="${album}" style="width: 100%; height: 200px; object-fit: cover; display: block; transition: transform 0.5s ease;">
-      <div class="album-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9)); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease;">
-        <div style="text-align: center; color: white;">
-          <div style="font-size: 2rem; margin-bottom: 0.5rem;">${albumIcons[album]}</div>
-          <div style="font-size: 1.2rem; font-weight: 600;">8 Photos</div>
-        </div>
-      </div>
-    `;
-    
-    carousel.appendChild(photoDiv);
-  }
+  // Fade out current photos
+  const currentPhotos = carousel.querySelectorAll('.album-photo');
+  currentPhotos.forEach((photo, index) => {
+    setTimeout(() => {
+      photo.style.opacity = '0';
+      photo.style.transform = direction > 0 ? 'translateX(-20px) scale(0.95)' : 'translateX(20px) scale(0.95)';
+    }, index * 50);
+  });
 
-  console.log('[carousel] Carousel updated. Children count:', carousel.children.length);
+  // Wait for fade out, then update content
+  setTimeout(() => {
+    // Clear current content
+    carousel.innerHTML = '';
+    
+    // Add 3 photos starting from startIndex with smooth animations
+    for (let i = 0; i < 3; i++) {
+      const imageIndex = (startIndex + i) % images.length;
+      const photoDiv = document.createElement('div');
+      photoDiv.className = 'album-photo';
+      
+      // Set initial state for animation
+      const animationClass = direction > 0 ? 'slide-in-right' : 'slide-in-left';
+      photoDiv.style.cssText = `
+        overflow: hidden; 
+        border-radius: 12px; 
+        position: relative; 
+        background: var(--card-bg); 
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); 
+        transition: transform 0.3s ease, box-shadow 0.3s ease; 
+        cursor: pointer;
+        opacity: 0;
+      `;
+      photoDiv.onclick = () => openAlbum(album, imageIndex);
+      
+      const albumIcons = {
+        kids: '👶',
+        main: '⛪',
+        evangelistic: '📢'
+      };
+      
+      photoDiv.innerHTML = `
+        <img src="${images[imageIndex]}" alt="${album}" style="width: 100%; height: 200px; object-fit: cover; display: block; transition: transform 0.5s ease;">
+        <div class="album-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9)); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease;">
+          <div style="text-align: center; color: white;">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem;">${albumIcons[album]}</div>
+            <div style="font-size: 1.2rem; font-weight: 600;">8 Photos</div>
+          </div>
+        </div>
+      `;
+      
+      carousel.appendChild(photoDiv);
+      
+      // Animate in with staggered timing
+      setTimeout(() => {
+        photoDiv.classList.add(animationClass);
+      }, i * 100);
+    }
+
+    console.log('[carousel] Carousel updated. Children count:', carousel.children.length);
+  }, 200); // Wait for fade out to complete
 }
 
 console.log('[carousel] Script loaded - galleryImages available:', typeof galleryImages !== 'undefined');
