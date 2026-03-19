@@ -712,6 +712,140 @@
       fill: white;
     }
     
+    /* Gallery Hover Effects */
+    .gallery-photo:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .gallery-photo:hover img {
+      transform: scale(1.05);
+    }
+
+    .gallery-photo:hover .gallery-photo-caption {
+      opacity: 1;
+    }
+    
+    /* Lightbox Styles */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 1000;
+      animation: fadeIn 0.3s ease;
+    }
+    
+    .lightbox.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .lightbox-content {
+      position: relative;
+      max-width: 90%;
+      max-height: 90%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .lightbox-image {
+      max-width: 100%;
+      max-height: 80vh;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+    
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid var(--accent-color);
+      color: var(--accent-color);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    
+    .lightbox-nav:hover {
+      background: var(--accent-color);
+      color: white;
+      transform: translateY(-50%) scale(1.1);
+    }
+    
+    .lightbox-prev {
+      left: 20px;
+    }
+    
+    .lightbox-next {
+      right: 20px;
+    }
+    
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid var(--accent-color);
+      color: var(--accent-color);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    
+    .lightbox-close:hover {
+      background: var(--accent-color);
+      color: white;
+      transform: scale(1.1);
+    }
+    
+    .lightbox-counter {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .btn-youtube:hover {
+      background: #aa0000;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(204, 0, 0, 0.4);
+    }
+
+    .btn-donation:hover {
+      background: var(--accent-color);
+      color: var(--light-bg);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(77, 171, 247, 0.3);
+    }
+    
     /* Responsive styles for Other Ways to Give section */
     @media (max-width: 768px) {
       .donation-options {
@@ -861,6 +995,38 @@
         margin-top: 1rem;
       }
       
+      /* Gallery Responsive */
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin: 0 auto 2rem;
+      }
+      
+      .gallery-photo:first-child,
+      .gallery-photo:nth-child(3) {
+        grid-column: auto;
+        grid-row: auto;
+      }
+      
+      .gallery-photo img,
+      .gallery-photo:first-child img,
+      .gallery-photo:nth-child(3) img {
+        height: 250px;
+        min-height: unset;
+      }
+      
+      .gallery-buttons {
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+      
+      .btn-youtube,
+      .btn-donation {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+      }
+      
       h1 {
         font-size: 2.2rem;
       }
@@ -869,6 +1035,14 @@
         flex-direction: column;
         gap: 1.5rem;
         text-align: center;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .gallery-photo img,
+      .gallery-photo:first-child img,
+      .gallery-photo:nth-child(3) img {
+        height: 200px;
       }
     }
     
@@ -977,6 +1151,7 @@
       </div>
       <nav>
         <a href="#home" class="nav-link active" data-section="home">Home</a>
+        <a href="#gallery" class="nav-link" data-section="gallery">Gallery</a>
         <a href="#contact" class="nav-link" data-section="contact">Contact</a>
         <a href="#donation" class="nav-link" data-section="donation">Donation</a>
       </nav>
@@ -1030,6 +1205,73 @@
               src="https://js.stripe.com/v3/buy-button.js">
             </script>
           </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Gallery Section -->
+    <section id="gallery" class="section" style="scroll-margin-top: 80px;">
+      <div class="hero">
+        <div class="hero-content">
+          <span class="hero-tagline">Our Community</span>
+          <h2 class="hero-title">Life at Ahavat Yeshua</h2>
+          <p class="hero-subtitle">Worship · Fellowship · Service · Celebration</p>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="gallery-divider" style="display: flex; align-items: center; gap: 1rem; justify-content: center; max-width: 300px; margin: 0 auto 3rem;">
+          <div class="gallery-divider-line" style="flex: 1; height: 1px; background: var(--border-color);"></div>
+          <div class="gallery-divider-star" style="color: var(--accent-color); font-size: 0.8rem;">✦</div>
+          <div class="gallery-divider-line" style="flex: 1; height: 1px; background: var(--border-color);"></div>
+        </div>
+
+        <div class="gallery-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; max-width: 1200px; margin: 0 auto 3rem;">
+
+          <div class="gallery-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; grid-column: 1 / 3; cursor: pointer;" onclick="openLightbox('shabbat', 0)">
+            <img src="images/gallery1.jpg" alt="Shabbat gathering" style="width: 100%; height: 320px; object-fit: cover; display: block; transition: transform 0.5s ease;">
+            <div class="gallery-photo-caption" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); color: var(--light-text); font-family: 'Inter', sans-serif; font-weight: 500; font-size: 0.9rem; padding: 1.5rem 1rem 1rem; opacity: 0; transition: opacity 0.3s ease;">Shabbat Service</div>
+          </div>
+
+          <div class="gallery-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox('worship', 0)">
+            <img src="images/gallery2.jpg" alt="Worship and praise" style="width: 100%; height: 260px; object-fit: cover; display: block; transition: transform 0.5s ease;">
+            <div class="gallery-photo-caption" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); color: var(--light-text); font-family: 'Inter', sans-serif; font-weight: 500; font-size: 0.9rem; padding: 1.5rem 1rem 1rem; opacity: 0; transition: opacity 0.3s ease;">Worship &amp; Praise</div>
+          </div>
+
+          <div class="gallery-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; grid-row: 1 / 3; grid-column: 3; cursor: pointer;" onclick="openLightbox('community', 0)">
+            <img src="images/gallery3.jpg" alt="Community life" style="width: 100%; height: 100%; min-height: 550px; object-fit: cover; display: block; transition: transform 0.5s ease;">
+            <div class="gallery-photo-caption" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); color: var(--light-text); font-family: 'Inter', sans-serif; font-weight: 500; font-size: 0.9rem; padding: 1.5rem 1rem 1rem; opacity: 0; transition: opacity 0.3s ease;">Community Life</div>
+          </div>
+
+          <div class="gallery-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox('holiday', 0)">
+            <img src="images/gallery4.jpg" alt="Holiday celebration" style="width: 100%; height: 260px; object-fit: cover; display: block; transition: transform 0.5s ease;">
+            <div class="gallery-photo-caption" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); color: var(--light-text); font-family: 'Inter', sans-serif; font-weight: 500; font-size: 0.9rem; padding: 1.5rem 1rem 1rem; opacity: 0; transition: opacity 0.3s ease;">Holiday Celebration</div>
+          </div>
+
+          <div class="gallery-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openLightbox('fellowship', 0)">
+            <img src="images/gallery5.jpg" alt="Fellowship meal" style="width: 100%; height: 260px; object-fit: cover; display: block; transition: transform 0.5s ease;">
+            <div class="gallery-photo-caption" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); color: var(--light-text); font-family: 'Inter', sans-serif; font-weight: 500; font-size: 0.9rem; padding: 1.5rem 1rem 1rem; opacity: 0; transition: opacity 0.3s ease;">Fellowship Meal</div>
+          </div>
+
+        </div>
+
+        <!-- Gallery Buttons -->
+        <div class="gallery-buttons" style="display: flex; flex-direction: column; align-items: center; gap: 1rem; margin-top: 2rem;">
+
+          <a href="https://www.youtube.com/@AhavatYeshua"
+             target="_blank"
+             rel="noopener"
+             class="btn-youtube"
+             style="display: inline-flex; align-items: center; gap: 0.75rem; background: #cc0000; color: #ffffff; text-decoration: none; font-size: 0.95rem; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; padding: 1rem 2rem; border-radius: 8px; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(204, 0, 0, 0.3);">
+            ▶ Watch Our Services on YouTube
+          </a>
+
+          <a href="#donation"
+             class="btn-donation"
+             style="display: inline-flex; align-items: center; gap: 0.75rem; color: var(--accent-color); text-decoration: none; font-size: 0.95rem; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; border: 2px solid var(--accent-color); padding: 0.875rem 2rem; border-radius: 8px; transition: all 0.3s ease; background: transparent;">
+            Support Our Ministry →
+          </a>
+
         </div>
       </div>
     </section>
@@ -1492,10 +1734,179 @@
     });
   </script>
 
-  <footer style="margin-top: 2rem; padding: 2rem 1rem; background: var(--light-bg);">
-    <div class="footer-content" style="max-width: 1200px; margin: 0 auto; text-align: center;">
-      <div class="copyright" style="color: var(--lighter-text); font-size: 0.9rem;">&copy; 2025 Ahavat Yeshua Fellowship. All rights reserved.</div>
-    </div>
-  </footer>
+  <script>
+  // Touch events for mobile swiping
+  let touchStartX = 0;
+  let touchEndX = 0;
+  
+  carouselTrack.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+  
+  carouselTrack.addEventListener('touchend', e => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  }, { passive: true });
+  
+  function handleSwipe() {
+    const swipeThreshold = 50; // Minimum swipe distance
+    const swipeDistance = touchEndX - touchStartX;
+    
+    if (Math.abs(swipeDistance) > swipeThreshold) {
+      if (swipeDistance > 0) {
+        // Swipe right - go to previous slide
+        prevSlide();
+      } else {
+        // Swipe left - go to next slide
+        nextSlide();
+      }
+    }
+  }
+
+  // Initialize carousel
+  updateCarousel();
+});
+
+// Lightbox Gallery functionality
+const galleryImages = {
+  shabbat: [
+    'images/gallery1.jpg',
+    'images/gallery1-alt1.jpg',
+    'images/gallery1-alt2.jpg',
+    'images/gallery1-alt3.jpg'
+  ],
+  worship: [
+    'images/gallery2.jpg',
+    'images/gallery2-alt1.jpg',
+    'images/gallery2-alt2.jpg',
+    'images/gallery2-alt3.jpg'
+  ],
+  community: [
+    'images/gallery3.jpg',
+    'images/gallery3-alt1.jpg',
+    'images/gallery3-alt2.jpg',
+    'images/gallery3-alt3.jpg'
+  ],
+  holiday: [
+    'images/gallery4.jpg',
+    'images/gallery4-alt1.jpg',
+    'images/gallery4-alt2.jpg',
+    'images/gallery4-alt3.jpg'
+  ],
+  fellowship: [
+    'images/gallery5.jpg',
+    'images/gallery5-alt1.jpg',
+    'images/gallery5-alt2.jpg',
+    'images/gallery5-alt3.jpg'
+  ]
+};
+
+let currentCategory = '';
+let currentImageIndex = 0;
+
+function openLightbox(category, index = 0) {
+  currentCategory = category;
+  currentImageIndex = index;
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImage = document.getElementById('lightbox-image');
+  const counter = document.getElementById('lightbox-counter');
+  
+  lightboxImage.src = galleryImages[category][index];
+  counter.textContent = `${index + 1} / ${galleryImages[category].length}`;
+  lightbox.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  const lightbox = document.getElementById('lightbox');
+  lightbox.classList.remove('active');
+  document.body.style.overflow = 'auto';
+}
+
+function navigateLightbox(direction) {
+  const images = galleryImages[currentCategory];
+  
+  if (direction === 'next') {
+    currentImageIndex = (currentImageIndex + 1) % images.length;
+  } else {
+    currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+  }
+  
+  const lightboxImage = document.getElementById('lightbox-image');
+  const counter = document.getElementById('lightbox-counter');
+  
+  lightboxImage.src = images[currentImageIndex];
+  counter.textContent = `${currentImageIndex + 1} / ${images.length}`;
+}
+
+// Lightbox event listeners
+document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+document.getElementById('lightbox-prev').addEventListener('click', () => navigateLightbox('prev'));
+document.getElementById('lightbox-next').addEventListener('click', () => navigateLightbox('next'));
+
+// Close lightbox on background click
+document.getElementById('lightbox').addEventListener('click', function(e) {
+  if (e.target === this) {
+    closeLightbox();
+  }
+});
+
+// Close lightbox on Escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeLightbox();
+  } else if (e.key === 'ArrowLeft') {
+    navigateLightbox('prev');
+  } else if (e.key === 'ArrowRight') {
+    navigateLightbox('next');
+  }
+});
+
+// Touch events for mobile lightbox swiping
+let lightboxTouchStartX = 0;
+let lightboxTouchEndX = 0;
+
+document.getElementById('lightbox').addEventListener('touchstart', e => {
+  lightboxTouchStartX = e.changedTouches[0].screenX;
+}, { passive: true });
+
+document.getElementById('lightbox').addEventListener('touchend', e => {
+  lightboxTouchEndX = e.changedTouches[0].screenX;
+  handleLightboxSwipe();
+}, { passive: true });
+
+function handleLightboxSwipe() {
+  const swipeThreshold = 50; // Minimum swipe distance
+  const swipeDistance = lightboxTouchEndX - lightboxTouchStartX;
+  
+  if (Math.abs(swipeDistance) > swipeThreshold) {
+    if (swipeDistance > 0) {
+      // Swipe right - go to previous image
+      navigateLightbox('prev');
+    } else {
+      // Swipe left - go to next image
+      navigateLightbox('next');
+    }
+  }
+}
+</script>
+
+<footer style="margin-top: 2rem; padding: 2rem 1rem; background: var(--light-bg);">
+  <div class="footer-content" style="max-width: 1200px; margin: 0 auto; text-align: center;">
+    <div class="copyright" style="color: var(--lighter-text); font-size: 0.9rem;">&copy; 2025 Ahavat Yeshua Fellowship. All rights reserved.</div>
+  </div>
+</footer>
+
+<!-- Lightbox Modal -->
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-content">
+    <img src="" alt="" class="lightbox-image" id="lightbox-image">
+    <button class="lightbox-nav lightbox-prev" id="lightbox-prev">‹</button>
+    <button class="lightbox-nav lightbox-next" id="lightbox-next">›</button>
+    <button class="lightbox-close" id="lightbox-close">×</button>
+    <div class="lightbox-counter" id="lightbox-counter">1 / 5</div>
+  </div>
+</div>
+
 </body>
 </html>
