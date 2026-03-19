@@ -852,6 +852,127 @@
     
     .lightbox-image {
       max-width: 100%;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    }
+    
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--accent-color);
+      color: white;
+      border: none;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 24px;
+      font-weight: bold;
+      z-index: 1001;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+    
+    .lightbox-nav:hover {
+      background: var(--primary-color);
+      transform: translateY(-50%) scale(1.1);
+    }
+    
+    .lightbox-prev {
+      left: 20px;
+    }
+    
+    .lightbox-next {
+      right: 20px;
+    }
+    
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 24px;
+      font-weight: bold;
+      z-index: 1001;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+    
+    .lightbox-close:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: scale(1.1);
+    }
+    
+    .lightbox-counter {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 500;
+      z-index: 1001;
+      backdrop-filter: blur(10px);
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @media (max-width: 768px) {
+      .lightbox-nav {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+      }
+      
+      .lightbox-prev {
+        left: 10px;
+      }
+      
+      .lightbox-next {
+        right: 10px;
+      }
+      
+      .lightbox-close {
+        width: 35px;
+        height: 35px;
+        font-size: 20px;
+        top: 10px;
+        right: 10px;
+      }
+    }
+    
+    .lightbox-content {
+      position: relative;
+      max-width: 90%;
+      max-height: 90%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .lightbox-image {
+      max-width: 100%;
       max-height: 80vh;
       object-fit: contain;
       border-radius: 8px;
@@ -2283,6 +2404,141 @@ function updateAlbumCarousel(album, startIndex, direction = 1) {
 }
 
 console.log('[carousel] Script loaded - galleryImages available:', typeof galleryImages !== 'undefined');
+
+// Lightbox functionality
+let currentCategory = '';
+let currentImageIndex = 0;
+
+function openAlbum(category, index = 0) {
+  currentCategory = category;
+  currentImageIndex = index;
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImage = document.getElementById('lightbox-image');
+  const counter = document.getElementById('lightbox-counter');
+  const prevBtn = document.getElementById('lightbox-prev');
+  const nextBtn = document.getElementById('lightbox-next');
+  
+  if (!galleryImages[category] || !galleryImages[category][index]) {
+    console.error('[lightbox] Invalid category or index:', { category, index });
+    return;
+  }
+  
+  // Set image source
+  lightboxImage.src = galleryImages[category][index];
+  
+  // Update counter
+  const totalImages = galleryImages[category].length;
+  counter.textContent = `${index + 1} / ${totalImages}`;
+  
+  // Show/hide navigation buttons based on image count
+  if (totalImages <= 1) {
+    prevBtn.style.display = 'none';
+    nextBtn.style.display = 'none';
+    counter.style.display = 'none';
+  } else {
+    prevBtn.style.display = 'flex';
+    nextBtn.style.display = 'flex';
+    counter.style.display = 'block';
+  }
+  
+  // Show lightbox
+  lightbox.classList.add('active');
+  document.body.style.overflow = 'hidden'; // Prevent background scrolling
+  
+  console.log('[lightbox] Opened:', { category, index, totalImages });
+}
+
+function closeLightbox() {
+  const lightbox = document.getElementById('lightbox');
+  lightbox.classList.remove('active');
+  document.body.style.overflow = ''; // Restore scrolling
+  
+  console.log('[lightbox] Closed');
+}
+
+function navigateLightbox(direction) {
+  const images = galleryImages[currentCategory];
+  if (!images || images.length <= 1) return;
+  
+  // Update index with wrap-around
+  currentImageIndex += direction;
+  if (currentImageIndex < 0) {
+    currentImageIndex = images.length - 1;
+  } else if (currentImageIndex >= images.length) {
+    currentImageIndex = 0;
+  }
+  
+  // Update image
+  const lightboxImage = document.getElementById('lightbox-image');
+  const counter = document.getElementById('lightbox-counter');
+  
+  lightboxImage.src = images[currentImageIndex];
+  counter.textContent = `${currentImageIndex + 1} / ${images.length}`;
+  
+  console.log('[lightbox] Navigated to:', { index: currentImageIndex, total: images.length });
+}
+
+// Event listeners for lightbox
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize all carousels with first 3 photos
+  console.log('[carousel] Initializing carousels on page load...');
+  
+  ['kids', 'main', 'evangelistic'].forEach(album => {
+    updateAlbumCarousel(album, 0, 1); // Initialize with first 3 photos
+  });
+  
+  // Close on background click
+  const lightbox = document.getElementById('lightbox');
+  lightbox.addEventListener('click', function(e) {
+    if (e.target === lightbox) {
+      closeLightbox();
+    }
+  });
+  
+  // Close on escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeLightbox();
+    } else if (e.key === 'ArrowLeft') {
+      navigateLightbox(-1);
+    } else if (e.key === 'ArrowRight') {
+      navigateLightbox(1);
+    }
+  });
+  
+  // Navigation buttons
+  document.getElementById('lightbox-prev').addEventListener('click', () => navigateLightbox(-1));
+  document.getElementById('lightbox-next').addEventListener('click', () => navigateLightbox(1));
+  document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+  
+  // Touch/swipe support for mobile
+  let touchStartX = 0;
+  let touchEndX = 0;
+  
+  lightbox.addEventListener('touchstart', function(e) {
+    touchStartX = e.changedTouches[0].screenX;
+  });
+  
+  lightbox.addEventListener('touchend', function(e) {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  });
+  
+  function handleSwipe() {
+    const swipeThreshold = 50;
+    const diff = touchStartX - touchEndX;
+    
+    if (Math.abs(diff) > swipeThreshold) {
+      if (diff > 0) {
+        // Swipe left - next image
+        navigateLightbox(1);
+      } else {
+        // Swipe right - previous image
+        navigateLightbox(-1);
+      }
+    }
+  }
+});
 </script>
 
 <!-- Lightbox Modal -->
