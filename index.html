@@ -70,6 +70,7 @@
     /* Header */
     header {
       padding: 2rem 0;
+      overflow: visible;
     }
     
     .logo {
@@ -88,16 +89,79 @@
       margin: 0 auto;
       padding: 1.5rem 2rem;
       position: relative;
+      overflow: visible;
     }
     
+    .social-pill {
+      position: relative;
+      overflow: visible; /* needed so the sketch can extend beyond the pill */
+    }
+
     .social-media {
       display: flex;
-      gap: 0.5rem;
+      gap: 0.65rem;
       align-items: center;
       margin-left: auto;
       margin-right: 1rem;
+      padding: 0.6rem 0.95rem;
+      background: rgba(0, 0, 0, 0.35);
+      border-radius: 18px;
+      border: none; /* sketch provides the border */
+      backdrop-filter: blur(10px);
+      overflow: visible;
     }
-    
+
+    .social-media::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 15% 25%, rgba(255, 255, 255, 0.5) 0%, transparent 35%),
+                  radial-gradient(circle at 80% 60%, rgba(255, 255, 255, 0.35) 0%, transparent 40%),
+                  radial-gradient(circle at 50% 85%, rgba(255, 255, 255, 0.25) 0%, transparent 45%);
+      opacity: 0.25;
+      mix-blend-mode: screen;
+      border-radius: inherit;
+      pointer-events: none;
+      animation: sparkle 2.8s ease-in-out infinite;
+    }
+
+    #follow-text {
+      position: relative;
+      order: -1;
+      margin-right: 0.7rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #FFD700;
+      text-shadow: 0 0 6px rgba(255, 255, 0, 0.55);
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+      z-index: 2;
+    }
+
+    #sketch-canvas {
+      position: absolute;
+      pointer-events: none;
+      z-index: 20;
+    }
+
+    .social-media > a {
+      position: relative;
+      z-index: 2;
+    }
+
+    @keyframes sparkle {
+      0%, 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.25;
+      }
+      50% {
+        transform: translate(2px, -2px) scale(1.05);
+        opacity: 0.45;
+      }
+    }
+
     .footer-content {
       display: flex;
       justify-content: space-between;
@@ -166,15 +230,18 @@
     }
     
     .social-media a {
+      position: relative;
+      z-index: 1;
       color: white;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
       margin: 0 4px;
+      padding: 0.25rem;
     }
     
     .social-media a.instagram {
@@ -712,6 +779,389 @@
       fill: white;
     }
     
+    /* Gallery Hover Effects */
+    .gallery-photo:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .gallery-photo:hover img {
+      transform: scale(1.05);
+    }
+
+    .gallery-photo:hover .gallery-photo-caption {
+      opacity: 1;
+    }
+    
+    /* Album hover effects */
+
+.contact-item h3 {
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+    /* Album hover effects */
+    .album-photo:hover .album-overlay {
+      opacity: 1;
+    }
+
+    .album-photo:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    /* Album navigation button hover effects */
+    .album-nav:hover {
+      background: var(--primary-color) !important;
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    .album-nav:active {
+      transform: translateY(-50%) scale(0.95);
+    }
+
+    /* Album navigation pills hover effects */
+    button[onclick^="scrollToAlbum"] {
+        transition: all 0.3s ease !important;
+    }
+
+    button[onclick^="scrollToAlbum"]:hover {
+        transform: translateY(-2px) scale(1.05);
+        box-shadow: 0 4px 16px rgba(77, 171, 247, 0.3);
+    }
+
+    button[onclick^="scrollToAlbum"]:active {
+        transform: translateY(0) scale(0.98);
+    }
+
+    /* Active state for selected album button */
+    button[onclick^="scrollToAlbum"].active {
+        background: var(--accent-color) !important;
+        color: white !important;
+        transform: translateY(-2px) scale(1.05);
+        box-shadow: 0 4px 16px rgba(77, 171, 247, 0.3);
+        border: none !important;
+    }
+
+    /* Mobile touch support */
+    .album-nav {
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .album-nav:hover,
+    .album-nav:focus {
+      outline: none;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+    }
+
+    /* Smooth carousel transitions */
+    .album-carousel {
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .album-photo {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      opacity: 0;
+      transform: translateX(20px) scale(0.95);
+    }
+
+    .album-photo.show {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+    }
+
+    .album-photo.slide-in-left {
+      animation: slideInLeft 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    .album-photo.slide-in-right {
+      animation: slideInRight 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-30px) scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(30px) scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .album-nav {
+        width: 50px !important;
+        height: 50px !important;
+        font-size: 22px !important;
+      }
+    }
+    
+    /* Lightbox Styles */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 1000;
+      animation: fadeIn 0.3s ease;
+    }
+    
+    .lightbox.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .lightbox-content {
+      position: relative;
+      max-width: 90%;
+      max-height: 90%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .lightbox-image {
+      max-width: 100%;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    }
+    
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--accent-color);
+      color: white;
+      border: none;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 24px;
+      font-weight: bold;
+      z-index: 1001;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+    
+    .lightbox-nav:hover {
+      background: var(--primary-color);
+      transform: translateY(-50%) scale(1.1);
+    }
+    
+    .lightbox-prev {
+      left: 20px;
+    }
+    
+    .lightbox-next {
+      right: 20px;
+    }
+    
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 24px;
+      font-weight: bold;
+      z-index: 1001;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+    
+    .lightbox-close:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: scale(1.1);
+    }
+    
+    .lightbox-counter {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 500;
+      z-index: 1001;
+      backdrop-filter: blur(10px);
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px) scale(1);
+      }
+      50% {
+        transform: translateY(-20px) scale(1.05);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .lightbox-nav {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+      }
+      
+      .lightbox-prev {
+        left: 10px;
+      }
+      
+      .lightbox-next {
+        right: 10px;
+      }
+      
+      .lightbox-close {
+        width: 35px;
+        height: 35px;
+        font-size: 20px;
+        top: 10px;
+        right: 10px;
+      }
+    }
+    
+    .lightbox-content {
+      position: relative;
+      max-width: 90%;
+      max-height: 90%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .lightbox-image {
+      max-width: 100%;
+      max-height: 80vh;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+    
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid var(--accent-color);
+      color: var(--accent-color);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    
+    .lightbox-nav:hover {
+      background: var(--accent-color);
+      color: white;
+      transform: translateY(-50%) scale(1.1);
+    }
+    
+    .lightbox-prev {
+      left: 20px;
+    }
+    
+    .lightbox-next {
+      right: 20px;
+    }
+    
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid var(--accent-color);
+      color: var(--accent-color);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    
+    .lightbox-close:hover {
+      background: var(--accent-color);
+      color: white;
+      transform: scale(1.1);
+    }
+    
+    .lightbox-counter {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .btn-youtube:hover {
+      background: #aa0000;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(204, 0, 0, 0.4);
+    }
+
+    .btn-donation:hover {
+      background: var(--accent-color);
+      color: var(--light-bg);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(77, 171, 247, 0.3);
+    }
+    
     /* Responsive styles for Other Ways to Give section */
     @media (max-width: 768px) {
       .donation-options {
@@ -861,6 +1311,38 @@
         margin-top: 1rem;
       }
       
+      /* Gallery Responsive */
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin: 0 auto 2rem;
+      }
+      
+      .gallery-photo:first-child,
+      .gallery-photo:nth-child(3) {
+        grid-column: auto;
+        grid-row: auto;
+      }
+      
+      .gallery-photo img,
+      .gallery-photo:first-child img,
+      .gallery-photo:nth-child(3) img {
+        height: 250px;
+        min-height: unset;
+      }
+      
+      .gallery-buttons {
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+      
+      .btn-youtube,
+      .btn-donation {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+      }
+      
       h1 {
         font-size: 2.2rem;
       }
@@ -869,6 +1351,14 @@
         flex-direction: column;
         gap: 1.5rem;
         text-align: center;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .gallery-photo img,
+      .gallery-photo:first-child img,
+      .gallery-photo:nth-child(3) img {
+        height: 200px;
       }
     }
     
@@ -902,7 +1392,93 @@
     nav a.nav-link.active::after {
       width: 100%;
     }
-    
+
+    /* Hamburger button (hidden on desktop) */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 36px;
+      height: 36px;
+      padding: 4px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      z-index: 1001;
+      order: 3;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: #fff;
+      border-radius: 2px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      transform-origin: center;
+    }
+
+    /* Animate to X when open */
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    @media (max-width: 768px) {
+
+      .header-container {
+        flex-wrap: wrap;
+        position: relative;
+      }
+
+      /* Show hamburger on mobile (social pill stays visible) */
+      .hamburger { display: flex; }
+
+      /* Nav collapses off-screen above */
+      nav#main-nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(10, 10, 30, 0.97);
+        backdrop-filter: blur(12px);
+        border-top: 1px solid rgba(255,255,255,0.08);
+        border-radius: 0 0 16px 16px;
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.35s ease, padding 0.3s ease;
+        z-index: 1000;
+      }
+
+      /* Open state */
+      nav#main-nav.open {
+        max-height: 400px;
+        padding: 12px 0 20px;
+      }
+
+      nav#main-nav .nav-link {
+        width: 100%;
+        text-align: center;
+        padding: 14px 24px;
+        font-size: 1rem;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+      }
+
+      nav#main-nav .nav-link:last-child {
+        border-bottom: none;
+      }
+
+      /* Underline indicator on mobile */
+      nav#main-nav .nav-link::after {
+        bottom: 0;
+      }
+    }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
@@ -975,12 +1551,22 @@
       <div class="logo">
         <img src="images/logo.PNG" alt="Ahavat Yeshua Fellowship Logo" class="logo">
       </div>
-      <nav>
+
+      <!-- Hamburger (mobile only) -->
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav id="main-nav">
         <a href="#home" class="nav-link active" data-section="home">Home</a>
+        <a href="#gallery" class="nav-link" data-section="gallery">Gallery</a>
         <a href="#contact" class="nav-link" data-section="contact">Contact</a>
         <a href="#donation" class="nav-link" data-section="donation">Donation</a>
       </nav>
-      <div class="social-media">
+      <div id="social-pill" class="social-pill social-media">
+        <span id="follow-text">Follow Us</span>
         <a href="https://www.instagram.com/ahavat_yeshua?igshid=MWprMGw3NHRwdWZuaw%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" class="instagram" aria-label="Instagram">
           <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
             <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
@@ -996,6 +1582,7 @@
             <path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z"/>
           </svg>
         </a>
+        <canvas id="sketch-canvas"></canvas>
       </div>
     </div>
   </header>
@@ -1030,6 +1617,205 @@
               src="https://js.stripe.com/v3/buy-button.js">
             </script>
           </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Gallery Section -->
+    <section id="gallery" class="section" style="scroll-margin-top: 40px;">
+      <div class="hero" style="position: relative; overflow: hidden;">
+        <!-- Smaller animated background elements -->
+        <div style="position: absolute; top: 15%; left: 8%; width: 18px; height: 18px; background: radial-gradient(circle, var(--accent-color) 0%, transparent 70%); opacity: 0.08; border-radius: 50%; animation: float 6s ease-in-out infinite;"></div>
+        <div style="position: absolute; top: 65%; right: 12%; width: 14px; height: 14px; background: radial-gradient(circle, var(--primary-color) 0%, transparent 70%); opacity: 0.06; border-radius: 50%; animation: float 8s ease-in-out infinite reverse;"></div>
+        <div style="position: absolute; bottom: 25%; left: 18%; width: 9px; height: 9px; background: radial-gradient(circle, var(--accent-color) 0%, transparent 70%); opacity: 0.04; border-radius: 50%; animation: float 4s ease-in-out infinite;"></div>
+        
+        <div class="hero-content" style="position: relative; z-index: 2; text-align: center; padding: 1rem 2rem;">
+          <div style="display: inline-block; margin-bottom: 2rem;">
+            <span class="hero-tagline" style="background: linear-gradient(135deg, var(--accent-color), var(--primary-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; font-size: 0.9rem;">✨ Our Community ✨</span>
+          </div>
+          
+          <h2 class="hero-title" style="font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; margin-bottom: 1.5rem; line-height: 1.1; background: linear-gradient(135deg, var(--light-text) 0%, var(--accent-color) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+            Life at Ahavat Yeshua
+          </h2>
+          
+            <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap;">
+              <button onclick="scrollToAlbum('main', this)" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: linear-gradient(45deg, var(--accent-color), rgba(255,255,255,0.1)); border: none; border-radius: 25px; backdrop-filter: blur(10px); cursor: pointer; transition: all 0.3s ease; text-decoration: none; font-family: inherit; font-size: inherit;">
+                <span style="font-size: 1.2rem;">⛪</span>
+                <span style="color: var(--light-text); font-weight: 500;">Main Service</span>
+              </button>
+              <button onclick="scrollToAlbum('kids', this)" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: linear-gradient(45deg, var(--accent-color), rgba(255,255,255,0.1)); border: none; border-radius: 25px; backdrop-filter: blur(10px); cursor: pointer; transition: all 0.3s ease; text-decoration: none; font-family: inherit; font-size: inherit;">
+                <span style="font-size: 1.2rem;">👶</span>
+                <span style="color: var(--light-text); font-weight: 500;">Kids Ministry</span>
+              </button>
+              <button onclick="scrollToAlbum('evangelistic', this)" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: linear-gradient(45deg, var(--accent-color), rgba(255,255,255,0.1)); border: none; border-radius: 25px; backdrop-filter: blur(10px); cursor: pointer; transition: all 0.3s ease; text-decoration: none; font-family: inherit; font-size: inherit;">
+                <span style="font-size: 1.2rem;">📢</span>
+                <span style="color: var(--light-text); font-weight: 500;">Evangelistic Events</span>
+              </button>
+           </div>
+          
+          <div style="max-width: 600px; margin: 0 auto;">
+            <p style="font-size: 1.2rem; color: var(--lighter-text); line-height: 1.6; margin-bottom: 2rem;">
+              Experience the warmth and joy of our church family through these captured moments of faith, fellowship, and community life.
+            </p>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="gallery-divider" style="display: flex; align-items: center; gap: 1rem; justify-content: center; max-width: 300px; margin: 0 auto 3rem;">
+          <div class="gallery-divider-line" style="flex: 1; height: 1px; background: var(--border-color);"></div>
+          <div class="gallery-divider-star" style="color: var(--accent-color); font-size: 0.8rem;">✦</div>
+          <div class="gallery-divider-line" style="flex: 1; height: 1px; background: var(--border-color);"></div>
+        </div>
+
+        <div class="gallery-albums" style="display: flex; flex-direction: column; gap: 3rem; max-width: 1200px; margin: 0 auto 3rem;">
+
+          <!-- Album 1: Main Service -->
+          <div class="album-section">
+            <div class="album-header" style="text-align: center; margin-bottom: 2rem;">
+              <h3 style="color: var(--light-text); font-size: 2rem; margin-bottom: 0.5rem;">Main Service</h3>
+              <p style="color: var(--lighter-text); font-size: 1rem;"><span id="main-photo-count">8</span> Photos</p>
+            </div>
+            <div class="album-carousel-container" style="position: relative; max-width: 1200px; margin: 0 auto; padding: 0 60px;">
+              <button class="album-nav album-nav-left" onclick="navigateAlbumPreview('main', -1)" style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); background: var(--accent-color); color: white; border: none; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 20px; font-weight: bold; z-index: 10; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">‹</button>
+              <button class="album-nav album-nav-right" onclick="navigateAlbumPreview('main', 1)" style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); background: var(--accent-color); color: white; border: none; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 20px; font-weight: bold; z-index: 10; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">›</button>
+              
+              <div class="album-carousel" id="main-carousel" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; overflow: hidden;">
+                <div class="album-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openAlbum('main', 0)">
+                  <img src="images/main-service/gallery1.jpg" alt="Main Service" style="width: 100%; height: 200px; object-fit: cover; display: block; transition: transform 0.5s ease;">
+                  <div class="album-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9)); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease;">
+                    <div style="text-align: center; color: white;">
+                      <div style="font-size: 2rem; margin-bottom: 0.5rem;">⛪</div>
+                      <div style="font-size: 1.2rem; font-weight: 600;">8 Photos</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="album-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openAlbum('main', 1)">
+                  <img src="images/main-service/gallery2.jpg" alt="Main Service" style="width: 100%; height: 200px; object-fit: cover; display: block; transition: transform 0.5s ease;">
+                  <div class="album-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9)); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease;">
+                    <div style="text-align: center; color: white;">
+                      <div style="font-size: 2rem; margin-bottom: 0.5rem;">⛪</div>
+                      <div style="font-size: 1.2rem; font-weight: 600;">8 Photos</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="album-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openAlbum('main', 2)">
+                  <img src="images/main-service/gallery3.jpg" alt="Main Service" style="width: 100%; height: 200px; object-fit: cover; display: block; transition: transform 0.5s ease;">
+                  <div class="album-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9)); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease;">
+                    <div style="text-align: center; color: white;">
+                      <div style="font-size: 2rem; margin-bottom: 0.5rem;">⛪</div>
+                      <div style="font-size: 1.2rem; font-weight: 600;">8 Photos</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Album 2: Kids Ministry -->
+          <div class="album-section">
+            <div class="album-header" style="text-align: center; margin-bottom: 2rem;">
+              <h3 style="color: var(--light-text); font-size: 2rem; margin-bottom: 0.5rem;">Kids Ministry</h3>
+              <p style="color: var(--lighter-text); font-size: 1rem;"><span id="kids-photo-count">8</span> Photos</p>
+            </div>
+            <div class="album-carousel-container" style="position: relative; max-width: 1200px; margin: 0 auto; padding: 0 60px;">
+              <button class="album-nav album-nav-left" onclick="navigateAlbumPreview('kids', -1)" style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); background: var(--accent-color); color: white; border: none; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 20px; font-weight: bold; z-index: 10; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">‹</button>
+              <button class="album-nav album-nav-right" onclick="navigateAlbumPreview('kids', 1)" style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); background: var(--accent-color); color: white; border: none; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 20px; font-weight: bold; z-index: 10; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">›</button>
+              
+              <div class="album-carousel" id="kids-carousel" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; overflow: hidden;">
+                <div class="album-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openAlbum('kids', 0)">
+                  <img src="images/kids-ministry/gallery1.jpg" alt="Kids Ministry" style="width: 100%; height: 200px; object-fit: cover; display: block; transition: transform 0.5s ease;">
+                  <div class="album-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9)); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease;">
+                    <div style="text-align: center; color: white;">
+                      <div style="font-size: 2rem; margin-bottom: 0.5rem;">👶</div>
+                      <div style="font-size: 1.2rem; font-weight: 600;">8 Photos</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="album-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openAlbum('kids', 1)">
+                  <img src="images/kids-ministry/gallery2.jpg" alt="Kids Ministry" style="width: 100%; height: 200px; object-fit: cover; display: block; transition: transform 0.5s ease;">
+                  <div class="album-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9)); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease;">
+                    <div style="text-align: center; color: white;">
+                      <div style="font-size: 2rem; margin-bottom: 0.5rem;">👶</div>
+                      <div style="font-size: 1.2rem; font-weight: 600;">8 Photos</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="album-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openAlbum('kids', 2)">
+                  <img src="images/kids-ministry/gallery3.jpg" alt="Kids Ministry" style="width: 100%; height: 200px; object-fit: cover; display: block; transition: transform 0.5s ease;">
+                  <div class="album-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9)); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease;">
+                    <div style="text-align: center; color: white;">
+                      <div style="font-size: 2rem; margin-bottom: 0.5rem;">👶</div>
+                      <div style="font-size: 1.2rem; font-weight: 600;">8 Photos</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Album 3: Evangelistic Events -->
+          <div class="album-section">
+            <div class="album-header" style="text-align: center; margin-bottom: 2rem;">
+              <h3 style="color: var(--light-text); font-size: 2rem; margin-bottom: 0.5rem;">Evangelistic Events</h3>
+              <p style="color: var(--lighter-text); font-size: 1rem;"><span id="evangelistic-photo-count">8</span> Photos</p>
+            </div>
+            <div class="album-carousel-container" style="position: relative; max-width: 1200px; margin: 0 auto; padding: 0 60px;">
+              <button class="album-nav album-nav-left" onclick="navigateAlbumPreview('evangelistic', -1)" style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); background: var(--accent-color); color: white; border: none; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 20px; font-weight: bold; z-index: 10; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">‹</button>
+              <button class="album-nav album-nav-right" onclick="navigateAlbumPreview('evangelistic', 1)" style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); background: var(--accent-color); color: white; border: none; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 20px; font-weight: bold; z-index: 10; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">›</button>
+              
+              <div class="album-carousel" id="evangelistic-carousel" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; overflow: hidden;">
+                <div class="album-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openAlbum('evangelistic', 0)">
+                  <img src="images/evangelistic-events/gallery1.jpg" alt="Evangelistic Events" style="width: 100%; height: 200px; object-fit: cover; display: block; transition: transform 0.5s ease;">
+                  <div class="album-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9)); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease;">
+                    <div style="text-align: center; color: white;">
+                      <div style="font-size: 2rem; margin-bottom: 0.5rem;">📢</div>
+                      <div style="font-size: 1.2rem; font-weight: 600;">8 Photos</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="album-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openAlbum('evangelistic', 1)">
+                  <img src="images/evangelistic-events/gallery2.jpg" alt="Evangelistic Events" style="width: 100%; height: 200px; object-fit: cover; display: block; transition: transform 0.5s ease;">
+                  <div class="album-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9)); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease;">
+                    <div style="text-align: center; color: white;">
+                      <div style="font-size: 2rem; margin-bottom: 0.5rem;">📢</div>
+                      <div style="font-size: 1.2rem; font-weight: 600;">8 Photos</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="album-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openAlbum('evangelistic', 2)">
+                  <img src="images/evangelistic-events/gallery3.jpg" alt="Evangelistic Events" style="width: 100%; height: 200px; object-fit: cover; display: block; transition: transform 0.5s ease;">
+                  <div class="album-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9)); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease;">
+                    <div style="text-align: center; color: white;">
+                      <div style="font-size: 2rem; margin-bottom: 0.5rem;">📢</div>
+                      <div style="font-size: 1.2rem; font-weight: 600;">8 Photos</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Gallery Buttons -->
+        <div class="gallery-buttons" style="display: flex; flex-direction: column; align-items: center; gap: 1rem; margin-top: 2rem;">
+
+          <a href="https://www.youtube.com/@AhavatYeshua"
+             target="_blank"
+             rel="noopener"
+             class="btn-youtube"
+             style="display: inline-flex; align-items: center; gap: 0.75rem; background: #cc0000; color: #ffffff; text-decoration: none; font-size: 0.95rem; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; padding: 1rem 2rem; border-radius: 8px; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(204, 0, 0, 0.3);">
+            ▶ Watch Our Services on YouTube
+          </a>
+
+          <a href="#donation"
+             class="btn-donation"
+             style="display: inline-flex; align-items: center; gap: 0.75rem; color: var(--accent-color); text-decoration: none; font-size: 0.95rem; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; border: 2px solid var(--accent-color); padding: 0.875rem 2rem; border-radius: 8px; transition: all 0.3s ease; background: transparent;">
+            Support Our Ministry →
+          </a>
+
         </div>
       </div>
     </section>
@@ -1377,6 +2163,36 @@
           // Find and click the Contact tab
           document.querySelector('a[data-section="contact"]').click();
         });
+
+        // Mobile hamburger menu
+        const hamburger = document.getElementById('hamburger');
+        const mainNav   = document.getElementById('main-nav');
+
+        if (hamburger && mainNav) {
+          hamburger.addEventListener('click', function () {
+            const isOpen = mainNav.classList.toggle('open');
+            hamburger.classList.toggle('open', isOpen);
+            hamburger.setAttribute('aria-expanded', isOpen);
+          });
+
+          // Close menu when a nav link is clicked
+          mainNav.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function () {
+              mainNav.classList.remove('open');
+              hamburger.classList.remove('open');
+              hamburger.setAttribute('aria-expanded', 'false');
+            });
+          });
+
+          // Close menu when clicking outside
+          document.addEventListener('click', function (e) {
+            if (!mainNav.contains(e.target) && !hamburger.contains(e.target)) {
+              mainNav.classList.remove('open');
+              hamburger.classList.remove('open');
+              hamburger.setAttribute('aria-expanded', 'false');
+            }
+          });
+        }
       });
     </script>
   </main>
@@ -1492,10 +2308,677 @@
     });
   </script>
 
-  <footer style="margin-top: 2rem; padding: 2rem 1rem; background: var(--light-bg);">
-    <div class="footer-content" style="max-width: 1200px; margin: 0 auto; text-align: center;">
-      <div class="copyright" style="color: var(--lighter-text); font-size: 0.9rem;">&copy; 2025 Ahavat Yeshua Fellowship. All rights reserved.</div>
-    </div>
-  </footer>
+  <script>
+  // Touch events for mobile swiping
+  let touchStartX = 0;
+  let touchEndX = 0;
+  
+  carouselTrack.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+  
+  carouselTrack.addEventListener('touchend', e => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  }, { passive: true });
+  
+  function handleSwipe() {
+    const swipeThreshold = 50; // Minimum swipe distance
+    const swipeDistance = touchEndX - touchStartX;
+    
+    if (Math.abs(swipeDistance) > swipeThreshold) {
+      if (swipeDistance > 0) {
+        // Swipe right - go to previous slide
+        prevSlide();
+      } else {
+        // Swipe left - go to next slide
+        nextSlide();
+      }
+    }
+  }
+
+  // Initialize carousel
+  updateCarousel();
+});
+
+// Lightbox Gallery functionality - TOP LEVEL DECLARATIONS
+const galleryImages = {
+  kids: ['images/kids-ministry/gallery1.jpg', 'images/kids-ministry/gallery2.jpg', 'images/kids-ministry/gallery3.jpg', 'images/kids-ministry/gallery4.jpg', 'images/kids-ministry/gallery5.jpg', 'images/kids-ministry/gallery6.jpg', 'images/kids-ministry/gallery7.jpg', 'images/kids-ministry/gallery8.jpg', 'images/kids-ministry/gallery9.jpg', 'images/kids-ministry/gallery10.jpg', 'images/kids-ministry/gallery11.jpg', 'images/kids-ministry/gallery12.jpg'],
+  main: ['images/main-service/gallery1.jpg', 'images/main-service/gallery2.jpg', 'images/main-service/gallery3.jpg', 'images/main-service/gallery4.jpg', 'images/main-service/gallery5.jpg', 'images/main-service/gallery6.jpg', 'images/main-service/gallery7.jpg', 'images/main-service/gallery8.jpg', 'images/main-service/gallery9.jpg', 'images/main-service/gallery10.jpg', 'images/main-service/gallery11.jpg', 'images/main-service/gallery12.jpg', 'images/main-service/gallery13.jpg', 'images/main-service/gallery14.jpg', 'images/main-service/gallery15.jpg', 'images/main-service/gallery16.jpg', 'images/main-service/gallery17.jpg', 'images/main-service/gallery18.jpg', 'images/main-service/gallery19.jpg'],
+  evangelistic: ['images/evangelistic-events/gallery1.jpg', 'images/evangelistic-events/gallery2.jpg', 'images/evangelistic-events/gallery3.jpg', 'images/evangelistic-events/gallery4.jpg', 'images/evangelistic-events/gallery5.jpg', 'images/evangelistic-events/gallery6.jpg', 'images/evangelistic-events/gallery7.jpg', 'images/evangelistic-events/gallery8.jpg', 'images/evangelistic-events/gallery9.jpg', 'images/evangelistic-events/gallery10.jpg', 'images/evangelistic-events/gallery12.jpg', 'images/evangelistic-events/gallery13.jpg', 'images/evangelistic-events/gallery14.jpg', 'images/evangelistic-events/gallery15.jpg', 'images/evangelistic-events/gallery16.jpg']
+};
+
+// Album preview navigation state - TOP LEVEL DECLARATION
+const albumPreviewState = {
+  kids: { currentIndex: 0 },
+  main: { currentIndex: 0 },
+  evangelistic: { currentIndex: 0 }
+};
+
+function navigateAlbumPreview(album, direction) {
+  console.log('[carousel] navigateAlbumPreview called:', album, direction);
+  
+  const state = albumPreviewState[album];
+  const images = galleryImages[album];
+  const carousel = document.getElementById(`${album}-carousel`);
+  
+  if (!state || !images || !carousel) {
+    console.error('[carousel] Missing dependency:', {
+      album,
+      hasState: !!state,
+      hasImages: !!images,
+      hasCarousel: !!carousel
+    });
+    return;
+  }
+
+  // Fix wrap-around math to prevent negative index
+  const maxIndex = Math.max(0, images.length - 3);
+  state.currentIndex += direction;
+
+  if (state.currentIndex < 0) {
+    state.currentIndex = maxIndex;
+  } else if (state.currentIndex > maxIndex) {
+    state.currentIndex = 0;
+  }
+
+  console.log('[carousel] New index:', state.currentIndex, 'maxIndex:', maxIndex);
+  
+  // Update carousel content
+  updateAlbumCarousel(album, state.currentIndex);
+}
+
+function updateAlbumCarousel(album, startIndex) {
+  const images = galleryImages[album];
+  const carousel = document.getElementById(`${album}-carousel`);
+  
+  console.log('[carousel] updateAlbumCarousel:', { album, startIndex, imageCount: images?.length });
+
+  if (!images || !carousel) {
+    console.error('[carousel] updateAlbumCarousel: missing data', { images: !!images, carousel: !!carousel });
+    return;
+  }
+
+  // Clear current content
+  carousel.innerHTML = '';
+  
+  // Add 3 photos starting from startIndex
+  for (let i = 0; i < 3; i++) {
+    const imageIndex = (startIndex + i) % images.length;
+    const photoDiv = document.createElement('div');
+    photoDiv.className = 'album-photo';
+    photoDiv.style.cssText = 'overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;';
+    photoDiv.onclick = () => openAlbum(album, imageIndex);
+    
+    const albumIcons = {
+      kids: '👶',
+      main: '⛪',
+      evangelistic: '📢'
+    };
+    
+    photoDiv.innerHTML = `
+      <img src="${images[imageIndex]}" alt="${album}" style="width: 100%; height: 200px; object-fit: cover; display: block; transition: transform 0.5s ease;">
+      <div class="album-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9)); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease;">
+        <div style="text-align: center; color: white;">
+          <div style="font-size: 2rem; margin-bottom: 0.5rem;">${albumIcons[album]}</div>
+          <div style="font-size: 1.2rem; font-weight: 600;">${images.length} Photos</div>
+        </div>
+      </div>
+    `;
+    
+    carousel.appendChild(photoDiv);
+  }
+
+  console.log('[carousel] Carousel updated. Children count:', carousel.children.length);
+}
+
+let currentCategory = '';
+let currentImageIndex = 0;
+
+function openAlbum(category, index = 0) {
+  currentCategory = category;
+  currentImageIndex = index;
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImage = document.getElementById('lightbox-image');
+  const counter = document.getElementById('lightbox-counter');
+  const prevBtn = document.getElementById('lightbox-prev');
+  const nextBtn = document.getElementById('lightbox-next');
+  
+  lightboxImage.src = galleryImages[category][index];
+  
+  // Show navigation buttons and counter for multiple images
+  prevBtn.style.display = 'flex';
+  nextBtn.style.display = 'flex';
+  counter.textContent = `${index + 1} / ${galleryImages[category].length}`;
+  counter.style.display = 'block';
+  
+  lightbox.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  const lightbox = document.getElementById('lightbox');
+  lightbox.classList.remove('active');
+  document.body.style.overflow = 'auto';
+}
+
+function navigateLightbox(direction) {
+  const images = galleryImages[currentCategory];
+  
+  if (direction === 'next') {
+    currentImageIndex = (currentImageIndex + 1) % images.length;
+  } else {
+    currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+  }
+  
+  const lightboxImage = document.getElementById('lightbox-image');
+  const counter = document.getElementById('lightbox-counter');
+  
+  lightboxImage.src = images[currentImageIndex];
+  counter.textContent = `${currentImageIndex + 1} / ${images.length}`;
+}
+
+// Lightbox event listeners
+document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+document.getElementById('lightbox-prev').addEventListener('click', () => navigateLightbox('prev'));
+document.getElementById('lightbox-next').addEventListener('click', () => navigateLightbox('next'));
+
+// Close lightbox on background click
+document.getElementById('lightbox').addEventListener('click', function(e) {
+  if (e.target === this) {
+    closeLightbox();
+  }
+});
+
+// Close lightbox on Escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeLightbox();
+  } else if (e.key === 'ArrowLeft') {
+    navigateLightbox('prev');
+  } else if (e.key === 'ArrowRight') {
+    navigateLightbox('next');
+  }
+});
+
+// Touch events for mobile lightbox swiping
+let lightboxTouchStartX = 0;
+let lightboxTouchEndX = 0;
+
+document.getElementById('lightbox').addEventListener('touchstart', e => {
+  lightboxTouchStartX = e.changedTouches[0].screenX;
+}, { passive: true });
+
+document.getElementById('lightbox').addEventListener('touchend', e => {
+  lightboxTouchEndX = e.changedTouches[0].screenX;
+  handleLightboxSwipe();
+}, { passive: true });
+
+function handleLightboxSwipe() {
+  const swipeThreshold = 50; // Minimum swipe distance
+  const swipeDistance = lightboxTouchEndX - lightboxTouchStartX;
+  
+  if (Math.abs(swipeDistance) > swipeThreshold) {
+    if (swipeDistance > 0) {
+      // Swipe right - go to previous image
+      navigateLightbox('prev');
+    } else {
+      // Swipe left - go to next image
+      navigateLightbox('next');
+    }
+  }
+}
+</script>
+
+<footer style="margin-top: 2rem; padding: 2rem 1rem; background: var(--light-bg);">
+  <div class="footer-content" style="max-width: 1200px; margin: 0 auto; text-align: center;">
+    <div class="copyright" style="color: var(--lighter-text); font-size: 0.9rem;">&copy; 2025 Ahavat Yeshua Fellowship. All rights reserved.</div>
+  </div>
+</footer>
+
+<!-- Album Carousel Script - CLEAN GLOBAL SCOPE -->
+<script>
+// TOP LEVEL DECLARATIONS - Outside any event listeners
+const galleryImages = {
+  kids: ['images/kids-ministry/gallery1.jpg', 'images/kids-ministry/gallery2.jpg', 'images/kids-ministry/gallery3.jpg', 'images/kids-ministry/gallery4.jpg', 'images/kids-ministry/gallery5.jpg', 'images/kids-ministry/gallery6.jpg', 'images/kids-ministry/gallery7.jpg', 'images/kids-ministry/gallery8.jpg', 'images/kids-ministry/gallery9.jpg', 'images/kids-ministry/gallery10.jpg', 'images/kids-ministry/gallery11.jpg', 'images/kids-ministry/gallery12.jpg'],
+  main: ['images/main-service/gallery1.jpg', 'images/main-service/gallery2.jpg', 'images/main-service/gallery3.jpg', 'images/main-service/gallery4.jpg', 'images/main-service/gallery5.jpg', 'images/main-service/gallery6.jpg', 'images/main-service/gallery7.jpg', 'images/main-service/gallery8.jpg', 'images/main-service/gallery9.jpg', 'images/main-service/gallery10.jpg', 'images/main-service/gallery11.jpg', 'images/main-service/gallery12.jpg', 'images/main-service/gallery13.jpg', 'images/main-service/gallery14.jpg', 'images/main-service/gallery15.jpg', 'images/main-service/gallery16.jpg', 'images/main-service/gallery17.jpg', 'images/main-service/gallery18.jpg', 'images/main-service/gallery19.jpg'],
+  evangelistic: ['images/evangelistic-events/gallery1.jpg', 'images/evangelistic-events/gallery2.jpg', 'images/evangelistic-events/gallery3.jpg', 'images/evangelistic-events/gallery4.jpg', 'images/evangelistic-events/gallery5.jpg', 'images/evangelistic-events/gallery6.jpg', 'images/evangelistic-events/gallery7.jpg', 'images/evangelistic-events/gallery8.jpg', 'images/evangelistic-events/gallery9.jpg', 'images/evangelistic-events/gallery10.jpg', 'images/evangelistic-events/gallery12.jpg', 'images/evangelistic-events/gallery13.jpg', 'images/evangelistic-events/gallery14.jpg', 'images/evangelistic-events/gallery15.jpg', 'images/evangelistic-events/gallery16.jpg']
+};
+
+const albumPreviewState = {
+  kids: { currentIndex: 0 },
+  main: { currentIndex: 0 },
+  evangelistic: { currentIndex: 0 }
+};
+
+// Album carousel navigation function
+function navigateAlbumPreview(album, direction) {
+  console.log('[carousel] navigateAlbumPreview called:', album, direction);
+  
+  const state = albumPreviewState[album];
+  const images = galleryImages[album];
+  const carousel = document.getElementById(`${album}-carousel`);
+  
+  if (!state || !images || !carousel) {
+    console.error('[carousel] Missing dependency:', {
+      album,
+      hasState: !!state,
+      hasImages: !!images,
+      hasCarousel: !!carousel
+    });
+    return;
+  }
+
+  // Fix wrap-around math to prevent negative index
+  const maxIndex = Math.max(0, images.length - 3);
+  state.currentIndex += direction;
+
+  if (state.currentIndex < 0) {
+    state.currentIndex = maxIndex;
+  } else if (state.currentIndex > maxIndex) {
+    state.currentIndex = 0;
+  }
+
+  console.log('[carousel] New index:', state.currentIndex, 'maxIndex:', maxIndex);
+  
+  // Update carousel content with direction for smooth transitions
+  updateAlbumCarousel(album, state.currentIndex, direction);
+}
+
+// Update carousel content function with smooth transitions
+function updateAlbumCarousel(album, startIndex, direction = 1) {
+  const images = galleryImages[album];
+  const carousel = document.getElementById(`${album}-carousel`);
+  
+  console.log('[carousel] updateAlbumCarousel:', { album, startIndex, imageCount: images?.length, direction });
+
+  if (!images || !carousel) {
+    console.error('[carousel] updateAlbumCarousel: missing data', { images: !!images, carousel: !!carousel });
+    return;
+  }
+
+  // Fade out current photos
+  const currentPhotos = carousel.querySelectorAll('.album-photo');
+  currentPhotos.forEach((photo, index) => {
+    setTimeout(() => {
+      photo.style.opacity = '0';
+      photo.style.transform = direction > 0 ? 'translateX(-20px) scale(0.95)' : 'translateX(20px) scale(0.95)';
+    }, index * 50);
+  });
+
+  // Wait for fade out, then update content
+  setTimeout(() => {
+    // Clear current content
+    carousel.innerHTML = '';
+    
+    // Add 3 photos starting from startIndex with smooth animations
+    for (let i = 0; i < 3; i++) {
+      const imageIndex = (startIndex + i) % images.length;
+      const photoDiv = document.createElement('div');
+      photoDiv.className = 'album-photo';
+      
+      // Set initial state for animation
+      const animationClass = direction > 0 ? 'slide-in-right' : 'slide-in-left';
+      photoDiv.style.cssText = `
+        overflow: hidden; 
+        border-radius: 12px; 
+        position: relative; 
+        background: var(--card-bg); 
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); 
+        transition: transform 0.3s ease, box-shadow 0.3s ease; 
+        cursor: pointer;
+        opacity: 0;
+      `;
+      photoDiv.onclick = () => openAlbum(album, imageIndex);
+      
+      const albumIcons = {
+        kids: '👶',
+        main: '⛪',
+        evangelistic: '📢'
+      };
+      
+      photoDiv.innerHTML = `
+        <img src="${images[imageIndex]}" alt="${album}" style="width: 100%; height: 200px; object-fit: cover; display: block; transition: transform 0.5s ease;">
+        <div class="album-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9)); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease;">
+          <div style="text-align: center; color: white;">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem;">${albumIcons[album]}</div>
+            <div style="font-size: 1.2rem; font-weight: 600;">${images.length} Photos</div>
+          </div>
+        </div>
+      `;
+      
+      carousel.appendChild(photoDiv);
+      
+      // Animate in with staggered timing
+      setTimeout(() => {
+        photoDiv.classList.add(animationClass);
+      }, i * 100);
+    }
+
+    console.log('[carousel] Carousel updated. Children count:', carousel.children.length);
+  }, 200); // Wait for fade out to complete
+}
+
+console.log('[carousel] Script loaded - galleryImages available:', typeof galleryImages !== 'undefined');
+
+// Album navigation function
+function scrollToAlbum(albumType, buttonElement) {
+  console.log('[navigation] Scrolling to album:', albumType, 'buttonElement:', buttonElement);
+  
+  // Remove active class from all album buttons
+  const buttons = document.querySelectorAll('button[onclick^="scrollToAlbum"]');
+  console.log('[navigation] Found', buttons.length, 'album buttons');
+  buttons.forEach(btn => {
+    btn.classList.remove('active');
+    console.log('[navigation] Removed active class from button:', btn.textContent.trim());
+  });
+  
+  // Add active class to clicked button if provided
+  if (buttonElement) {
+    buttonElement.classList.add('active');
+    console.log('[navigation] Added active class to button:', buttonElement.textContent.trim());
+  }
+  
+  // Find the album section using text content
+  const albumSections = document.querySelectorAll('.album-section');
+  let albumElement;
+  
+  albumSections.forEach(section => {
+    const h3 = section.querySelector('h3');
+    if (h3) {
+      const text = h3.textContent.toLowerCase();
+      if ((albumType === 'kids' && text.includes('kids')) ||
+          (albumType === 'main' && text.includes('main')) ||
+          (albumType === 'evangelistic' && text.includes('evangelistic'))) {
+        albumElement = section;
+      }
+    }
+  });
+  
+  if (albumElement) {
+    console.log('[navigation] Found album element:', albumElement.querySelector('h3')?.textContent);
+    albumElement.scrollIntoView({ 
+      behavior: 'smooth', 
+      block: 'start' 
+    });
+    
+    // Add highlight effect
+    albumElement.style.transition = 'all 0.3s ease';
+    albumElement.style.transform = 'scale(1.02)';
+    albumElement.style.boxShadow = '0 8px 32px rgba(77, 171, 247, 0.3)';
+    
+    setTimeout(() => {
+      albumElement.style.transform = '';
+      albumElement.style.boxShadow = '';
+    }, 1000);
+  } else {
+    console.log('[navigation] Album element not found for type:', albumType);
+    // Fallback: scroll to gallery section
+    const gallerySection = document.getElementById('gallery');
+    if (gallerySection) {
+      gallerySection.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+}
+
+// Lightbox functionality
+let currentCategory = '';
+let currentImageIndex = 0;
+
+function openAlbum(category, index = 0) {
+  currentCategory = category;
+  currentImageIndex = index;
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImage = document.getElementById('lightbox-image');
+  const counter = document.getElementById('lightbox-counter');
+  const prevBtn = document.getElementById('lightbox-prev');
+  const nextBtn = document.getElementById('lightbox-next');
+  
+  if (!galleryImages[category] || !galleryImages[category][index]) {
+    console.error('[lightbox] Invalid category or index:', { category, index });
+    return;
+  }
+  
+  // Set image source
+  lightboxImage.src = galleryImages[category][index];
+  
+  // Update counter
+  const totalImages = galleryImages[category].length;
+  counter.textContent = `${index + 1} / ${totalImages}`;
+  
+  // Show/hide navigation buttons based on image count
+  if (totalImages <= 1) {
+    prevBtn.style.display = 'none';
+    nextBtn.style.display = 'none';
+    counter.style.display = 'none';
+  } else {
+    prevBtn.style.display = 'flex';
+    nextBtn.style.display = 'flex';
+    counter.style.display = 'block';
+  }
+  
+  // Show lightbox
+  lightbox.classList.add('active');
+  document.body.style.overflow = 'hidden'; // Prevent background scrolling
+  
+  console.log('[lightbox] Opened:', { category, index, totalImages });
+}
+
+function closeLightbox() {
+  const lightbox = document.getElementById('lightbox');
+  lightbox.classList.remove('active');
+  document.body.style.overflow = ''; // Restore scrolling
+  
+  console.log('[lightbox] Closed');
+}
+
+function navigateLightbox(direction) {
+  const images = galleryImages[currentCategory];
+  if (!images || images.length <= 1) return;
+  
+  // Update index with wrap-around
+  currentImageIndex += direction;
+  if (currentImageIndex < 0) {
+    currentImageIndex = images.length - 1;
+  } else if (currentImageIndex >= images.length) {
+    currentImageIndex = 0;
+  }
+  
+  // Update image
+  const lightboxImage = document.getElementById('lightbox-image');
+  const counter = document.getElementById('lightbox-counter');
+  
+  lightboxImage.src = images[currentImageIndex];
+  counter.textContent = `${currentImageIndex + 1} / ${images.length}`;
+  
+  console.log('[lightbox] Navigated to:', { index: currentImageIndex, total: images.length });
+}
+
+// Event listeners for lightbox
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize all carousels with first 3 photos
+  console.log('[carousel] Initializing carousels on page load...');
+  
+  ['kids', 'main', 'evangelistic'].forEach(album => {
+    updateAlbumCarousel(album, 0, 1); // Initialize with first 3 photos
+  });
+
+  // Keep the album header count in sync with the gallery list
+  const kidsCountEl = document.getElementById('kids-photo-count');
+  if (kidsCountEl) kidsCountEl.textContent = galleryImages.kids.length;
+  const mainCountEl = document.getElementById('main-photo-count');
+  if (mainCountEl) mainCountEl.textContent = galleryImages.main.length;
+  const evangelisticCountEl = document.getElementById('evangelistic-photo-count');
+  if (evangelisticCountEl) evangelisticCountEl.textContent = galleryImages.evangelistic.length;
+  
+  // Close on background click
+  const lightbox = document.getElementById('lightbox');
+  lightbox.addEventListener('click', function(e) {
+    if (e.target === lightbox) {
+      closeLightbox();
+    }
+  });
+  
+  // Close on escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeLightbox();
+    } else if (e.key === 'ArrowLeft') {
+      navigateLightbox(-1);
+    } else if (e.key === 'ArrowRight') {
+      navigateLightbox(1);
+    }
+  });
+  
+  // Navigation buttons
+  document.getElementById('lightbox-prev').addEventListener('click', () => navigateLightbox(-1));
+  document.getElementById('lightbox-next').addEventListener('click', () => navigateLightbox(1));
+  document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+  
+  // Touch/swipe support for mobile
+  let touchStartX = 0;
+  let touchEndX = 0;
+  
+  lightbox.addEventListener('touchstart', function(e) {
+    touchStartX = e.changedTouches[0].screenX;
+  });
+  
+  lightbox.addEventListener('touchend', function(e) {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  });
+  
+  function handleSwipe() {
+    const swipeThreshold = 50;
+    const diff = touchStartX - touchEndX;
+    
+    if (Math.abs(diff) > swipeThreshold) {
+      if (diff > 0) {
+        // Swipe left - next image
+        navigateLightbox(1);
+      } else {
+        // Swipe right - previous image
+        navigateLightbox(-1);
+      }
+    }
+  }
+});
+</script>
+
+<!-- Lightbox Modal -->
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-content">
+    <img src="" alt="" class="lightbox-image" id="lightbox-image">
+    <button class="lightbox-nav lightbox-prev" id="lightbox-prev">‹</button>
+    <button class="lightbox-nav lightbox-next" id="lightbox-next">›</button>
+    <button class="lightbox-close" id="lightbox-close">×</button>
+    <div class="lightbox-counter" id="lightbox-counter">1 / 5</div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/roughjs@4.6.6/bundled/rough.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/rough-notation@0.5.1/lib/rough-notation.iife.js"></script>
+  <script>
+    window.addEventListener('load', function () {
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          const pill   = document.getElementById('social-pill');
+          const canvas = document.getElementById('sketch-canvas');
+          const gold   = '#FFD700';
+          const pad    = 10;
+
+          if (!pill || !canvas || !window.rough) return;
+
+          const rc = rough.canvas(canvas);
+          let redrawTimeout = null;
+
+          function renderSketch() {
+            const W  = pill.offsetWidth;
+            const H  = pill.offsetHeight;
+            const extra = 40; // extra margin so the sketch doesn’t clip
+            const CW = W + pad * 2 + extra * 2;
+            const CH = H + pad * 2 + extra;
+
+            canvas.width  = CW;
+            canvas.height = CH;
+            canvas.style.cssText = `
+              position:absolute; pointer-events:none; z-index:20;
+              width:${CW}px; height:${CH}px;
+              left:${-pad - extra}px; top:${-pad - extra / 2}px;
+            `;
+
+            const rx = extra;
+            const ry = extra / 2;
+            const rw = W + pad * 2;
+            const rh = H + pad * 2;
+            const ax = rx + rw * 0.28;
+
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, CW, CH);
+
+            rc.rectangle(rx, ry, rw, rh, {
+              stroke: gold, strokeWidth: 2.4,
+              roughness: 2.2, bowing: 1.8
+            });
+
+            // No arrow drawing — only rectangle sketch
+            clearTimeout(redrawTimeout);
+            redrawTimeout = setTimeout(() => {
+              // rect already drawn, no arrow needed
+            }, 2100);
+          }
+
+          // Animate circle around Follow Us (RoughNotation)
+          const followText = document.getElementById('follow-text');
+          let followAnnotation = null;
+
+          function playFollowAnnotation() {
+            if (!followText || !window.RoughNotation) return;
+
+            if (followAnnotation) {
+              try {
+                followAnnotation.remove();
+              } catch (e) {
+                // ignore if remove() not supported
+              }
+            }
+
+            followAnnotation = RoughNotation.annotate(followText, {
+              type: 'circle',
+              color: gold,
+              strokeWidth: 2.2,
+              padding: 5,
+              iterations: 1,
+              animationDuration: 2000
+            });
+            followAnnotation.show();
+          }
+
+          function playBothAnimations() {
+            playFollowAnnotation();
+
+            // Once Follow Us circle animation ends, draw rectangle
+            setTimeout(() => {
+              renderSketch();
+            }, 2000); // same as animationDuration
+          }
+
+          // Initial run
+          playBothAnimations();
+
+          // Repeat every 9 seconds
+          setInterval(playBothAnimations, 9000);
+
+          // Keep sketch in sync when layout changes (responsive / resize)
+          if (window.ResizeObserver) {
+            const resizeObserver = new ResizeObserver(() => renderSketch());
+            resizeObserver.observe(pill);
+          } else {
+            window.addEventListener('resize', renderSketch);
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>
