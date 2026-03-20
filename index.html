@@ -1648,16 +1648,7 @@
             <p style="font-size: 1.2rem; color: var(--lighter-text); line-height: 1.6; margin-bottom: 2rem;">
               Experience the warmth and joy of our church family through these captured moments of faith, fellowship, and community life.
             </p>
-            <div style="display: flex; gap: 1rem; justify-content: center; align-items: center;">
-              <div style="display: flex; align-items: center; gap: 0.5rem; color: var(--accent-color);">
-                <span style="font-size: 1.5rem;">📸</span>
-                <span id="dynamic-photo-count" style="font-weight: 600;">0 Photos</span>
-              </div>
-              <div style="display: flex; align-items: center; gap: 0.5rem; color: var(--lighter-text);">
-                <span style="font-size: 1.5rem;">📁</span>
-                <span>3 Albums</span>
-              </div>
-            </div>
+
           </div>
         </div>
       </div>
@@ -2355,16 +2346,6 @@ const albumPreviewState = {
   evangelistic: { currentIndex: 0 }
 };
 
-// Update photo counter based on galleryImages data (dynamic total)
-function updatePhotoCount() {
-  const photoCountEl = document.getElementById('dynamic-photo-count');
-  if (!photoCountEl) return;
-  const totalPhotos = Object.values(galleryImages).reduce((sum, arr) => sum + (arr?.length || 0), 0);
-  photoCountEl.textContent = `${totalPhotos} Photos`;
-}
-
-document.addEventListener('DOMContentLoaded', updatePhotoCount);
-
 function navigateAlbumPreview(album, direction) {
   console.log('[carousel] navigateAlbumPreview called:', album, direction);
   
@@ -2907,33 +2888,53 @@ document.addEventListener('DOMContentLoaded', function() {
               roughness: 2.2, bowing: 1.8
             });
 
+            // No arrow drawing — only rectangle sketch
             clearTimeout(redrawTimeout);
             redrawTimeout = setTimeout(() => {
-              rc.curve(
-                [[ax-52, 0], [ax-30, 8], [ax-14, 14], [ax, ry]],
-                { stroke: gold, strokeWidth: 2, roughness: 1.8, bowing: 2 }
-              );
-              rc.line(ax, ry, ax-14, ry-4, { stroke: gold, strokeWidth: 1.8, roughness: 1 });
-              rc.line(ax, ry, ax+2, ry-14, { stroke: gold, strokeWidth: 1.8, roughness: 1 });
+              // rect already drawn, no arrow needed
             }, 2100);
           }
 
           // Animate circle around Follow Us (RoughNotation)
           const followText = document.getElementById('follow-text');
-          if (followText && window.RoughNotation) {
-            const annotation = RoughNotation.annotate(followText, {
+          let followAnnotation = null;
+
+          function playFollowAnnotation() {
+            if (!followText || !window.RoughNotation) return;
+
+            if (followAnnotation) {
+              try {
+                followAnnotation.remove();
+              } catch (e) {
+                // ignore if remove() not supported
+              }
+            }
+
+            followAnnotation = RoughNotation.annotate(followText, {
               type: 'circle',
               color: gold,
               strokeWidth: 2.2,
               padding: 5,
-              iterations: 2,
+              iterations: 1,
               animationDuration: 2000
             });
-            annotation.show();
+            followAnnotation.show();
           }
 
-          // Initial draw
-          renderSketch();
+          function playBothAnimations() {
+            playFollowAnnotation();
+
+            // Once Follow Us circle animation ends, draw rectangle
+            setTimeout(() => {
+              renderSketch();
+            }, 2000); // same as animationDuration
+          }
+
+          // Initial run
+          playBothAnimations();
+
+          // Repeat every 9 seconds
+          setInterval(playBothAnimations, 9000);
 
           // Keep sketch in sync when layout changes (responsive / resize)
           if (window.ResizeObserver) {
