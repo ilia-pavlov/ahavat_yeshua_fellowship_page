@@ -1651,7 +1651,7 @@
             <div style="display: flex; gap: 1rem; justify-content: center; align-items: center;">
               <div style="display: flex; align-items: center; gap: 0.5rem; color: var(--accent-color);">
                 <span style="font-size: 1.5rem;">📸</span>
-                <span style="font-weight: 600;">24 Photos</span>
+                <span id="dynamic-photo-count" style="font-weight: 600;">0 Photos</span>
               </div>
               <div style="display: flex; align-items: center; gap: 0.5rem; color: var(--lighter-text);">
                 <span style="font-size: 1.5rem;">📁</span>
@@ -2354,6 +2354,16 @@ const albumPreviewState = {
   main: { currentIndex: 0 },
   evangelistic: { currentIndex: 0 }
 };
+
+// Update photo counter based on galleryImages data (dynamic total)
+function updatePhotoCount() {
+  const photoCountEl = document.getElementById('dynamic-photo-count');
+  if (!photoCountEl) return;
+  const totalPhotos = Object.values(galleryImages).reduce((sum, arr) => sum + (arr?.length || 0), 0);
+  photoCountEl.textContent = `${totalPhotos} Photos`;
+}
+
+document.addEventListener('DOMContentLoaded', updatePhotoCount);
 
 function navigateAlbumPreview(album, direction) {
   console.log('[carousel] navigateAlbumPreview called:', album, direction);
