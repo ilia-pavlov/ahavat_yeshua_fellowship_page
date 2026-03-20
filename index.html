@@ -823,16 +823,25 @@
 
     /* Album navigation pills hover effects */
     button[onclick^="scrollToAlbum"] {
-      transition: all 0.3s ease !important;
+        transition: all 0.3s ease !important;
     }
 
     button[onclick^="scrollToAlbum"]:hover {
-      transform: translateY(-2px) scale(1.05);
-      box-shadow: 0 4px 16px rgba(77, 171, 247, 0.3);
+        transform: translateY(-2px) scale(1.05);
+        box-shadow: 0 4px 16px rgba(77, 171, 247, 0.3);
     }
 
     button[onclick^="scrollToAlbum"]:active {
-      transform: translateY(0) scale(0.98);
+        transform: translateY(0) scale(0.98);
+    }
+
+    /* Active state for selected album button */
+    button[onclick^="scrollToAlbum"].active {
+        background: var(--accent-color) !important;
+        color: white !important;
+        transform: translateY(-2px) scale(1.05);
+        box-shadow: 0 4px 16px rgba(77, 171, 247, 0.3);
+        border: none !important;
     }
 
     /* Mobile touch support */
@@ -1629,20 +1638,20 @@
             Life at Ahavat Yeshua
           </h2>
           
-          <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap;">
-            <button onclick="scrollToAlbum('main')" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: rgba(248, 249, 250, 0.05); border: 1px solid var(--border-color); border-radius: 25px; backdrop-filter: blur(10px); cursor: pointer; transition: all 0.3s ease; text-decoration: none; font-family: inherit; font-size: inherit;">
-              <span style="font-size: 1.2rem;">⛪</span>
-              <span style="color: var(--light-text); font-weight: 500;">Main Service</span>
-            </button>
-            <button onclick="scrollToAlbum('kids')" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: rgba(77, 171, 247, 0.1); border: 1px solid var(--accent-color); border-radius: 25px; backdrop-filter: blur(10px); cursor: pointer; transition: all 0.3s ease; text-decoration: none; font-family: inherit; font-size: inherit;">
-              <span style="font-size: 1.2rem;">👶</span>
-              <span style="color: var(--accent-color); font-weight: 500;">Kids Ministry</span>
-            </button>
-            <button onclick="scrollToAlbum('evangelistic')" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: rgba(248, 249, 250, 0.05); border: 1px solid var(--border-color); border-radius: 25px; backdrop-filter: blur(10px); cursor: pointer; transition: all 0.3s ease; text-decoration: none; font-family: inherit; font-size: inherit;">
-              <span style="font-size: 1.2rem;">📢</span>
-              <span style="color: var(--light-text); font-weight: 500;">Evangelistic Events</span>
-            </button>
-          </div>
+            <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap;">
+              <button onclick="scrollToAlbum('main', this)" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: linear-gradient(45deg, var(--accent-color), rgba(255,255,255,0.1)); border: none; border-radius: 25px; backdrop-filter: blur(10px); cursor: pointer; transition: all 0.3s ease; text-decoration: none; font-family: inherit; font-size: inherit;">
+                <span style="font-size: 1.2rem;">⛪</span>
+                <span style="color: var(--light-text); font-weight: 500;">Main Service</span>
+              </button>
+              <button onclick="scrollToAlbum('kids', this)" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: linear-gradient(45deg, var(--accent-color), rgba(255,255,255,0.1)); border: none; border-radius: 25px; backdrop-filter: blur(10px); cursor: pointer; transition: all 0.3s ease; text-decoration: none; font-family: inherit; font-size: inherit;">
+                <span style="font-size: 1.2rem;">👶</span>
+                <span style="color: var(--light-text); font-weight: 500;">Kids Ministry</span>
+              </button>
+              <button onclick="scrollToAlbum('evangelistic', this)" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: linear-gradient(45deg, var(--accent-color), rgba(255,255,255,0.1)); border: none; border-radius: 25px; backdrop-filter: blur(10px); cursor: pointer; transition: all 0.3s ease; text-decoration: none; font-family: inherit; font-size: inherit;">
+                <span style="font-size: 1.2rem;">📢</span>
+                <span style="color: var(--light-text); font-weight: 500;">Evangelistic Events</span>
+              </button>
+           </div>
           
           <div style="max-width: 600px; margin: 0 auto;">
             <p style="font-size: 1.2rem; color: var(--lighter-text); line-height: 1.6; margin-bottom: 2rem;">
@@ -2653,8 +2662,22 @@ function updateAlbumCarousel(album, startIndex, direction = 1) {
 console.log('[carousel] Script loaded - galleryImages available:', typeof galleryImages !== 'undefined');
 
 // Album navigation function
-function scrollToAlbum(albumType) {
-  console.log('[navigation] Scrolling to album:', albumType);
+function scrollToAlbum(albumType, buttonElement) {
+  console.log('[navigation] Scrolling to album:', albumType, 'buttonElement:', buttonElement);
+  
+  // Remove active class from all album buttons
+  const buttons = document.querySelectorAll('button[onclick^="scrollToAlbum"]');
+  console.log('[navigation] Found', buttons.length, 'album buttons');
+  buttons.forEach(btn => {
+    btn.classList.remove('active');
+    console.log('[navigation] Removed active class from button:', btn.textContent.trim());
+  });
+  
+  // Add active class to clicked button if provided
+  if (buttonElement) {
+    buttonElement.classList.add('active');
+    console.log('[navigation] Added active class to button:', buttonElement.textContent.trim());
+  }
   
   // Find the album section using text content
   const albumSections = document.querySelectorAll('.album-section');
@@ -2673,6 +2696,7 @@ function scrollToAlbum(albumType) {
   });
   
   if (albumElement) {
+    console.log('[navigation] Found album element:', albumElement.querySelector('h3')?.textContent);
     albumElement.scrollIntoView({ 
       behavior: 'smooth', 
       block: 'start' 
@@ -2688,6 +2712,7 @@ function scrollToAlbum(albumType) {
       albumElement.style.boxShadow = '';
     }, 1000);
   } else {
+    console.log('[navigation] Album element not found for type:', albumType);
     // Fallback: scroll to gallery section
     const gallerySection = document.getElementById('gallery');
     if (gallerySection) {
