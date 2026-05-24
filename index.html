@@ -30,6 +30,114 @@
       --fluid-bp: (var(--fluid-screen) - var(--fluid-min-width) / 16 * 1rem) / (var(--fluid-max-width) - var(--fluid-min-width));
     }
     
+    /* Light theme variable overrides */
+    body.light {
+      --primary-color: #212529;
+      --secondary-color: #6c757d;
+      --accent-color: #1971c2;
+      --light-bg: #f8f9fa;
+      --light-text: #212529;
+      --lighter-text: #6c757d;
+      --border-color: #dee2e6;
+      --card-bg: #ffffff;
+    }
+
+    body.light .hero {
+      background: linear-gradient(135deg, rgba(225, 235, 245, 0.95) 0%, rgba(210, 225, 240, 0.95) 100%);
+    }
+
+    body.light .contact-section,
+    body.light #donation .contact-section {
+      background: linear-gradient(135deg, rgba(240, 244, 248, 0.98) 0%, rgba(225, 234, 243, 0.98) 100%) !important;
+    }
+
+    body.light footer {
+      background-color: #e9ecef !important;
+      border-color: #dee2e6;
+    }
+
+    body.light .social-media {
+      background: linear-gradient(135deg, rgba(8, 18, 48, 0.93) 0%, rgba(12, 35, 90, 0.93) 100%);
+      border: 1px solid rgba(77, 160, 255, 0.22);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25), 0 0 14px rgba(77, 160, 255, 0.2);
+      animation: pillGlow 4s ease-in-out infinite;
+    }
+
+    body.light .social-media::before {
+      display: block;
+    }
+
+    body.light #follow-text {
+      color: #FFD700;
+      text-shadow: 0 0 6px rgba(255, 215, 0, 0.5);
+    }
+
+    body.light .hamburger span {
+      background: #212529;
+    }
+
+    body.light nav#main-nav {
+      background: rgba(240, 244, 248, 0.98) !important;
+      border-color: rgba(0, 0, 0, 0.08);
+    }
+
+    body.light nav a {
+      color: #495057;
+    }
+
+    body.light .social-links a {
+      background: rgba(0, 0, 0, 0.08);
+    }
+
+    body.light .social-links a:hover {
+      background: rgba(0, 0, 0, 0.15);
+    }
+
+    body.light .contact-item {
+      background: rgba(0, 0, 0, 0.02);
+    }
+
+    body.light .contact-item:hover {
+      background: rgba(0, 0, 0, 0.05);
+    }
+
+    body.light .bilingual-container > div,
+    body.light .giving-options > div {
+      background: rgba(0, 0, 0, 0.04);
+    }
+
+    /* Theme toggle button */
+    #theme-toggle {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+      margin-left: 0.75rem;
+      line-height: 1;
+    }
+
+    body.light #theme-toggle {
+      background: rgba(0, 0, 0, 0.06);
+      border-color: rgba(0, 0, 0, 0.15);
+    }
+
+    #theme-toggle:hover {
+      transform: scale(1.1);
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    body.light #theme-toggle:hover {
+      background: rgba(0, 0, 0, 0.12);
+    }
+
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
     
     * {
@@ -104,25 +212,49 @@
       margin-left: auto;
       margin-right: 1rem;
       padding: 0.6rem 0.95rem;
-      background: rgba(0, 0, 0, 0.35);
+      background: linear-gradient(135deg, rgba(8, 18, 48, 0.93) 0%, rgba(12, 35, 90, 0.93) 100%);
       border-radius: 18px;
-      border: none; /* sketch provides the border */
-      backdrop-filter: blur(10px);
+      border: 1px solid rgba(77, 160, 255, 0.22);
+      backdrop-filter: blur(12px);
       overflow: visible;
+      animation: pillGlow 4s ease-in-out infinite;
     }
 
+    /* Blue inner shimmer */
     .social-media::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at 15% 25%, rgba(255, 255, 255, 0.5) 0%, transparent 35%),
-                  radial-gradient(circle at 80% 60%, rgba(255, 255, 255, 0.35) 0%, transparent 40%),
-                  radial-gradient(circle at 50% 85%, rgba(255, 255, 255, 0.25) 0%, transparent 45%);
-      opacity: 0.25;
-      mix-blend-mode: screen;
+      background: linear-gradient(
+        120deg,
+        rgba(77, 160, 255, 0.20) 0%,
+        rgba(40, 120, 240, 0.14) 50%,
+        rgba(100, 200, 255, 0.16) 100%
+      );
+      background-size: 200% 200%;
       border-radius: inherit;
       pointer-events: none;
-      animation: sparkle 2.8s ease-in-out infinite;
+      animation: shimmerFlow 4s ease-in-out infinite;
+    }
+
+    @keyframes pillGlow {
+      0%, 100% {
+        box-shadow: 0 0 14px rgba(77, 160, 255, 0.30), 0 4px 20px rgba(0, 0, 0, 0.45);
+        border-color: rgba(77, 160, 255, 0.30);
+      }
+      40% {
+        box-shadow: 0 0 20px rgba(40, 120, 240, 0.40), 0 4px 20px rgba(0, 0, 0, 0.45);
+        border-color: rgba(40, 120, 240, 0.40);
+      }
+      70% {
+        box-shadow: 0 0 18px rgba(100, 200, 255, 0.30), 0 4px 20px rgba(0, 0, 0, 0.45);
+        border-color: rgba(100, 200, 255, 0.30);
+      }
+    }
+
+    @keyframes shimmerFlow {
+      0%, 100% { background-position: 0% 50%; opacity: 0.7; }
+      50%       { background-position: 100% 50%; opacity: 1; }
     }
 
     #follow-text {
@@ -151,16 +283,6 @@
       z-index: 2;
     }
 
-    @keyframes sparkle {
-      0%, 100% {
-        transform: translate(0, 0) scale(1);
-        opacity: 0.25;
-      }
-      50% {
-        transform: translate(2px, -2px) scale(1.05);
-        opacity: 0.45;
-      }
-    }
 
     .footer-content {
       display: flex;
@@ -1588,6 +1710,7 @@
         </a>
         <canvas id="sketch-canvas"></canvas>
       </div>
+      <button id="theme-toggle" aria-label="Toggle light/dark mode" title="Switch to light mode">☀️</button>
     </div>
   </header>
   
@@ -3037,6 +3160,33 @@ document.addEventListener('DOMContentLoaded', function() {
         });
       });
     });
+  </script>
+
+  <script>
+    // Light/dark theme toggle
+    (function () {
+      const toggle = document.getElementById('theme-toggle');
+
+      function applyTheme(theme) {
+        if (theme === 'light') {
+          document.body.classList.add('light');
+          toggle.textContent = '🌙';
+          toggle.title = 'Switch to dark mode';
+        } else {
+          document.body.classList.remove('light');
+          toggle.textContent = '☀️';
+          toggle.title = 'Switch to light mode';
+        }
+        localStorage.setItem('theme', theme);
+      }
+
+      // Restore saved preference; default to light
+      applyTheme(localStorage.getItem('theme') || 'light');
+
+      toggle.addEventListener('click', function () {
+        applyTheme(document.body.classList.contains('light') ? 'dark' : 'light');
+      });
+    })();
   </script>
 </body>
 </html>
