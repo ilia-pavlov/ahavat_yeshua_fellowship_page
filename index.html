@@ -1658,6 +1658,594 @@
       margin: 2rem 0;
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
     }
+
+    /* Events Section */
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .event-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      position: relative;
+    }
+
+    .event-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+    }
+
+    .event-date-badge {
+      background: var(--accent-color);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem 1.25rem 0.75rem;
+      min-width: 72px;
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      border-radius: 12px;
+      line-height: 1;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(77, 171, 247, 0.35);
+    }
+
+    .event-month {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.9;
+      margin-bottom: 0.25rem;
+    }
+
+    .event-day {
+      font-size: 1.8rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .event-body {
+      padding: 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding-right: 5.5rem;
+    }
+
+    .event-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.65rem;
+      border-radius: 20px;
+      background: rgba(77, 171, 247, 0.15);
+      color: var(--accent-color);
+      margin-bottom: 0.75rem;
+      width: fit-content;
+    }
+
+    .event-tag-special {
+      background: rgba(255, 183, 77, 0.15);
+      color: #ffb74d;
+    }
+
+    .event-tag-kids {
+      background: rgba(102, 187, 106, 0.15);
+      color: #66bb6a;
+    }
+
+    .event-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--light-text);
+      margin-bottom: 0.6rem;
+      line-height: 1.3;
+    }
+
+    .event-desc {
+      font-size: 0.9rem;
+      color: var(--lighter-text);
+      line-height: 1.55;
+      margin: 0 0 1rem;
+      flex: 1;
+      max-width: none;
+    }
+
+    .event-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-top: auto;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .event-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.82rem;
+      color: var(--lighter-text);
+    }
+
+    .event-meta-item svg {
+      flex-shrink: 0;
+      opacity: 0.7;
+    }
+
+    /* Events filter pills */
+    .event-filter-pill {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1.1rem;
+      background: linear-gradient(45deg, var(--accent-color), rgba(255,255,255,0.1));
+      border: none;
+      border-radius: 25px;
+      backdrop-filter: blur(10px);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: inherit;
+      font-size: inherit;
+      opacity: 0.65;
+    }
+
+    .event-filter-pill span:last-child {
+      color: var(--light-text);
+      font-weight: 500;
+    }
+
+    .event-filter-pill.active {
+      opacity: 1;
+      box-shadow: 0 4px 16px rgba(77, 171, 247, 0.3);
+      transform: translateY(-2px) scale(1.05);
+    }
+
+    .event-filter-pill:hover {
+      opacity: 1;
+      transform: translateY(-2px) scale(1.05);
+    }
+
+    /* Events section labels */
+    .events-section-label {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .events-section-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border-color);
+    }
+
+    .events-section-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--lighter-text);
+      white-space: nowrap;
+    }
+
+    /* Countdown timer */
+    .cd-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 30px;
+      flex: 1;
+    }
+
+    .cd-num {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--accent-color);
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .cd-lbl {
+      font-size: 0.55rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--lighter-text);
+      margin-top: 2px;
+    }
+
+    .cd-sep {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--accent-color);
+      opacity: 0.5;
+      padding-bottom: 10px;
+      flex-shrink: 0;
+    }
+
+    #service-countdown.live-now {
+      background: rgba(102, 187, 106, 0.1);
+      border-color: rgba(102, 187, 106, 0.3);
+    }
+
+    #service-countdown.live-now #countdown-label {
+      color: #66bb6a;
+    }
+
+    /* Flip card */
+    .flip-card {
+      perspective: 1200px;
+      cursor: pointer;
+      min-height: 300px;
+    }
+
+    .flip-card:hover {
+      transform: none;
+      box-shadow: none;
+    }
+
+    .flip-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      min-height: 300px;
+      transform-style: preserve-3d;
+      transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .flip-card.flipped .flip-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-front,
+    .flip-back {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      border-radius: 16px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .flip-back {
+      transform: rotateY(180deg);
+    }
+
+    .flip-hint {
+      display: block;
+      font-size: 0.7rem;
+      color: var(--lighter-text);
+      opacity: 0.55;
+      margin-top: auto;
+      padding-top: 0.75rem;
+    }
+
+    .flip-hint-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      margin-top: auto;
+      padding: 0.55rem 1.1rem;
+      background: linear-gradient(135deg, rgba(77,171,247,0.15), rgba(77,171,247,0.05));
+      border: 1px solid rgba(77,171,247,0.35);
+      border-radius: 30px;
+      color: var(--accent-color);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      cursor: pointer;
+      animation: cta-pulse 2.5s ease-in-out infinite;
+      position: relative;
+      overflow: hidden;
+      align-self: flex-start;
+    }
+
+    .flip-hint-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent 0%, rgba(77,171,247,0.18) 50%, transparent 100%);
+      background-size: 200% 100%;
+      animation: cta-shimmer 2.5s ease-in-out infinite;
+      border-radius: inherit;
+    }
+
+    @keyframes cta-pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(77,171,247,0.0), 0 2px 8px rgba(77,171,247,0.15); }
+      50%       { box-shadow: 0 0 0 5px rgba(77,171,247,0.0), 0 2px 14px rgba(77,171,247,0.35); border-color: rgba(77,171,247,0.6); }
+    }
+
+    @keyframes cta-shimmer {
+      0%   { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    .event-yt-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      margin-top: 1rem;
+      padding: 0.55rem 1rem;
+      background: rgba(204, 0, 0, 0.12);
+      border: 1px solid rgba(204, 0, 0, 0.3);
+      border-radius: 8px;
+      color: #ff4444;
+      font-size: 0.82rem;
+      font-weight: 600;
+      font-family: inherit;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.2s ease;
+      width: 100%;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+
+    .event-yt-btn:hover {
+      background: rgba(204, 0, 0, 0.22);
+      transform: translateY(-1px);
+    }
+
+    /* Camp card */
+    .camp-card {
+      overflow: hidden;
+    }
+
+    .camp-scroll-strip {
+      position: relative;
+      height: 210px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .camp-scroll-track {
+      display: flex;
+      height: 100%;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .camp-scroll-track::-webkit-scrollbar { display: none; }
+
+    .camp-scroll-track img {
+      flex-shrink: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      scroll-snap-align: start;
+      cursor: zoom-in;
+      transition: filter 0.2s;
+    }
+
+    .camp-scroll-track img:hover { filter: brightness(1.08); }
+
+    .camp-scroll-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.55);
+      border: none;
+      color: white;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      font-size: 20px;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 5;
+      transition: background 0.2s;
+      padding: 0;
+    }
+
+    .camp-scroll-btn:hover { background: rgba(0,0,0,0.8); }
+    .camp-scroll-prev { left: 8px; }
+    .camp-scroll-next { right: 8px; }
+
+    /* Simple image modal */
+    #img-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      cursor: zoom-out;
+      animation: fadeIn 0.25s ease;
+    }
+
+    #img-modal.active {
+      display: flex;
+    }
+
+    #img-modal img {
+      max-width: 92vw;
+      max-height: 92vh;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+      cursor: default;
+    }
+
+    #img-modal-close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: rgba(255,255,255,0.12);
+      border: 2px solid rgba(255,255,255,0.3);
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 22px;
+      font-weight: bold;
+      transition: background 0.2s;
+    }
+
+    #img-modal-close:hover {
+      background: rgba(255,255,255,0.25);
+    }
+
+    #img-modal-prev,
+    #img-modal-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.12);
+      border: 2px solid rgba(255,255,255,0.3);
+      color: white;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 28px;
+      font-weight: bold;
+      transition: background 0.2s, transform 0.2s;
+      z-index: 2001;
+    }
+
+    #img-modal-prev { left: 20px; }
+    #img-modal-next { right: 20px; }
+
+    #img-modal-prev:hover,
+    #img-modal-next:hover {
+      background: rgba(255,255,255,0.28);
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    #img-modal-counter {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.65);
+      color: white;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 500;
+      backdrop-filter: blur(8px);
+      pointer-events: none;
+    }
+
+    @media (max-width: 600px) {
+      #img-modal-prev { left: 8px; }
+      #img-modal-next { right: 8px; }
+      #img-modal-prev,
+      #img-modal-next {
+        width: 40px;
+        height: 40px;
+        font-size: 22px;
+      }
+    }
+
+    .camp-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.65) 100%);
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      padding: 0.9rem 1rem;
+      pointer-events: none;
+    }
+
+    .camp-price-badge {
+      background: #2e7d32;
+      color: #fff;
+      font-size: 1.05rem;
+      font-weight: 800;
+      padding: 0.35rem 0.75rem;
+      border-radius: 10px;
+      line-height: 1.3;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+    }
+
+    .event-tag-camp {
+      background: rgba(46,125,50,0.18);
+      color: #6dbf6d;
+    }
+
+    .event-join-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      margin-top: 1rem;
+      padding: 0.55rem 1rem;
+      background: rgba(124, 92, 191, 0.15);
+      border: 1px solid rgba(124, 92, 191, 0.35);
+      border-radius: 8px;
+      color: #a07de0;
+      font-size: 0.82rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.2s ease;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .event-join-btn:hover {
+      background: rgba(124, 92, 191, 0.28);
+      transform: translateY(-1px);
+    }
+
+    body.light .event-card {
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    body.light .event-card:hover {
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+    }
+
+    @media (max-width: 600px) {
+      .events-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .event-body {
+        padding-right: 1.5rem;
+        padding-top: 4.5rem;
+      }
+
+      .event-date-badge {
+        top: 1rem;
+        right: 1rem;
+      }
+    }
   </style>
   
   <!-- JSON-LD structured data for logo -->
@@ -1705,6 +2293,7 @@
       <nav id="main-nav">
         <a href="#home" class="nav-link active" data-section="home">Home</a>
         <a href="#gallery" class="nav-link" data-section="gallery">Gallery</a>
+        <a href="#events" class="nav-link" data-section="events">Events</a>
         <a href="#contact" class="nav-link" data-section="contact">Contact</a>
         <a href="#donation" class="nav-link" data-section="donation">Donation</a>
       </nav>
@@ -2010,6 +2599,287 @@
       </div>
     </section>
     
+    <!-- Events Section -->
+    <section id="events" class="section">
+      <div class="hero" style="margin-bottom: 2rem;">
+        <div class="hero-content">
+          <span class="hero-tagline">What's Coming Up</span>
+          <h2 style="font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 800; margin-bottom: 1rem; line-height: 1.1; color: var(--light-text);">
+            Upcoming <span style="color: var(--accent-color);">Events</span>
+          </h2>
+          <p style="font-size: 1.1rem; max-width: 600px; margin: 0 auto 2rem; color: var(--lighter-text);">
+            Join us for worship, fellowship, and community gatherings. Everyone is welcome. <button onclick="openContactModal()" style="background:none; border:none; padding:0; color:var(--accent-color); font-size:inherit; font-family:inherit; font-weight:500; cursor:pointer; text-decoration:underline; text-underline-offset:3px;">Contact us</button>
+          </p>
+          <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+            <button onclick="scrollToEventGroup('weekly', this)" class="event-filter-pill">
+              <span>⛪</span>
+              <span>Weekly Service</span>
+            </button>
+            <button onclick="scrollToEventGroup('special', this)" class="event-filter-pill">
+              <span>✨</span>
+              <span>Special Events</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+
+        <!-- ── Weekly Service ── -->
+        <div class="events-section-label" data-group="weekly">
+          <span class="events-section-line"></span>
+          <span class="events-section-title">Weekly Service</span>
+          <span class="events-section-line"></span>
+        </div>
+        <div class="events-grid" data-group="weekly">
+
+          <!-- Event Card 1: Weekly Service (flip card) -->
+          <div class="event-card flip-card" onclick="this.classList.toggle('flipped')" title="Tap to flip">
+            <div class="flip-inner">
+
+              <!-- FRONT -->
+              <div class="flip-front">
+                <div class="event-date-badge" id="weekly-date-badge">
+                  <span class="event-month" id="weekly-badge-month">SAT</span>
+                  <span class="event-day" id="weekly-badge-day">—</span>
+                </div>
+                <div class="event-body">
+                  <div class="event-tag">Weekly Service</div>
+                  <h3 class="event-title">Saturday Worship Service</h3>
+                  <p class="event-desc">Join us for worship, teaching, and fellowship. Services held in Russian with live English translation.</p>
+                  <span class="flip-hint-cta">
+                    <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" style="flex-shrink:0;"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>
+                    See service details
+                  </span>
+                </div>
+              </div>
+
+              <!-- BACK -->
+              <div class="flip-back">
+                <div class="event-body" style="padding-right: 1.5rem; justify-content: center;">
+                  <div id="service-countdown" style="margin-bottom: 0.75rem; background: rgba(77,171,247,0.08); border: 1px solid rgba(77,171,247,0.18); border-radius: 10px; padding: 0.75rem 1rem; width: 100%; box-sizing: border-box;">
+                    <div style="font-size: 0.7rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--accent-color); margin-bottom: 0.45rem;" id="countdown-label">Next service in</div>
+                    <div style="display: flex; gap: 0; align-items: flex-end; flex-wrap: nowrap; width: 100%; justify-content: space-between;" id="countdown-units">
+                      <div class="cd-unit"><span class="cd-num" id="cd-days">—</span><span class="cd-lbl">days</span></div>
+                      <div class="cd-sep">:</div>
+                      <div class="cd-unit"><span class="cd-num" id="cd-hours">—</span><span class="cd-lbl">hrs</span></div>
+                      <div class="cd-sep">:</div>
+                      <div class="cd-unit"><span class="cd-num" id="cd-mins">—</span><span class="cd-lbl">min</span></div>
+                      <div class="cd-sep">:</div>
+                      <div class="cd-unit"><span class="cd-num" id="cd-secs">—</span><span class="cd-lbl">sec</span></div>
+                    </div>
+                  </div>
+                  <div class="event-meta">
+                    <span class="event-meta-item">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                      <a href="https://www.google.com/maps/place/Ahavat+Yeshua+Fellowship/@40.571563,-74.1172469,17z/data=!3m1!4b1!4m6!3m5!1s0x89c249d65d9b6bf7:0xf586f687340d3256!8m2!3d40.571559!4d-74.114672!16s%2Fg%2F11xs29my2x?entry=ttu&g_ep=EgoyMDI1MTAyNi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" style="color:var(--accent-color); text-decoration:none;" onclick="event.stopPropagation()">Ahavat Yeshua Fellowship</a>
+                    </span>
+                    <span class="event-meta-item">
+                      <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5z"/></svg>
+                      12:00 PM – 3:00 PM · Every Saturday
+                    </span>
+                  </div>
+                  <a href="https://www.youtube.com/@AhavatYeshua" target="_blank" rel="noopener noreferrer" class="event-yt-btn" onclick="event.stopPropagation()">
+                    <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M10 15l5.19-3L10 9v6zm11.56-7.83c.13.47.22 1.1.28 1.9.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83-.25.9-.83 1.48-1.73 1.73-.47.13-1.33.22-2.65.28-1.3.07-2.49.1-3.59.1L12 19c-4.19 0-6.8-.17-7.83-.45-.9-.25-1.48-.83-1.73-1.73-.13-.47-.22-1.1-.28-1.9-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83.25-.9.83-1.48 1.73-1.73.47-.13 1.33-.22 2.65-.28 1.3-.07 2.49-.1 3.59-.1L12 5c4.19 0 6.8.17 7.83.45.9.25 1.48.83 1.73 1.73z"/></svg>
+                    Watch Online
+                  </a>
+                  <span class="flip-hint" style="text-align:right; margin-top: 0.75rem;">‹ Tap to go back</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Home Group: Staten Island -->
+          <div class="event-card">
+            <div class="event-date-badge" style="background: #7c5cbf;">
+              <span class="event-month" id="staten-badge-month">TUE</span>
+              <span class="event-day" id="staten-badge-day">—</span>
+            </div>
+            <div class="event-body">
+              <div class="event-tag" style="background: rgba(124,92,191,0.15); color: #a07de0;">Weekly Service</div>
+              <h3 class="event-title">Staten Island Home Group</h3>
+              <p class="event-desc">Join our weekly Bible study and fellowship gathering in Staten Island. Come connect, grow in faith, and build lasting community.</p>
+              <div class="event-meta">
+                <span class="event-meta-item">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                  Staten Island, NY
+                </span>
+                <span class="event-meta-item">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5z"/></svg>
+                  Every Tuesday
+                </span>
+              </div>
+              <button onclick="openContactModal()" class="event-join-btn">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Contact us to join
+              </button>
+            </div>
+          </div>
+
+          <!-- Home Group: Brooklyn -->
+          <div class="event-card">
+            <div class="event-date-badge" style="background: #7c5cbf;">
+              <span class="event-month" id="brooklyn-badge-month">THU</span>
+              <span class="event-day" id="brooklyn-badge-day">—</span>
+            </div>
+            <div class="event-body">
+              <div class="event-tag" style="background: rgba(124,92,191,0.15); color: #a07de0;">Weekly Service</div>
+              <h3 class="event-title">Brooklyn Home Group</h3>
+              <p class="event-desc">Join our weekly Bible study and fellowship gathering in Brooklyn. A warm, intimate setting to go deeper in the Word together.</p>
+              <div class="event-meta">
+                <span class="event-meta-item">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                  Brooklyn, NY
+                </span>
+                <span class="event-meta-item">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5z"/></svg>
+                  Every Thursday
+                </span>
+              </div>
+              <button onclick="openContactModal()" class="event-join-btn">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Contact us to join
+              </button>
+            </div>
+          </div>
+
+        </div><!-- /events-grid weekly -->
+
+        <!-- ── Special Events ── -->
+        <div class="events-section-label" data-group="special" style="margin-top: 2.5rem;">
+          <span class="events-section-line"></span>
+          <span class="events-section-title">Special Events</span>
+          <span class="events-section-line"></span>
+        </div>
+        <div class="events-grid" data-group="special">
+
+          <!-- Summer Camp 2026 -->
+          <div class="event-card camp-card">
+
+            <!-- Scrollable image strip -->
+            <div class="camp-scroll-strip">
+              <div class="camp-scroll-track" id="camp-scroll-track">
+                <img src="images/camp-main.jpg"   alt="Летний Семейный Лагерь" loading="lazy" onclick="openImageModal('images/camp-main.jpg')">
+                <img src="images/camp-2026.jpg"   alt="Открыто бронирование" loading="lazy"   onclick="openImageModal('images/camp-2026.jpg')">
+                <img src="images/camp-pool.jpg"   alt="Бассейн"               loading="lazy"   onclick="openImageModal('images/camp-pool.jpg')">
+                <img src="images/camp-farm.jpg"   alt="Bobwhite Acres Farm"   loading="lazy"   onclick="openImageModal('images/camp-farm.jpg')">
+                <img src="images/camp-hiking.jpg" alt="Хайкинг"               loading="lazy"   onclick="openImageModal('images/camp-hiking.jpg')">
+              </div>
+              <!-- Scroll arrows -->
+              <button class="camp-scroll-btn camp-scroll-prev" onclick="campScroll(-1)" aria-label="Previous">‹</button>
+              <button class="camp-scroll-btn camp-scroll-next" onclick="campScroll(1)"  aria-label="Next">›</button>
+              <!-- Overlay badges on top of strip -->
+              <div class="camp-card-overlay">
+                <div class="event-date-badge" style="position:static; box-shadow:0 4px 16px rgba(0,0,0,0.5);">
+                  <span class="event-month">AUG</span>
+                  <span class="event-day" style="font-size:1.4rem; line-height:1;">8–11</span>
+                </div>
+                <div style="display:flex; flex-direction:column; align-items:flex-end; gap:0.4rem;">
+                  <div class="camp-price-badge">Adult $195</div>
+                  <div class="camp-price-badge" style="background:#1b5e20; font-size:0.95rem;">Child $99</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="event-body" style="padding-right:1.5rem;">
+              <div class="event-tag event-tag-camp">Summer Family Camp</div>
+              <h3 class="event-title">Ahavat Yeshua Camp 2026</h3>
+              <p class="event-desc">4 days of family rest, fellowship & faith in Pennsylvania. Includes 3 nights lodging, 4 meals/day, pool (6 ft, 10–12 AM & 2–6 PM), firewood, farm visit & hiking nearby.</p>
+              <div class="event-meta">
+                <span class="event-meta-item">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                  Pennsylvania, PA
+                </span>
+                <span class="event-meta-item">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5z"/></svg>
+                  August 8 – 11, 2026
+                </span>
+              </div>
+              <button onclick="openContactModal()" class="event-join-btn" style="background:rgba(76,153,76,0.15); border-color:rgba(76,153,76,0.4); color:#6dbf6d;">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Register via WhatsApp / Telegram
+              </button>
+            </div>
+          </div>
+
+          <!-- Brotherhood Sauna Trip -->
+          <div class="event-card camp-card">
+            <div class="camp-scroll-strip">
+              <div class="camp-scroll-track">
+                <img src="images/sauna-trip.png" alt="Brotherhood Sauna Trip" loading="lazy" onclick="openImageModal('images/sauna-trip.png')">
+              </div>
+              <div class="camp-card-overlay">
+                <div class="event-date-badge" style="position:static; background:#b84c1a; box-shadow:0 4px 16px rgba(0,0,0,0.5);">
+                  <span class="event-month">TBD</span>
+                  <span class="event-day" style="font-size:1rem; font-weight:700;">soon</span>
+                </div>
+              </div>
+            </div>
+            <div class="event-body" style="padding-right:1.5rem;">
+              <div class="event-tag" style="background: rgba(184,76,26,0.15); color: #e07848;">Special Events</div>
+              <h3 class="event-title">Brotherhood Sauna Trip</h3>
+              <p class="event-desc">A men's gathering for fellowship, prayer, and relaxation. Come connect with brothers in a warm, welcoming environment.</p>
+              <div class="event-meta">
+                <span class="event-meta-item">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                  Brooklyn, NY
+                </span>
+                <span class="event-meta-item">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5z"/></svg>
+                  Date TBD
+                </span>
+              </div>
+              <button onclick="openContactModal()" class="event-join-btn" style="background:rgba(184,76,26,0.12); border-color:rgba(184,76,26,0.35); color:#e07848;">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Contact us to join
+              </button>
+            </div>
+          </div>
+
+          <!-- Volleyball Gospel Day -->
+          <div class="event-card camp-card">
+            <div class="camp-scroll-strip">
+              <div class="camp-scroll-track">
+                <img src="images/volleyball-gospel.png" alt="Volleyball Gospel Day" loading="lazy" onclick="openImageModal('images/volleyball-gospel.png')">
+              </div>
+              <div class="camp-card-overlay">
+                <div class="event-date-badge" style="position:static; background:#1565c0; box-shadow:0 4px 16px rgba(0,0,0,0.5);">
+                  <span class="event-month">TBD</span>
+                  <span class="event-day" style="font-size:1rem; font-weight:700;">soon</span>
+                </div>
+              </div>
+            </div>
+            <div class="event-body" style="padding-right:1.5rem;">
+              <div class="event-tag" style="background: rgba(21,101,192,0.15); color: #64b5f6;">Special Events</div>
+              <h3 class="event-title">Volleyball Gospel Day</h3>
+              <p class="event-desc">A day of fun, sports, and the Good News — right on the boardwalk. Come play, connect, and share faith in the open air.</p>
+              <div class="event-meta">
+                <span class="event-meta-item">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                  Boardwalk, Staten Island
+                </span>
+                <span class="event-meta-item">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5z"/></svg>
+                  Date TBD
+                </span>
+              </div>
+              <button onclick="openContactModal()" class="event-join-btn" style="background:rgba(21,101,192,0.12); border-color:rgba(21,101,192,0.35); color:#64b5f6;">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Contact us to join
+              </button>
+            </div>
+          </div>
+
+        </div><!-- /events-grid special -->
+
+        <p style="text-align:center; color: var(--lighter-text); margin-top: 2.5rem; font-size: 0.95rem;">
+          Questions about an event?
+          <a href="#contact" class="nav-link" data-section="contact" style="color: var(--accent-color); text-decoration: none; font-weight: 500;">Contact us</a>
+        </p>
+      </div>
+    </section>
+
     <!-- Donation Section -->
     <section id="donation" class="section" style="margin: 0 auto; max-width: 1200px; padding: 0 1rem; scroll-margin-top: 80px;">
       <div class="contact-section" style="padding: 2rem 0; margin: 0;">
@@ -3317,6 +4187,172 @@ document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') closeWhatsAppModal();
     });
+  </script>
+
+  <!-- Image modal -->
+  <div id="img-modal" onclick="closeImageModal()">
+    <button id="img-modal-close" onclick="closeImageModal()" aria-label="Close">✕</button>
+    <button id="img-modal-prev" onclick="event.stopPropagation(); modalNav(-1)" aria-label="Previous">‹</button>
+    <img id="img-modal-img" src="" alt="Full image" onclick="event.stopPropagation()">
+    <button id="img-modal-next" onclick="event.stopPropagation(); modalNav(1)" aria-label="Next">›</button>
+    <div id="img-modal-counter"></div>
+  </div>
+
+  <script>
+    // Events pills — scroll to section
+    function scrollToEventGroup(group, btn) {
+      document.querySelectorAll('.event-filter-pill').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      const label = document.querySelector('.events-section-label[data-group="' + group + '"]');
+      if (label) label.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setTimeout(() => btn.classList.remove('active'), 800);
+    }
+
+    // Camp image scroll
+    function campScroll(dir) {
+      const track = document.getElementById('camp-scroll-track');
+      track.scrollBy({ left: dir * track.clientWidth, behavior: 'smooth' });
+    }
+
+    // Image modal with prev/next
+    const campImages = [
+      'images/camp-main.jpg',
+      'images/camp-2026.jpg',
+      'images/camp-pool.jpg',
+      'images/camp-farm.jpg',
+      'images/camp-hiking.jpg',
+      'images/sauna-trip.png',
+      'images/volleyball-gospel.png'
+    ];
+    let modalIndex = 0;
+
+    function openImageModal(src) {
+      modalIndex = campImages.indexOf(src);
+      if (modalIndex === -1) modalIndex = 0;
+      renderModalImage();
+      document.getElementById('img-modal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function renderModalImage() {
+      document.getElementById('img-modal-img').src = campImages[modalIndex];
+      document.getElementById('img-modal-counter').textContent = (modalIndex + 1) + ' / ' + campImages.length;
+      document.getElementById('img-modal-prev').style.display = modalIndex === 0 ? 'none' : 'flex';
+      document.getElementById('img-modal-next').style.display = modalIndex === campImages.length - 1 ? 'none' : 'flex';
+    }
+
+    function modalNav(dir) {
+      modalIndex = Math.max(0, Math.min(campImages.length - 1, modalIndex + dir));
+      renderModalImage();
+    }
+
+    function closeImageModal() {
+      document.getElementById('img-modal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', function(e) {
+      const modal = document.getElementById('img-modal');
+      if (!modal.classList.contains('active')) return;
+      if (e.key === 'Escape')      closeImageModal();
+      if (e.key === 'ArrowLeft')   modalNav(-1);
+      if (e.key === 'ArrowRight')  modalNav(1);
+    });
+
+    // Home group badge dates (static, set once on load)
+    (function() {
+      const MONTHS = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+      function nextWeekday(targetDay) { // 0=Sun,1=Mon,...,4=Thu,2=Tue
+        const d = new Date();
+        const diff = (targetDay - d.getDay() + 7) % 7 || 7;
+        d.setDate(d.getDate() + diff);
+        return d;
+      }
+      const thu = nextWeekday(4); // Thursday
+      const tue = nextWeekday(2); // Tuesday
+      document.getElementById('brooklyn-badge-month').textContent = MONTHS[thu.getMonth()];
+      document.getElementById('brooklyn-badge-day').textContent   = thu.getDate();
+      document.getElementById('staten-badge-month').textContent   = MONTHS[tue.getMonth()];
+      document.getElementById('staten-badge-day').textContent     = tue.getDate();
+    })();
+
+    // Saturday service countdown — updates every second
+    (function() {
+      const MONTHS = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+      const SERVICE_START_HOUR = 12; // 12:00 PM
+      const SERVICE_END_HOUR   = 15; // 3:00 PM
+
+      function nextSaturday(from) {
+        const d = new Date(from);
+        const day = d.getDay(); // 0=Sun … 6=Sat
+        const daysUntil = day === 6 ? 0 : (6 - day);
+        d.setDate(d.getDate() + daysUntil);
+        d.setHours(SERVICE_START_HOUR, 0, 0, 0);
+        return d;
+      }
+
+      function tick() {
+        const now  = new Date();
+        const sat  = nextSaturday(now);
+        const end  = new Date(sat);
+        end.setHours(SERVICE_END_HOUR, 0, 0, 0);
+
+        // Update badge to always show the next Saturday date
+        const badgeMonth = document.getElementById('weekly-badge-month');
+        const badgeDay   = document.getElementById('weekly-badge-day');
+        if (badgeMonth) badgeMonth.textContent = MONTHS[sat.getMonth()];
+        if (badgeDay)   badgeDay.textContent   = sat.getDate();
+
+        const box   = document.getElementById('service-countdown');
+        const label = document.getElementById('countdown-label');
+        const dEl   = document.getElementById('cd-days');
+        const hEl   = document.getElementById('cd-hours');
+        const mEl   = document.getElementById('cd-mins');
+        const sEl   = document.getElementById('cd-secs');
+        if (!box) return;
+
+        // Service is happening right now
+        if (now >= sat && now < end) {
+          box.classList.add('live-now');
+          if (label) label.textContent = 'Service is live now!';
+          const remaining = Math.floor((end - now) / 1000);
+          const rh = Math.floor(remaining / 3600);
+          const rm = Math.floor((remaining % 3600) / 60);
+          const rs = remaining % 60;
+          if (dEl) { dEl.closest('.cd-unit').style.display = 'none'; }
+          if (hEl) hEl.textContent = String(rh).padStart(2,'0');
+          if (mEl) mEl.textContent = String(rm).padStart(2,'0');
+          if (sEl) sEl.textContent = String(rs).padStart(2,'0');
+          // Hide the day separator too
+          const seps = box.querySelectorAll('.cd-sep');
+          if (seps[0]) seps[0].style.display = 'none';
+          return;
+        }
+
+        box.classList.remove('live-now');
+        if (dEl) { dEl.closest('.cd-unit').style.display = ''; }
+        const seps = box.querySelectorAll('.cd-sep');
+        if (seps[0]) seps[0].style.display = '';
+
+        // If we're past today's service end, target next week
+        const target = now >= end ? nextSaturday(new Date(now.getTime() + 7 * 86400000)) : sat;
+        const diff   = Math.max(0, Math.floor((target - now) / 1000));
+
+        const days = Math.floor(diff / 86400);
+        const hrs  = Math.floor((diff % 86400) / 3600);
+        const mins = Math.floor((diff % 3600) / 60);
+        const secs = diff % 60;
+
+        if (label) label.textContent = 'Next service in';
+        if (dEl) dEl.textContent = days;
+        if (hEl) hEl.textContent = String(hrs).padStart(2,'0');
+        if (mEl) mEl.textContent = String(mins).padStart(2,'0');
+        if (sEl) sEl.textContent = String(secs).padStart(2,'0');
+      }
+
+      tick();
+      setInterval(tick, 1000);
+    })();
   </script>
 </body>
 </html>
