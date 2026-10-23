@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Ahavat Yeshua Fellowship</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#121212" id="theme-color-meta">
   <meta name="description" content="Ahavat Yeshua Fellowship in Staten Island, NY – a vibrant community where faith comes alive through worship, fellowship, and service. Join us every Saturday for services in English and Russian.">
   <link rel="icon" type="image/png" href="/images/logo.PNG">
   <link rel="apple-touch-icon" href="/images/logo.PNG">
@@ -2288,7 +2289,6 @@
           radial-gradient(55% 35% at 20% 95%, var(--ambient-b), transparent 70%),
           var(--light-bg);
       }
-      body { background-color: transparent; }
 
       /* ---------- Compact glass header ---------- */
       header.header {
@@ -2304,7 +2304,6 @@
         box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.04);
         transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
       }
-      header.header.header-hidden { transform: translateY(-100%); }
 
       .header-container {
         flex-direction: row !important;
@@ -4511,23 +4510,6 @@
           document.getElementById('main-nav').classList.add('lens-ready');
         });
 
-        // Mobile: hide the top bar while scrolling down, show it when scrolling up
-        const siteHeader = document.querySelector('header.header');
-        let lastY = window.scrollY;
-        let ticking = false;
-        window.addEventListener('scroll', function () {
-          if (ticking) return;
-          ticking = true;
-          requestAnimationFrame(function () {
-            const y = window.scrollY;
-            if (isMobile.matches && siteHeader) {
-              if (y > lastY + 6 && y > 90) siteHeader.classList.add('header-hidden');
-              else if (y < lastY - 6 || y <= 90) siteHeader.classList.remove('header-hidden');
-            }
-            lastY = y;
-            ticking = false;
-          });
-        }, { passive: true });
 
         // Mobile hamburger menu
         const hamburger = document.getElementById('hamburger');
@@ -5336,6 +5318,9 @@ document.addEventListener('DOMContentLoaded', function() {
       const toggle = document.getElementById('theme-toggle');
 
       function applyTheme(theme) {
+        // Safari/Chrome tint the status bar with this color
+        const meta = document.getElementById('theme-color-meta');
+        if (meta) meta.setAttribute('content', theme === 'light' ? '#f8f9fa' : '#121212');
         if (theme === 'light') {
           document.body.classList.add('light');
           toggle.textContent = '🌙';
