@@ -3298,6 +3298,34 @@
       .gallery-cta { width: 100%; white-space: nowrap; }
     }
 
+    /* ---------- Home buttons on phones: room to breathe inside each pill ---------- */
+    @media (max-width: 768px) {
+      #home .hero-actions .cta-button {
+        font-size: min(0.95rem, 3.9vw) !important;
+        padding: 0.6rem 0.9rem !important;
+        gap: 0.45rem;
+        letter-spacing: 0;
+      }
+      #home .hero-actions .sermon-button { padding-left: 0.9rem !important; padding-right: 0.9rem !important; }
+      #home .hero-actions .sermon-button .yt-mark { width: 20px; height: 14px; }
+      #home .cd-action {
+        font-size: min(0.85rem, 3.6vw) !important;
+        padding: 0.4rem 0.75rem !important;
+        gap: 0.35rem !important;
+      }
+      #home .cd-action svg { width: 16px; height: 16px; }
+    }
+
+    /* Short labels on phones (icons carry the meaning); full labels elsewhere */
+    .lbl-short { display: none; }
+    @media (max-width: 768px) {
+      html:not([lang="ru"]) #home .lbl-full { display: none; }
+      html:not([lang="ru"]) #home .lbl-short { display: inline; }
+      /* If Safari jumps to a #section link, land below the header, not under it */
+      main > .section { scroll-margin-top: calc(var(--header-h, 62px) + 12px); }
+    }
+    html[lang="ru"] #home .lbl-short { display: none; }
+
     @keyframes sheetUp {
       from { transform: translateY(100%); }
       to { transform: translateY(0); }
@@ -3379,6 +3407,9 @@
         'Google Calendar': 'Google Календарь',
         'Join Us This Week': 'Приходите к нам',
         'Watch Sermons': 'Проповеди',
+        'Calendar': 'В календарь',
+        'Invite': 'Пригласить',
+        'Sermons': 'Проповеди',
 
         // Gallery
         '✨ Our Community ✨': '✨ Ahavat Yeshua ✨',
@@ -3637,11 +3668,11 @@
             <div class="cd-actions">
               <a class="cd-action" id="cal-btn" href="service.ics" aria-haspopup="menu" aria-expanded="false">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4M12 13v5M9.5 15.5h5"/></svg>
-                Add to calendar
+                <span class="lbl-full">Add to calendar</span><span class="lbl-short">Calendar</span>
               </a>
               <button class="cd-action" id="share-btn" type="button">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3M7.5 7.5 12 3l4.5 4.5"/><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg>
-                <span>Invite a friend</span>
+                <span class="lbl-full">Invite a friend</span><span class="lbl-short">Invite</span>
               </button>
               <div class="cal-menu" id="cal-menu" role="menu" hidden>
                 <a role="menuitem" id="cal-google" href="#" target="_blank" rel="noopener noreferrer">Google Calendar</a>
@@ -3655,7 +3686,7 @@
             </a>
             <a href="https://www.youtube.com/@AhavatYeshua" target="_blank" rel="noopener noreferrer" class="cta-button sermon-button">
               <svg class="yt-mark" viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="5.5" fill="#FF0033"/><path d="M11.2 5.8v8.4l7.3-4.2z" fill="#fff"/></svg>
-              Watch Sermons
+              <span class="lbl-full">Watch Sermons</span><span class="lbl-short">Sermons</span>
             </a>
             <a href="#donation" class="cta-button" style="background: #FFD700; color: #000; border: 2px solid #FFD700; font-weight: 500;" data-section="donation" data-ru="Пожертвовать">
               Donation
@@ -4509,6 +4540,17 @@
         requestAnimationFrame(function () {
           document.getElementById('main-nav').classList.add('lens-ready');
         });
+        // Phones: a link like /#home makes the browser jump to that section and
+        // tuck the top of the card under the header - start at the top instead
+        if (isMobile.matches) {
+          if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+          window.scrollTo(0, 0);
+          window.addEventListener('load', function () {
+            window.scrollTo(0, 0);
+            setTimeout(function () { window.scrollTo(0, 0); }, 60);
+            setTimeout(function () { window.scrollTo(0, 0); }, 300);
+          });
+        }
 
 
         // Mobile hamburger menu
@@ -5690,11 +5732,14 @@ document.addEventListener('DOMContentLoaded', function() {
           'Service in Russian with live English translation.';
       }
       function flash(label) {
-        const span = shareBtn.querySelector('span');
-        const old = span.textContent;
-        span.textContent = t(label);
+        const spans = Array.from(shareBtn.querySelectorAll('.lbl-full, .lbl-short'));
+        const old = spans.map(function (sp) { return sp.textContent; });
+        spans.forEach(function (sp) { sp.textContent = t(label); });
         shareBtn.classList.add('done');
-        setTimeout(function () { span.textContent = old; shareBtn.classList.remove('done'); }, 1800);
+        setTimeout(function () {
+          spans.forEach(function (sp, i) { sp.textContent = old[i]; });
+          shareBtn.classList.remove('done');
+        }, 1800);
       }
       if (shareBtn) {
         shareBtn.addEventListener('click', async function () {
