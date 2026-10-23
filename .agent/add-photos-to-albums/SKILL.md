@@ -68,12 +68,17 @@ Optionally, for quick confirmation, the agent can start a static server and `cur
 5. Update the `galleryImages.<albumKey>` array to include every new `gallery<N>.jpg`.
 6. Update any album header/overlay text that might be hardcoded (if present):
    - Prefer using `${images.length}` or `${galleryImages.<albumKey>.length}` so it stays correct.
-7. Verify:
-   - Each new referenced file exists.
+7. Build the phone-friendly copies (thumbnails + full-screen size):
+   - `scripts/make-gallery-images.sh images/<album>` (needs `cwebp`: `brew install webp`).
+   - Creates `images/<album>/thumbs/<name>.webp` and `images/<album>/large/<name>.webp`; originals are untouched.
+   - The page loads these automatically from the original path in `galleryImages`; if a copy is missing it falls back to the original (slow on phones), so don't skip this step.
+8. Verify:
+   - Each new referenced file exists, plus its `thumbs/` and `large/` copies.
    - (Optional) One `curl -I` check for a new image URL returns HTTP `200`.
 
 ## Notes / Constraints
 
 - This UI relies on exact relative paths/filenames referenced in `galleryImages.<albumKey>`.
+- `galleryImages` appears twice in `index.html`. The live one is under the `<!-- Album Carousel Script - CLEAN GLOBAL SCOPE -->` comment; the earlier copy sits in a script block that never runs (a leftover syntax error). Update the live one (updating both is harmless).
 - File extensions matter for the hardcoded paths. If the UI references `.jpg`, ensure the destination filenames use `.jpg` (not `.JPG`), or update the UI paths accordingly.
 
