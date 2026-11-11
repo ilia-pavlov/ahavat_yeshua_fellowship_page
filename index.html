@@ -2787,6 +2787,559 @@
     }
     .home-countdown.live-now .cd-label { color: #66bb6a; }
 
+    /* ---------- Events: gift drive card ---------- */
+    .gift-card { grid-column: 1 / -1; }
+    .gift-card .event-body { padding-right: 1.5rem; }
+
+    .gift-card .event-desc { max-width: 720px; }
+    .gift-card .event-meta { flex-direction: row; flex-wrap: wrap; gap: 0.5rem 1.5rem; }
+    .gift-actions { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+    .gift-actions .event-join-btn { flex: 1 1 200px; margin-top: 0; justify-content: center; }
+    .gift-share-btn { background: rgba(0,121,107,0.06) !important; border-color: rgba(0,121,107,0.35) !important; color: #26a69a !important; flex: 0 1 160px !important; }
+    .gift-share-btn.done { color: #2e9d57 !important; border-color: rgba(46,157,87,0.4) !important; background: rgba(46,157,87,0.1) !important; }
+    .gift-details { margin: 0.25rem 0 1rem; font-size: 0.9rem; color: var(--lighter-text); }
+    .gift-details[open] .gift-cols { display: grid; }
+    .gift-cols { display: none; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.5rem 2rem; margin-top: 0.25rem; }
+    .gift-cols > div { min-width: 0; }
+    @media (max-width: 900px) { .gift-cols { grid-template-columns: 1fr; } }
+    .gift-details summary {
+      cursor: pointer;
+      font-weight: 600;
+      color: #26a69a;
+      padding: 0.5rem 0;
+      list-style: none;
+    }
+    .gift-details summary::-webkit-details-marker { display: none; }
+    .gift-details summary::before { content: "▸ "; display: inline-block; transition: transform 0.2s ease; }
+    .gift-details[open] summary::before { transform: rotate(90deg); }
+    .gift-details .gift-h { font-size: 0.95rem; font-weight: 700; color: var(--light-text); margin: 0.75rem 0 0.35rem; }
+    .gift-details .gift-list li, .gift-details .gift-note { font-size: 0.9rem; }
+    .gift-details .gift-list { margin: 0; padding-left: 1.2rem; line-height: 1.5; }
+    .gift-details .gift-list li { margin-bottom: 0.25rem; }
+    .gift-details .gift-note {
+      margin: 0.75rem 0 0;
+      padding: 0.5rem 0.75rem;
+      border-radius: 10px;
+      background: rgba(0,121,107,0.10);
+      color: var(--light-text);
+      font-weight: 500;
+    }
+
+    /* ---------- Phones: Gallery & Events headers — compact, 2×2 tiles ---------- */
+    @media (max-width: 768px) {
+      .page-hero { padding: 1.4rem 1rem 1.1rem !important; margin-bottom: 1.25rem !important; }
+      .page-hero .hero-content { padding: 0 !important; }
+      .page-hero .hero-content > div:first-child { margin-bottom: 0.4rem !important; }
+      .page-hero .hero-tagline { font-size: 0.72rem !important; letter-spacing: 0.14em !important; margin-bottom: 0.4rem !important; }
+      .page-hero h2 { font-size: clamp(1.7rem, 7.5vw, 2.1rem) !important; margin-bottom: 0.6rem !important; line-height: 1.15 !important; }
+      .page-hero p { font-size: 0.92rem !important; line-height: 1.5 !important; margin: 0 auto 1rem !important; }
+      .page-hero .page-hero-lead { margin: 0.9rem auto 0 !important; }
+
+      .section-pills {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem !important;
+        margin: 0.5rem 0 0 !important;
+        width: 100%;
+      }
+      .section-pill {
+        display: flex !important;
+        flex-direction: column;
+        align-items: center !important;
+        justify-content: center;
+        gap: 0.3rem !important;
+        min-height: 68px;
+        padding: 0.6rem 0.4rem !important;
+        border-radius: 14px !important;
+        background: color-mix(in srgb, var(--accent-color) 10%, transparent) !important;
+        border: 1px solid color-mix(in srgb, var(--accent-color) 28%, transparent) !important;
+        box-shadow: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .section-pill:active { background: color-mix(in srgb, var(--accent-color) 20%, transparent) !important; }
+      .section-pill > span:first-child { font-size: 1.35rem !important; line-height: 1; }
+      .section-pill > span:last-child {
+        font-size: 0.82rem !important;
+        font-weight: 600 !important;
+        color: var(--light-text) !important;
+        line-height: 1.2;
+        text-align: center;
+      }
+    }
+
+    /* ---------- Phones: Gallery albums as swipe strips ---------- */
+    @media (max-width: 768px) {
+      #gallery .album-section { margin-bottom: 0 !important; }
+      #gallery .gallery-albums { gap: 1.6rem !important; margin-bottom: 1.5rem !important; }
+      #gallery .gallery-divider { margin-bottom: 1.25rem !important; }
+      #gallery .album-header {
+        display: flex; align-items: baseline; justify-content: space-between;
+        text-align: left !important; margin: 0 0.25rem 0.6rem !important;
+      }
+      #gallery .album-header h3 { font-size: 1.3rem !important; margin: 0 !important; }
+      #gallery .album-header p { font-size: 0.82rem !important; margin: 0 !important; }
+      #gallery .album-header p::after { content: " →"; }
+      #gallery .album-carousel-container { padding: 0 !important; max-width: none !important; }
+      #gallery .album-nav { display: none !important; }
+      #gallery .album-carousel {
+        display: flex !important;
+        gap: 0.6rem !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding: 0 0.25rem 0.25rem;
+        scroll-padding-left: 0.25rem;
+      }
+      #gallery .album-carousel::-webkit-scrollbar { display: none; }
+      .swipe-photo {
+        flex: 0 0 72%;
+        aspect-ratio: 4 / 5;
+        padding: 0; border: 0; margin: 0;
+        border-radius: 16px;
+        overflow: hidden;
+        background: var(--card-bg);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+        scroll-snap-align: start;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .swipe-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+      .swipe-photo:active { transform: scale(0.98); }
+    }
+
+    /* ---------- Phones: compact event cards ---------- */
+    @media (max-width: 768px) {
+      #events .events-grid { gap: 0.75rem !important; margin-bottom: 0.5rem; }
+      #events .events-section-label { margin-bottom: 0.75rem !important; }
+      #events .events-section-label[style*="margin-top"] { margin-top: 1.75rem !important; }
+      #events .event-card { border-radius: 16px; }
+      #events .event-card:hover { transform: none; }
+      #events .event-body { padding: 0.9rem 1rem 1rem !important; }
+
+      #events .camp-card .event-body,
+      #events .gift-card .event-body,
+      #events .flip-back .event-body { padding-right: 1rem !important; padding-top: 0.9rem !important; }
+      #events .event-date-badge:not([style*="static"]) {
+        top: 0.85rem; right: 0.85rem;
+        min-width: 52px; padding: 0.5rem 0.6rem 0.45rem; border-radius: 12px;
+      }
+      #events .event-date-badge .event-month { font-size: 0.58rem; margin-bottom: 0.15rem; }
+      #events .event-date-badge .event-day { font-size: 1.35rem; }
+      #events .event-date-badge .event-day[style*="font-size:1rem"] { font-size: 0.9rem !important; }
+      #events .event-tag { display: none; }
+      #events .event-title { font-size: 1.05rem; margin-bottom: 0.3rem; }
+      #events .event-desc {
+        font-size: 0.86rem; line-height: 1.45; margin-bottom: 0.6rem;
+        display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+      }
+      #events .gift-card .event-desc { -webkit-line-clamp: 3; }
+      #events .event-card.expanded .event-desc { display: block; -webkit-line-clamp: unset; overflow: visible; }
+      #events .desc-more {
+        display: inline-flex; align-items: center; gap: 0.25rem;
+        background: none; border: 0; padding: 0.15rem 0; margin: -0.35rem 0 0.55rem;
+        font: inherit; font-size: 0.82rem; font-weight: 600;
+        color: var(--accent-color); cursor: pointer; align-self: flex-start;
+        -webkit-tap-highlight-color: transparent;
+      }
+      #events .desc-more[hidden] { display: none; }
+      #events .desc-more::after { content: "▾"; transition: transform 0.2s ease; }
+      #events .event-card.expanded .desc-more::after { transform: rotate(180deg); }
+      #events .event-meta {
+        flex-direction: row; flex-wrap: wrap; gap: 0.25rem 0.9rem;
+        padding-top: 0.55rem; margin-bottom: 0.6rem; font-size: 0.8rem;
+      }
+      #events .event-meta-item { font-size: 0.8rem; }
+      #events .event-join-btn { min-height: 38px; padding: 0.45rem 0.8rem; font-size: 0.85rem; margin-top: 0; }
+      #events .camp-scroll-strip { height: 150px; }
+      #events .flip-card, #events .flip-inner { min-height: 0; }
+      /* Saturday card: no flip on phones — front and back shown together */
+      #events .flip-card { cursor: default; }
+      #events .flip-inner { display: flex !important; flex-direction: column; transform: none !important; min-height: 0 !important; }
+      #events .flip-front, #events .flip-back {
+        position: relative !important; inset: auto !important; transform: none !important;
+        backface-visibility: visible !important; -webkit-backface-visibility: visible !important;
+      }
+      #events .flip-back .event-body { padding-top: 0 !important; }
+      #events .flip-back .event-body .js-countdown { order: 2; margin: 0.6rem 0 0.6rem !important; }
+      #events .flip-back .event-meta { order: 1; }
+      #events .flip-back .event-yt-btn { order: 3; }
+      #events .flip-hint-cta, #events .flip-hint { display: none !important; }
+      #events .flip-front .event-desc { margin-bottom: 0.2rem; }
+
+    }
+
+    /* ---------- Event cards: badge space only next to tag/title/text; details & buttons use full width ---------- */
+    #events .event-body { padding-right: 1.5rem; }
+    #events .event-card:not(.camp-card) .event-title,
+    #events .event-card:not(.camp-card) .event-desc { margin-right: var(--badge-space, 5rem); }
+    /* ---------- Christmas card: candy-cane border, twinkling lights, snow, trees ---------- */
+    #events .xmas-card {
+      border: 3px solid transparent;
+      background:
+        linear-gradient(var(--card-bg), var(--card-bg)) padding-box,
+        repeating-linear-gradient(45deg, #c62828 0 10px, #fff 10px 20px, #2e7d32 20px 30px, #fff 30px 40px) border-box;
+      background-size: auto, 56.57px 56.57px;
+      animation: xmasBorder 3s linear infinite;
+      box-shadow: 0 10px 30px rgba(198, 40, 40, 0.18), 0 0 0 1px rgba(46, 125, 50, 0.15);
+      isolation: isolate;
+    }
+    body:not(.light) #events .xmas-card {
+      background:
+        linear-gradient(#1d1f24, #1d1f24) padding-box,
+        repeating-linear-gradient(45deg, #e53935 0 10px, #f5f5f5 10px 20px, #43a047 20px 30px, #f5f5f5 30px 40px) border-box;
+      background-size: auto, 56.57px 56.57px;
+    }
+    @keyframes xmasBorder { to { background-position: 0 0, 56.57px 0; } }
+    #events .xmas-card .event-body { position: relative; z-index: 2; padding-top: 1.9rem !important; padding-bottom: 2.6rem !important; }
+    #events .xmas-card .event-date-badge {
+      z-index: 3; top: 1.6rem;
+      background: linear-gradient(145deg, #d32f2f, #b71c1c) !important;
+      animation: xmasGlow 2.4s ease-in-out infinite;
+    }
+    @keyframes xmasGlow {
+      0%, 100% { box-shadow: 0 4px 14px rgba(211, 47, 47, 0.5); }
+      50%      { box-shadow: 0 4px 20px rgba(67, 160, 71, 0.65); }
+    }
+    /* String of lights */
+    .xmas-lights {
+      position: absolute; top: 0; left: 0; right: 0; height: 22px; z-index: 3;
+      display: flex; justify-content: space-around; align-items: flex-start;
+      padding: 0 6px; pointer-events: none;
+    }
+    .xmas-lights::before {
+      content: ""; position: absolute; left: 0; right: 0; top: -10px; height: 20px;
+      border-bottom: 1.5px solid rgba(60, 60, 60, 0.45); border-radius: 0 0 50% 50% / 0 0 100% 100%;
+    }
+    body:not(.light) .xmas-lights::before { border-color: rgba(220, 220, 220, 0.35); }
+    .xmas-lights i {
+      position: relative; width: 7px; height: 11px; margin-top: 6px;
+      border-radius: 50% 50% 45% 45%;
+      background: #e53935;
+      box-shadow: 0 0 6px 1px currentColor;
+      color: #e53935;
+      animation: xmasTwinkle 1.6s ease-in-out infinite;
+      animation-delay: calc(var(--i) * -0.23s);
+    }
+    .xmas-lights i:nth-child(4n+2) { background: #43a047; color: #43a047; }
+    .xmas-lights i:nth-child(4n+3) { background: #fdd835; color: #fdd835; }
+    .xmas-lights i:nth-child(4n+4) { background: #1e88e5; color: #1e88e5; }
+    .xmas-lights i:nth-child(odd) { margin-top: 9px; }
+    .xmas-lights i::before { content: ""; position: absolute; top: -3px; left: 2px; width: 3px; height: 3px; background: #555; border-radius: 1px; }
+    @keyframes xmasTwinkle { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; box-shadow: none; } }
+    /* Snow */
+    .xmas-snow { position: absolute; inset: 0; overflow: hidden; z-index: 1; pointer-events: none; border-radius: inherit; }
+    .xmas-snow i {
+      position: absolute; top: -10%; left: var(--x);
+      font-style: normal; font-size: var(--s); line-height: 1;
+      color: #90caf9; opacity: 0;
+      animation: xmasSnow var(--d) linear infinite; animation-delay: var(--t);
+    }
+    body:not(.light) .xmas-snow i { color: #e3f2fd; }
+    @keyframes xmasSnow {
+      0%   { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+      10%  { opacity: 0.55; }
+      85%  { opacity: 0.45; }
+      100% { transform: translate(18px, 110%) rotate(180deg); opacity: 0; top: 100%; }
+    }
+    /* Bottom scenes (Christmas: Bethlehem star, stable, manger, cross; Thanksgiving: harvest) */
+    .fest-scene { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 84px; z-index: 1; pointer-events: none; overflow: visible; }
+    .fest-scene .fest-hill { fill: #1a2a4a; opacity: 0.16; }
+    .fest-scene .fest-hill2 { fill: #1a2a4a; opacity: 0.1; }
+    body:not(.light) .fest-scene .fest-hill { fill: #8fa8d8; opacity: 0.12; }
+    body:not(.light) .fest-scene .fest-hill2 { fill: #8fa8d8; opacity: 0.08; }
+    .xs-stable, .xs-manger, .xs-cross rect { fill: #4e342e; stroke: #4e342e; }
+    body:not(.light) .xs-stable, body:not(.light) .xs-manger, body:not(.light) .xs-cross rect { fill: #bcaaa4; stroke: #bcaaa4; }
+    .xs-star { transform-origin: 160px 10px; animation: xsStar 3s ease-in-out infinite; }
+    @keyframes xsStar { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.15); opacity: 0.85; } }
+    .xs-beam { animation: xsBeam 3s ease-in-out infinite; }
+    @keyframes xsBeam { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; } }
+    .xs-babyglow { animation: xsBeam 2.4s ease-in-out infinite; }
+    #events .xmas-card .event-body { padding-bottom: 6rem !important; }
+
+    /* Thanksgiving card */
+    #events .thanks-card {
+      border: 3px solid transparent;
+      background:
+        linear-gradient(var(--card-bg), var(--card-bg)) padding-box,
+        linear-gradient(90deg, #e65100, #f9a825, #8d6e63, #ef6c00, #fbc02d, #e65100) border-box;
+      background-size: auto, 300% 100%;
+      animation: thanksBorder 6s linear infinite;
+      box-shadow: 0 10px 30px rgba(230, 81, 0, 0.18);
+      isolation: isolate;
+    }
+    body:not(.light) #events .thanks-card {
+      background:
+        linear-gradient(#1f1c19, #1f1c19) padding-box,
+        linear-gradient(90deg, #ff7043, #ffca28, #a1887f, #ff8f00, #ffd54f, #ff7043) border-box;
+      background-size: auto, 300% 100%;
+    }
+    @keyframes thanksBorder { to { background-position: 0 0, 300% 0; } }
+    #events .thanks-card .event-body { position: relative; z-index: 2; padding-top: 2rem !important; padding-bottom: 6rem !important; }
+    #events .thanks-card .event-date-badge {
+      z-index: 3; top: 1.7rem;
+      background: linear-gradient(145deg, #f57c00, #d84315) !important;
+      animation: thanksGlow 2.6s ease-in-out infinite;
+    }
+    @keyframes thanksGlow {
+      0%, 100% { box-shadow: 0 4px 14px rgba(230, 81, 0, 0.45); }
+      50%      { box-shadow: 0 4px 20px rgba(251, 192, 45, 0.7); }
+    }
+    .thanks-garland {
+      position: absolute; top: 0; left: 0; right: 0; height: 26px; z-index: 3;
+      display: flex; justify-content: space-around; padding: 0 8px; pointer-events: none;
+    }
+    .thanks-garland::before {
+      content: ""; position: absolute; left: 0; right: 0; top: -10px; height: 20px;
+      border-bottom: 1.5px solid rgba(121, 85, 72, 0.5); border-radius: 0 0 50% 50% / 0 0 100% 100%;
+    }
+    .thanks-garland i {
+      font-style: normal; font-size: 0.95rem; line-height: 1; margin-top: 4px;
+      transform-origin: 50% 0;
+      animation: leafSway 2.8s ease-in-out infinite;
+      animation-delay: calc(var(--i) * -0.35s);
+    }
+    .thanks-garland i:nth-child(odd) { margin-top: 8px; }
+    @keyframes leafSway { 0%, 100% { transform: rotate(-12deg); } 50% { transform: rotate(12deg); } }
+    .thanks-fall i { color: inherit; animation-name: leafFall; }
+    @keyframes leafFall {
+      0%   { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+      10%  { opacity: 0.6; }
+      50%  { transform: translate(-14px, 55%) rotate(160deg); }
+      85%  { opacity: 0.5; }
+      100% { transform: translate(10px, 110%) rotate(320deg); opacity: 0; top: 100%; }
+    }
+    .ts-hill { fill: #c49a3a; opacity: 0.28; }
+    body:not(.light) .ts-hill { fill: #d4a84a; opacity: 0.2; }
+    .ts-sun { opacity: 0.55; animation: xsBeam 4s ease-in-out infinite; }
+    .ts-wheat path { stroke: #b8860b; }
+    .ts-grain ellipse { fill: #daa520; }
+    .ts-tie { fill: #8d6e63; }
+    .ts-basket-body { fill: #8d6e63; }
+    .ts-weave { stroke: #6d4c41; }
+    body:not(.light) .ts-basket-body { fill: #a1887f; }
+
+    @media (prefers-reduced-motion: reduce) {
+      #events .xmas-card, #events .xmas-card .event-date-badge, .xmas-lights i,
+      #events .thanks-card, #events .thanks-card .event-date-badge, .thanks-garland i,
+      .xs-star, .xs-beam, .xs-babyglow, .ts-sun { animation: none; }
+      .xmas-snow { display: none; }
+    }
+
+    /* ---------- Gift drive card: gift-wrap border, hopping gift, floating toys, gift boxes ---------- */
+    #events .fest-gift {
+      border: 3px solid transparent;
+      background:
+        linear-gradient(var(--card-bg), var(--card-bg)) padding-box,
+        linear-gradient(90deg, #00897b, #ffca28, #e53935, #26a69a, #ffd54f, #00897b) border-box;
+      background-size: auto, 300% 100%;
+      animation: thanksBorder 7s linear infinite;
+      box-shadow: 0 10px 30px rgba(0, 121, 107, 0.18);
+      isolation: isolate;
+    }
+    body:not(.light) #events .fest-gift {
+      background:
+        linear-gradient(#18201f, #18201f) padding-box,
+        linear-gradient(90deg, #26a69a, #ffd54f, #ff5252, #4db6ac, #ffe082, #26a69a) border-box;
+      background-size: auto, 300% 100%;
+    }
+    #events .fest-gift .event-body { position: relative; z-index: 2; padding-bottom: 5.5rem !important; }
+    #events .fest-gift .event-date-badge { z-index: 3; animation: giftBadgeGlow 2.6s ease-in-out infinite; }
+    #events .fest-gift .event-date-badge .event-day { display: inline-block; animation: giftHop 3.2s ease-in-out infinite; transform-origin: 50% 100%; }
+    @keyframes giftHop {
+      0%, 60%, 100% { transform: translateY(0) rotate(0); }
+      66% { transform: translateY(-5px) rotate(-10deg) scale(1.08); }
+      72% { transform: translateY(0) rotate(8deg); }
+      78% { transform: translateY(-3px) rotate(-5deg); }
+      84% { transform: translateY(0) rotate(0); }
+    }
+    @keyframes giftBadgeGlow {
+      0%, 100% { box-shadow: 0 4px 14px rgba(0, 121, 107, 0.45); }
+      50%      { box-shadow: 0 4px 22px rgba(255, 202, 40, 0.65); }
+    }
+    .gift-sparks { position: absolute; top: 0.5rem; right: 0.5rem; width: 110px; height: 90px; z-index: 4; pointer-events: none; }
+    .gift-sparks i {
+      position: absolute; font-style: normal; color: #ffca28; font-size: 0.75rem;
+      opacity: 0; animation: giftSpark 3.2s ease-in-out infinite;
+      animation-delay: calc(var(--i) * 0.8s);
+    }
+    .gift-sparks i:nth-child(1) { top: 2px; left: 8px; }
+    .gift-sparks i:nth-child(2) { top: 64px; left: 2px; font-size: 0.6rem; }
+    .gift-sparks i:nth-child(3) { top: 0; right: 0; font-size: 0.65rem; color: #ff7043; }
+    .gift-sparks i:nth-child(4) { top: 70px; right: 6px; color: #4db6ac; }
+    @keyframes giftSpark { 0%, 100% { opacity: 0; transform: scale(0.4) rotate(0); } 40% { opacity: 1; transform: scale(1.1) rotate(45deg); } 70% { opacity: 0; } }
+    /* Toys floating up */
+    .gift-float i { top: auto; bottom: -10%; animation-name: giftRise; color: inherit; }
+    @keyframes giftRise {
+      0%   { transform: translate(0, 0) rotate(-8deg); opacity: 0; bottom: -10%; }
+      12%  { opacity: 0.38; }
+      50%  { transform: translate(10px, 0) rotate(8deg); }
+      85%  { opacity: 0.3; }
+      100% { transform: translate(-6px, 0) rotate(-6deg); opacity: 0; bottom: 105%; }
+    }
+    body:not(.light) .gift-float i { --o: 0.3; }
+    .gift-scene {
+      position: absolute; left: 0; right: 0; bottom: 0; height: 76px; z-index: 1; pointer-events: none;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 84' width='320' height='84'%3E%3Cg transform='rotate(-4 -25.0 84)'%3E%3Crect x='-40' y='58' width='30' height='26' rx='2' fill='%23c62828'/%3E%3Crect x='-41.5' y='58' width='33' height='5.7' rx='1.5' fill='%23c62828' style='filter:brightness(1.12)'/%3E%3Crect x='-27.0' y='58' width='4' height='26' fill='%23ffd54f'/%3E%3Cpath d='M-25.0 58 C-34.0 49 -36.0 57 -25.0 58 C-14.0 57 -16.0 49 -25.0 58 Z' fill='%23ffd54f'/%3E%3Ccircle cx='-25.0' cy='58' r='2' fill='%23ffd54f'/%3E%3C/g%3E%3Cg transform='rotate(3 7.0 84)'%3E%3Crect x='-4' y='66' width='22' height='18' rx='2' fill='%2300897b'/%3E%3Crect x='-5.5' y='66' width='25' height='4.0' rx='1.5' fill='%2300897b' style='filter:brightness(1.12)'/%3E%3Crect x='5.0' y='66' width='4' height='18' fill='%23fff'/%3E%3Cpath d='M7.0 66 C-2.0 57 -4.0 65 7.0 66 C18.0 65 16.0 57 7.0 66 Z' fill='%23ff7043'/%3E%3Ccircle cx='7.0' cy='66' r='2' fill='%23ff7043'/%3E%3C/g%3E%3Cg transform='rotate(-2 41.0 84)'%3E%3Crect x='24' y='54' width='34' height='30' rx='2' fill='%231e88e5'/%3E%3Crect x='22.5' y='54' width='37' height='6.6' rx='1.5' fill='%231e88e5' style='filter:brightness(1.12)'/%3E%3Crect x='39.0' y='54' width='4' height='30' fill='%23ffeb3b'/%3E%3Cpath d='M41.0 54 C32.0 45 30.0 53 41.0 54 C52.0 53 50.0 45 41.0 54 Z' fill='%23ff5252'/%3E%3Ccircle cx='41.0' cy='54' r='2' fill='%23ff5252'/%3E%3C/g%3E%3Cg transform='rotate(5 74.0 84)'%3E%3Crect x='64' y='68' width='20' height='16' rx='2' fill='%23fbc02d'/%3E%3Crect x='62.5' y='68' width='23' height='4.0' rx='1.5' fill='%23fbc02d' style='filter:brightness(1.12)'/%3E%3Crect x='72.0' y='68' width='4' height='16' fill='%23c62828'/%3E%3Cpath d='M74.0 68 C65.0 59 63.0 67 74.0 68 C85.0 67 83.0 59 74.0 68 Z' fill='%23c62828'/%3E%3Ccircle cx='74.0' cy='68' r='2' fill='%23c62828'/%3E%3C/g%3E%3Cg transform='rotate(-3 104.0 84)'%3E%3Crect x='90' y='60' width='28' height='24' rx='2' fill='%238e24aa'/%3E%3Crect x='88.5' y='60' width='31' height='5.3' rx='1.5' fill='%238e24aa' style='filter:brightness(1.12)'/%3E%3Crect x='102.0' y='60' width='4' height='24' fill='%23ffd54f'/%3E%3Cpath d='M104.0 60 C95.0 51 93.0 59 104.0 60 C115.0 59 113.0 51 104.0 60 Z' fill='%23ffd54f'/%3E%3Ccircle cx='104.0' cy='60' r='2' fill='%23ffd54f'/%3E%3C/g%3E%3Cg transform='rotate(2 136.0 84)'%3E%3Crect x='124' y='64' width='24' height='20' rx='2' fill='%23e53935'/%3E%3Crect x='122.5' y='64' width='27' height='4.4' rx='1.5' fill='%23e53935' style='filter:brightness(1.12)'/%3E%3Crect x='134.0' y='64' width='4' height='20' fill='%23fff'/%3E%3Cpath d='M136.0 64 C127.0 55 125.0 63 136.0 64 C147.0 63 145.0 55 136.0 64 Z' fill='%232e7d32'/%3E%3Ccircle cx='136.0' cy='64' r='2' fill='%232e7d32'/%3E%3C/g%3E%3Cg transform='rotate(-1 172.0 84)'%3E%3Crect x='154' y='52' width='36' height='32' rx='2' fill='%2300796b'/%3E%3Crect x='152.5' y='52' width='39' height='7.0' rx='1.5' fill='%2300796b' style='filter:brightness(1.12)'/%3E%3Crect x='170.0' y='52' width='4' height='32' fill='%23ffd54f'/%3E%3Cpath d='M172.0 52 C163.0 43 161.0 51 172.0 52 C183.0 51 181.0 43 172.0 52 Z' fill='%23ff7043'/%3E%3Ccircle cx='172.0' cy='52' r='2' fill='%23ff7043'/%3E%3C/g%3E%3Cg transform='rotate(4 207.0 84)'%3E%3Crect x='196' y='66' width='22' height='18' rx='2' fill='%23ff7043'/%3E%3Crect x='194.5' y='66' width='25' height='4.0' rx='1.5' fill='%23ff7043' style='filter:brightness(1.12)'/%3E%3Crect x='205.0' y='66' width='4' height='18' fill='%23fff'/%3E%3Cpath d='M207.0 66 C198.0 57 196.0 65 207.0 66 C218.0 65 216.0 57 207.0 66 Z' fill='%231e88e5'/%3E%3Ccircle cx='207.0' cy='66' r='2' fill='%231e88e5'/%3E%3C/g%3E%3Cg transform='rotate(-3 239.0 84)'%3E%3Crect x='224' y='58' width='30' height='26' rx='2' fill='%233949ab'/%3E%3Crect x='222.5' y='58' width='33' height='5.7' rx='1.5' fill='%233949ab' style='filter:brightness(1.12)'/%3E%3Crect x='237.0' y='58' width='4' height='26' fill='%23ffd54f'/%3E%3Cpath d='M239.0 58 C230.0 49 228.0 57 239.0 58 C250.0 57 248.0 49 239.0 58 Z' fill='%23ffd54f'/%3E%3Ccircle cx='239.0' cy='58' r='2' fill='%23ffd54f'/%3E%3C/g%3E%3Cg transform='rotate(3 271.0 84)'%3E%3Crect x='260' y='67' width='22' height='17' rx='2' fill='%2343a047'/%3E%3Crect x='258.5' y='67' width='25' height='4.0' rx='1.5' fill='%2343a047' style='filter:brightness(1.12)'/%3E%3Crect x='269.0' y='67' width='4' height='17' fill='%23fff'/%3E%3Cpath d='M271.0 67 C262.0 58 260.0 66 271.0 67 C282.0 66 280.0 58 271.0 67 Z' fill='%23c62828'/%3E%3Ccircle cx='271.0' cy='67' r='2' fill='%23c62828'/%3E%3C/g%3E%3Cg transform='rotate(-2 304.0 84)'%3E%3Crect x='288' y='56' width='32' height='28' rx='2' fill='%23d81b60'/%3E%3Crect x='286.5' y='56' width='35' height='6.2' rx='1.5' fill='%23d81b60' style='filter:brightness(1.12)'/%3E%3Crect x='302.0' y='56' width='4' height='28' fill='%23ffd54f'/%3E%3Cpath d='M304.0 56 C295.0 47 293.0 55 304.0 56 C315.0 55 313.0 47 304.0 56 Z' fill='%23ffd54f'/%3E%3Ccircle cx='304.0' cy='56' r='2' fill='%23ffd54f'/%3E%3C/g%3E%3Cg transform='rotate(4 338.0 84)'%3E%3Crect x='326' y='64' width='24' height='20' rx='2' fill='%2300acc1'/%3E%3Crect x='324.5' y='64' width='27' height='4.4' rx='1.5' fill='%2300acc1' style='filter:brightness(1.12)'/%3E%3Crect x='336.0' y='64' width='4' height='20' fill='%23fff'/%3E%3Cpath d='M338.0 64 C329.0 55 327.0 63 338.0 64 C349.0 63 347.0 55 338.0 64 Z' fill='%23ff7043'/%3E%3Ccircle cx='338.0' cy='64' r='2' fill='%23ff7043'/%3E%3C/g%3E%3C/svg%3E") repeat-x left bottom / 290px 76px;
+      border-radius: 0 0 13px 13px;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      #events .fest-gift, #events .fest-gift .event-date-badge, #events .fest-gift .event-date-badge .event-day { animation: none; }
+      .gift-sparks, .gift-float { display: none; }
+    }
+
+    .event-card.ev-flash { animation: evFlash 1.6s ease-out; }
+    @keyframes evFlash {
+      0%, 30% { box-shadow: 0 0 0 3px var(--accent-color), 0 10px 30px rgba(77,171,247,0.35); }
+      100% { box-shadow: 0 0 0 0 transparent; }
+    }
+    .ev-verse { display: block; margin-top: 0.4rem; font-style: italic; opacity: 0.85; }
+    /* Group tag repeats the section header above it — hide it */
+    #events .event-tag { display: none; }
+    #events .event-meta { align-self: stretch; }
+    #events .event-join-btn { align-self: stretch; }
+
+    /* ---------- Event cards: Add to calendar + Contact side by side ---------- */
+    .ev-actions { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.25rem; }
+    .ev-actions > .event-join-btn, .ev-cal { flex: none; width: 100%; min-width: 0; }
+    .ev-actions .event-join-btn { white-space: nowrap; }
+    @media (max-width: 768px) {
+      #events .ev-actions { flex-direction: column; gap: 0.45rem; }
+      #events .gift-actions { flex-direction: column; gap: 0.45rem; }
+      #events .gift-actions .event-join-btn { flex: none !important; width: 100%; }
+      #events .ev-actions > .event-join-btn, #events .ev-cal { flex: none; width: 100%; }
+    }
+    .ev-cal { position: relative; display: flex; }
+    .ev-cal .ev-cal-btn { flex: 1; text-decoration: none; margin-top: 0; justify-content: center; }
+    .ev-actions > .event-join-btn { margin-top: 0; }
+    .ev-cal .cal-menu { top: auto; bottom: calc(100% + 8px); }
+    .event-card:has(.ev-cal .cal-menu:not([hidden])) { overflow: visible; z-index: 5; }
+
+    /* ---------- Phones: Events as lists; tap a row → card slides up in a sheet ---------- */
+    .ev-list { display: none; }
+    @media (max-width: 768px) {
+      #events .events-grid { display: none !important; }
+      #events .ev-list {
+        display: flex; flex-direction: column;
+        border-radius: 16px; overflow: hidden;
+        background: rgba(255, 255, 255, 0.72);
+        border: 1px solid var(--border-color);
+        box-shadow: 0 8px 24px rgba(20, 40, 80, 0.08);
+        margin-bottom: 0.5rem;
+      }
+      body:not(.light) #events .ev-list { background: rgba(255, 255, 255, 0.05); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3); }
+      #events .ev-list .up-row { border: 0; border-left: 4px solid var(--c); width: 100%; background: none; font: inherit; text-align: left; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+      #events .ev-list .up-row + .up-row { border-top: 1px solid var(--border-color); }
+      #events .ev-list .up-row:active { background: color-mix(in srgb, var(--c) 10%, transparent); }
+      #events .ev-list .up-arrow { display: inline; font-size: 1.1rem; }
+      #events .ev-list .up-sub { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+      /* Sheet */
+      .ev-sheet { position: fixed; inset: 0; z-index: 1200; }
+      .ev-sheet[hidden] { display: none; }
+      .ev-sheet-backdrop { position: absolute; inset: 0; background: rgba(0, 0, 0, 0.45); animation: evFade 0.25s ease; }
+      .ev-sheet-panel {
+        position: absolute; left: 0; right: 0; bottom: 0;
+        max-height: 88vh; max-height: 88dvh;
+        overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain;
+        background: var(--light-bg, #f6f7fb);
+        border-radius: 22px 22px 0 0;
+        padding: 0.6rem 0.9rem calc(1rem + env(safe-area-inset-bottom));
+        box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.3);
+        animation: evSheetUp 0.32s cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+      body:not(.light) .ev-sheet-panel { background: #15171b; }
+      .ev-sheet-grab { width: 40px; height: 5px; border-radius: 3px; background: var(--border-color); margin: 0 auto 0.6rem; }
+      .ev-sheet-close {
+        position: absolute; top: 0.55rem; right: 0.8rem; z-index: 5;
+        width: 32px; height: 32px; border-radius: 50%;
+        border: 1px solid var(--border-color); background: var(--card-bg);
+        color: var(--light-text); font-size: 0.9rem; cursor: pointer;
+      }
+      .ev-sheet-body { padding-top: 1.6rem; }
+      .ev-sheet-body .event-card { box-shadow: none; }
+      /* Full text in the sheet */
+      #events .ev-sheet-body .event-desc { display: block; -webkit-line-clamp: unset; overflow: visible; }
+      #events .ev-sheet-body .desc-more { display: none !important; }
+      #events .ev-sheet-body .camp-scroll-strip { height: 220px; }
+      body.ev-sheet-open { overflow: hidden; }
+    }
+    @keyframes evSheetUp { from { transform: translateY(100%); } to { transform: none; } }
+    @keyframes evFade { from { opacity: 0; } to { opacity: 1; } }
+
+    /* ---------- Home: "Coming up" list ---------- */
+    .upcoming {
+      width: min(100%, 520px);
+      margin: 0 auto 1.75rem;
+      text-align: left;
+    }
+    .upcoming[hidden], .up-row[hidden] { display: none !important; }
+    .up-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-color);
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+    .up-list {
+      display: flex;
+      flex-direction: column;
+      border-radius: 16px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--border-color);
+      box-shadow: 0 8px 24px rgba(20, 40, 80, 0.08);
+    }
+    body:not(.light) .up-list { background: rgba(255, 255, 255, 0.05); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3); }
+    .up-row {
+      --c: #d35400;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.7rem 0.9rem;
+      text-decoration: none;
+      color: inherit;
+      border-left: 4px solid var(--c);
+      transition: background 0.2s ease;
+    }
+    .up-row + .up-row { border-top: 1px solid var(--border-color); }
+    .up-row:hover { background: color-mix(in srgb, var(--c) 8%, transparent); }
+    .up-thanks { --c: #d35400; }
+    .up-gift   { --c: #00796b; }
+    .up-xmas   { --c: #c62828; }
+    body:not(.light) .up-thanks { --c: #ffa040; }
+    body:not(.light) .up-gift   { --c: #4db6ac; }
+    body:not(.light) .up-xmas   { --c: #ff6b6b; }
+    .up-emoji { font-size: 1.5rem; line-height: 1; flex-shrink: 0; }
+    .up-main { display: flex; flex-direction: column; min-width: 0; flex: 1; }
+    .up-title { font-weight: 700; font-size: 0.98rem; color: var(--light-text); line-height: 1.25; }
+    .up-sub { font-size: 0.8rem; color: var(--lighter-text); line-height: 1.3; margin-top: 2px; }
+    .up-when {
+      flex-shrink: 0;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--c);
+      background: color-mix(in srgb, var(--c) 14%, transparent);
+      padding: 0.25rem 0.55rem;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+    .up-arrow { color: var(--lighter-text); font-size: 1.2rem; flex-shrink: 0; }
+    @media (max-width: 480px) {
+      .upcoming { margin-bottom: 0.9rem; }
+      .up-label { margin-bottom: 0.35rem; font-size: 0.66rem; }
+      .up-row { padding: 0.5rem 0.65rem; gap: 0.55rem; }
+      .up-emoji { font-size: 1.25rem; }
+      .up-title { font-size: 0.86rem; }
+      .up-sub { font-size: 0.72rem; }
+      .up-when { font-size: 0.66rem; padding: 0.2rem 0.45rem; }
+      .up-arrow { display: none; }
+    }
+
     /* ---------- Desktop menu: liquid glass pill with a sliding lens ---------- */
     .nav-lens { display: none; }
     @media (min-width: 769px) {
@@ -3385,6 +3938,27 @@
       border: 1px solid rgba(77, 171, 247, 0.32);
     }
     .doc-share:hover { background: rgba(77, 171, 247, 0.18); }
+    .video-card { justify-content: flex-start; }
+    .video-card .doc-card-info { flex: 1 1 220px; }
+    .video-card .doc-card-actions { margin-left: auto; }
+    .video-thumb {
+      position: relative; flex-shrink: 0;
+      width: 112px; aspect-ratio: 16 / 9;
+      border-radius: 10px; overflow: hidden; display: block;
+      background: #000;
+    }
+    .video-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s ease; }
+    .video-thumb:hover img { transform: scale(1.05); }
+    .video-thumb svg { position: absolute; left: 50%; top: 50%; width: 30px; transform: translate(-50%, -50%); filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4)); }
+    .doc-btn-video {
+      color: #fff;
+      background: linear-gradient(135deg, #ff3b4f, #e00020);
+      border: 1px solid rgba(200, 0, 30, 0.5);
+      box-shadow: 0 4px 12px rgba(224, 0, 32, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
+    .doc-btn-video svg { fill: currentColor; stroke: none; }
+    .doc-btn-video:hover { filter: brightness(1.06); }
+    @media (max-width: 520px) { .video-thumb { width: 100%; border-radius: 12px; } .video-thumb svg { width: 48px; } }
     .doc-share.done { color: #2e9d57; border-color: rgba(46, 157, 87, 0.4); background: rgba(46, 157, 87, 0.1); }
     @media (max-width: 520px) {
       .doc-card { padding: 0.85rem; }
@@ -3530,6 +4104,45 @@
         'A day of fun, sports, and the Good News — right on the boardwalk. Come play, connect, and share faith in the open air.':
           'День игр, спорта и Благой вести — прямо на набережной. Приходите поиграть, пообщаться и поделиться верой на свежем воздухе.',
         'Boardwalk, Staten Island': 'Набережная, Стейтен-Айленд',
+        'Hiking Day': 'Хайкинг — поход на природу',
+        "Fresh air, beautiful trails, and fellowship in God's creation. A 2–3 hour hike together — bring comfortable shoes and a friend.":
+          'Свежий воздух, красивые тропы и общение среди Божьего творения. 2–3 часа похода вместе — берите удобную обувь и друга.',
+        'Location TBD': 'Место уточняется',
+        'Seasonal · Date TBD': 'По сезону · дата уточняется',
+        'Regular Gatherings': 'Регулярные встречи',
+        'Online Prayer': 'Онлайн-молитва',
+        'Pray together with the church every Monday evening, from wherever you are.':
+          'Молимся вместе с церковью каждый понедельник вечером, где бы вы ни были.',
+        'Online': 'Онлайн',
+        'Every Monday · 8:00 PM': 'Каждый понедельник · 20:00',
+        'MON': 'ПН',
+        'Seasonal Events': 'Сезонные события',
+        'EVERY': 'Каждый',
+        'month': 'месяц',
+        '2×/mo': '2×/мес',
+        'FRI': 'ПТ',
+        'Once a month': 'Раз в месяц',
+        'Every other Friday': 'Каждую вторую пятницу',
+        'Summer · Date TBD': 'Летом · дата уточняется',
+        "Women's Prayer Meeting": 'Женская молитвенная встреча',
+        'Sisters gathering together to pray, share, and encourage one another in faith.':
+          'Сёстры собираются вместе, чтобы молиться, делиться и ободрять друг друга в вере.',
+        'Youth Group': 'Молодёжная встреча',
+        'Worship, games, and real conversations about faith for young people. Bring a friend!':
+          'Поклонение, игры и живые разговоры о вере для молодёжи. Приводите друзей!',
+        'Thanksgiving Day Service': 'Служение на День благодарения',
+        "Let's give thanks to God together! A festive service, a kids' performance, and a shared meal. Invite your friends and family!":
+          'Давайте вместе благодарить Бога! Праздничное служение, выступление детей и общий стол. Приглашайте друзей и близких!',
+        'Christmas Service': 'Рождественское служение',
+        "Celebrate the birth of Yeshua the Messiah! A festive service, a kids' performance, and a shared meal. Invite your friends and family!":
+          'Празднуем рождение Иешуа Мессии! Праздничное служение, выступление детей и общий стол. Приглашайте друзей и близких!',
+        'Service · Kids performance · Food': 'Служение · Выступление детей · Угощение',
+        'NOW': 'Сейчас',
+        'Christmas Gifts for Kids in Samarkand': 'Рождественские подарки детям в Самарканде',
+        "We're collecting New Year gifts for 70 children at a church in Samarkand, Uzbekistan 🇺🇿. The local pastor's church will pack them into gift bags and hand them out — and we'll show the photos and video at our service.":
+          'Собираем новогодние подарки для 70 детей из церкви в Самарканде, Узбекистан 🇺🇿. Церковь пастора упакует их в подарочные наборы и вручит детям, а фото и видео мы покажем на нашем служении.',
+        'Saturday, November 28': 'Суббота, 28 ноября',
+        'Saturday, December 19': 'Суббота, 19 декабря',
         'Questions about an event?': 'Есть вопросы о событии?',
         'JAN': 'ЯНВ', 'FEB': 'ФЕВ', 'MAR': 'МАР', 'APR': 'АПР', 'MAY': 'МАЙ', 'JUN': 'ИЮН',
         'JUL': 'ИЮЛ', 'AUG': 'АВГ', 'SEP': 'СЕН', 'OCT': 'ОКТ', 'NOV': 'НОЯ', 'DEC': 'ДЕК',
@@ -3718,14 +4331,44 @@
     <section id="home" class="section active">
       <div class="hero">
         <div class="hero-content">
-          <span class="hero-tagline">Welcome to Our Community</span>
           <h1 class="hero-heading" style="font-size: 3.5rem; line-height: 1.2; margin-bottom: 1.5rem;">
             Ahavat <span style="color: var(--accent-color);">Yeshua</span> Fellowship
           </h1>
           <p class="hero-lead" style="font-size: 1.25rem; max-width: 700px; margin: 0 auto 2.5rem; color: var(--lighter-text);">
-            A vibrant community where faith comes alive through worship, fellowship, and service. 
-            <span class="dynamic-text" id="dynamicText"></span>
+            A vibrant community where faith comes alive through worship, fellowship, and service.
           </p>
+          <div class="upcoming" id="upcoming">
+            <div class="up-label" data-ru="Скоро в церкви">Coming up</div>
+            <div class="up-list">
+              <a href="#events" class="up-row up-thanks" data-until="2026-11-29" onclick="return openEventCard(event, 'ev-thanksgiving')">
+                <span class="up-emoji" aria-hidden="true">🦃</span>
+                <span class="up-main">
+                  <span class="up-title" data-ru="Служение на День благодарения">Thanksgiving Service</span>
+                  <span class="up-sub" data-ru="Выступление детей · угощение · зовите друзей">Kids' performance · food · invite friends</span>
+                </span>
+                <span class="up-when" data-ru="Сб, 28 ноя">Sat, Nov 28</span>
+                <span class="up-arrow" aria-hidden="true">›</span>
+              </a>
+              <a href="#events" class="up-row up-gift" data-until="2026-12-20" onclick="return openEventCard(event, 'ev-gifts', true)">
+                <span class="up-emoji" aria-hidden="true">🎁</span>
+                <span class="up-main">
+                  <span class="up-title" data-ru="Подарки детям в Самарканде">Gifts for kids in Samarkand</span>
+                  <span class="up-sub" data-ru="Приносите канцтовары, книги или игрушки">Bring school supplies, books or toys</span>
+                </span>
+                <span class="up-when" data-ru="Сейчас">Now</span>
+                <span class="up-arrow" aria-hidden="true">›</span>
+              </a>
+              <a href="#events" class="up-row up-xmas" data-until="2026-12-20" onclick="return openEventCard(event, 'ev-christmas')">
+                <span class="up-emoji" aria-hidden="true">🎄</span>
+                <span class="up-main">
+                  <span class="up-title" data-ru="Рождественское служение">Christmas Service</span>
+                  <span class="up-sub" data-ru="Выступление детей · угощение · зовите друзей">Kids' performance · food · invite friends</span>
+                </span>
+                <span class="up-when" data-ru="Сб, 19 дек">Sat, Dec 19</span>
+                <span class="up-arrow" aria-hidden="true">›</span>
+              </a>
+            </div>
+          </div>
           <div class="home-countdown js-countdown" role="timer">
             <div class="cd-label" data-cd="label">Next service in</div>
             <div class="cd-units">
@@ -3753,9 +4396,6 @@
             </div>
           </div>
           <div class="hero-actions" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-            <a href="#" class="cta-button" style="background: var(--accent-color); color: #fff;" id="joinUsButton">
-              Join Us This Week
-            </a>
             <a href="https://www.youtube.com/@AhavatYeshua" target="_blank" rel="noopener noreferrer" class="cta-button sermon-button">
               <svg class="yt-mark" viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="5.5" fill="#FF0033"/><path d="M11.2 5.8v8.4l7.3-4.2z" fill="#fff"/></svg>
               <span class="lbl-full">Watch Sermons</span><span class="lbl-short">Sermons</span>
@@ -3773,7 +4413,7 @@
     
     <!-- Gallery Section -->
     <section id="gallery" class="section" style="scroll-margin-top: 40px;">
-      <div class="hero" style="position: relative; overflow: hidden;">
+      <div class="hero page-hero" style="position: relative; overflow: hidden;">
         <!-- Smaller animated background elements -->
         <div style="position: absolute; top: 15%; left: 8%; width: 18px; height: 18px; background: radial-gradient(circle, var(--accent-color) 0%, transparent 70%); opacity: 0.08; border-radius: 50%; animation: float 6s ease-in-out infinite;"></div>
         <div style="position: absolute; top: 65%; right: 12%; width: 14px; height: 14px; background: radial-gradient(circle, var(--primary-color) 0%, transparent 70%); opacity: 0.06; border-radius: 50%; animation: float 8s ease-in-out infinite reverse;"></div>
@@ -3788,27 +4428,27 @@
             Life at Ahavat Yeshua
           </h2>
           
-            <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap;">
-              <button onclick="scrollToAlbum('main', this)" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: linear-gradient(45deg, var(--accent-color), rgba(255,255,255,0.1)); border: none; border-radius: 25px; backdrop-filter: blur(10px); cursor: pointer; transition: all 0.3s ease; text-decoration: none; font-family: inherit; font-size: inherit;">
+            <div class="section-pills" style="display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap;">
+              <button class="section-pill" onclick="scrollToAlbum('main', this)" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: linear-gradient(45deg, var(--accent-color), rgba(255,255,255,0.1)); border: none; border-radius: 25px; backdrop-filter: blur(10px); cursor: pointer; transition: all 0.3s ease; text-decoration: none; font-family: inherit; font-size: inherit;">
                 <span style="font-size: 1.2rem;">⛪</span>
                 <span style="color: var(--light-text); font-weight: 500;">Main Service</span>
               </button>
-              <button onclick="scrollToAlbum('kids', this)" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: linear-gradient(45deg, var(--accent-color), rgba(255,255,255,0.1)); border: none; border-radius: 25px; backdrop-filter: blur(10px); cursor: pointer; transition: all 0.3s ease; text-decoration: none; font-family: inherit; font-size: inherit;">
+              <button class="section-pill" onclick="scrollToAlbum('kids', this)" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: linear-gradient(45deg, var(--accent-color), rgba(255,255,255,0.1)); border: none; border-radius: 25px; backdrop-filter: blur(10px); cursor: pointer; transition: all 0.3s ease; text-decoration: none; font-family: inherit; font-size: inherit;">
                 <span style="font-size: 1.2rem;">👶</span>
                 <span style="color: var(--light-text); font-weight: 500;">Kids Ministry</span>
               </button>
-              <button onclick="scrollToAlbum('evangelistic', this)" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: linear-gradient(45deg, var(--accent-color), rgba(255,255,255,0.1)); border: none; border-radius: 25px; backdrop-filter: blur(10px); cursor: pointer; transition: all 0.3s ease; text-decoration: none; font-family: inherit; font-size: inherit;">
+              <button class="section-pill" onclick="scrollToAlbum('evangelistic', this)" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: linear-gradient(45deg, var(--accent-color), rgba(255,255,255,0.1)); border: none; border-radius: 25px; backdrop-filter: blur(10px); cursor: pointer; transition: all 0.3s ease; text-decoration: none; font-family: inherit; font-size: inherit;">
                 <span style="font-size: 1.2rem;">📢</span>
                 <span style="color: var(--light-text); font-weight: 500;">Evangelistic Events</span>
               </button>
-              <button onclick="scrollToAlbum('easter', this)" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: linear-gradient(45deg, var(--accent-color), rgba(255,255,255,0.1)); border: none; border-radius: 25px; backdrop-filter: blur(10px); cursor: pointer; transition: all 0.3s ease; text-decoration: none; font-family: inherit; font-size: inherit;">
+              <button class="section-pill" onclick="scrollToAlbum('easter', this)" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: linear-gradient(45deg, var(--accent-color), rgba(255,255,255,0.1)); border: none; border-radius: 25px; backdrop-filter: blur(10px); cursor: pointer; transition: all 0.3s ease; text-decoration: none; font-family: inherit; font-size: inherit;">
                 <span style="font-size: 1.2rem;">✝️</span>
                 <span style="color: var(--light-text); font-weight: 500;">Easter</span>
               </button>
            </div>
           
           <div style="max-width: 600px; margin: 0 auto;">
-            <p style="font-size: 1.2rem; color: var(--lighter-text); line-height: 1.6; margin-bottom: 2rem;">
+            <p class="page-hero-lead" style="font-size: 1.2rem; color: var(--lighter-text); line-height: 1.6; margin-bottom: 2rem;">
               Experience the warmth and joy of our church family through these captured moments of faith, fellowship, and community life.
             </p>
 
@@ -4011,7 +4651,7 @@
     
     <!-- Events Section -->
     <section id="events" class="section">
-      <div class="hero" style="margin-bottom: 2rem;">
+      <div class="hero page-hero" style="margin-bottom: 2rem;">
         <div class="hero-content">
           <span class="hero-tagline">What's Coming Up</span>
           <h2 style="font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 800; margin-bottom: 1rem; line-height: 1.1; color: var(--light-text);">
@@ -4020,12 +4660,20 @@
           <p style="font-size: 1.1rem; max-width: 600px; margin: 0 auto 2rem; color: var(--lighter-text);">
             Join us for worship, fellowship, and community gatherings. Everyone is welcome. <button onclick="openContactModal()" style="background:none; border:none; padding:0; color:var(--accent-color); font-size:inherit; font-family:inherit; font-weight:500; cursor:pointer; text-decoration:underline; text-underline-offset:3px;">Contact us</button>
           </p>
-          <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-            <button onclick="scrollToEventGroup('weekly', this)" class="event-filter-pill">
+          <div class="section-pills" style="display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+            <button onclick="scrollToEventGroup('weekly', this)" class="event-filter-pill section-pill">
               <span>⛪</span>
               <span>Weekly Service</span>
             </button>
-            <button onclick="scrollToEventGroup('special', this)" class="event-filter-pill">
+            <button onclick="scrollToEventGroup('regular', this)" class="event-filter-pill section-pill">
+              <span>🔁</span>
+              <span>Regular Gatherings</span>
+            </button>
+            <button onclick="scrollToEventGroup('seasonal', this)" class="event-filter-pill section-pill">
+              <span>☀️</span>
+              <span>Seasonal Events</span>
+            </button>
+            <button onclick="scrollToEventGroup('special', this)" class="event-filter-pill section-pill">
               <span>✨</span>
               <span>Special Events</span>
             </button>
@@ -4044,7 +4692,7 @@
         <div class="events-grid" data-group="weekly">
 
           <!-- Event Card 1: Weekly Service (flip card) -->
-          <div class="event-card flip-card" onclick="this.classList.toggle('flipped')" title="Tap to flip">
+          <div class="event-card flip-card" onclick="this.classList.toggle('flipped')" title="Tap to flip" id="ev-saturday" data-emoji="⛪" data-c="#1e88e5">
             <div class="flip-inner">
 
               <!-- FRONT -->
@@ -4100,8 +4748,35 @@
             </div>
           </div>
 
+          <!-- Online Prayer: every Monday 8 PM -->
+          <div class="event-card" id="ev-prayer" data-emoji="🙏" data-c="#4e7d2a">
+            <div class="event-date-badge" style="background: #4e7d2a; box-shadow: 0 4px 12px rgba(78,125,42,0.35);">
+              <span class="event-month" id="prayer-badge-month">MON</span>
+              <span class="event-day" id="prayer-badge-day">—</span>
+            </div>
+            <div class="event-body">
+              <div class="event-tag" style="background: rgba(78,125,42,0.15); color: #6a9f3a;">Weekly Service</div>
+              <h3 class="event-title">Online Prayer</h3>
+              <p class="event-desc">Pray together with the church every Monday evening, from wherever you are.<span class="ev-verse" data-ru="«Непрестанно молитесь» — 1 Фес. 5:17">“Pray without ceasing” — 1 Thess. 5:17</span></p>
+              <div class="event-meta">
+                <span class="event-meta-item">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                  Online
+                </span>
+                <span class="event-meta-item">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5z"/></svg>
+                  Every Monday · 8:00 PM
+                </span>
+              </div>
+              <button onclick="openContactModal()" class="event-join-btn" style="background:rgba(78,125,42,0.12); border-color:rgba(78,125,42,0.35); color:#6a9f3a;">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                <span data-ru="Получить ссылку">Get the link</span>
+              </button>
+            </div>
+          </div>
+
           <!-- Home Group: Staten Island -->
-          <div class="event-card">
+          <div class="event-card" id="ev-si-group" data-emoji="🏠" data-c="#7c5cbf">
             <div class="event-date-badge" style="background: #7c5cbf;">
               <span class="event-month" id="staten-badge-month">TUE</span>
               <span class="event-day" id="staten-badge-day">—</span>
@@ -4128,7 +4803,7 @@
           </div>
 
           <!-- Home Group: Brooklyn -->
-          <div class="event-card">
+          <div class="event-card" id="ev-bk-group" data-emoji="🏠" data-c="#7c5cbf">
             <div class="event-date-badge" style="background: #7c5cbf;">
               <span class="event-month" id="brooklyn-badge-month">THU</span>
               <span class="event-day" id="brooklyn-badge-day">—</span>
@@ -4156,29 +4831,29 @@
 
         </div><!-- /events-grid weekly -->
 
-        <!-- ── Special Events ── -->
-        <div class="events-section-label" data-group="special" style="margin-top: 2.5rem;">
+        <!-- ── Regular Gatherings ── -->
+        <div class="events-section-label" data-group="regular" style="margin-top: 2.5rem;">
           <span class="events-section-line"></span>
-          <span class="events-section-title">Special Events</span>
+          <span class="events-section-title">Regular Gatherings</span>
           <span class="events-section-line"></span>
         </div>
-        <div class="events-grid" data-group="special">
+        <div class="events-grid" data-group="regular">
 
           <!-- Brotherhood Sauna Trip -->
-          <div class="event-card camp-card">
+          <div class="event-card camp-card" id="ev-sauna" data-emoji="🔥" data-c="#b84c1a">
             <div class="camp-scroll-strip">
               <div class="camp-scroll-track">
                 <img src="images/sauna-trip.png" alt="Brotherhood Sauna Trip" loading="lazy" onclick="openImageModal('images/sauna-trip.png')">
               </div>
               <div class="camp-card-overlay">
                 <div class="event-date-badge" style="position:static; background:#b84c1a; box-shadow:0 4px 16px rgba(0,0,0,0.5);">
-                  <span class="event-month">TBD</span>
-                  <span class="event-day" style="font-size:1rem; font-weight:700;">soon</span>
+                  <span class="event-month">EVERY</span>
+                  <span class="event-day" style="font-size:1rem; font-weight:700;">month</span>
                 </div>
               </div>
             </div>
             <div class="event-body" style="padding-right:1.5rem;">
-              <div class="event-tag" style="background: rgba(184,76,26,0.15); color: #e07848;">Special Events</div>
+              <div class="event-tag" style="background: rgba(184,76,26,0.15); color: #e07848;">Regular Gatherings</div>
               <h3 class="event-title">Brotherhood Sauna Trip</h3>
               <p class="event-desc">A men's gathering for fellowship, prayer, and relaxation. Come connect with brothers in a warm, welcoming environment.</p>
               <div class="event-meta">
@@ -4188,7 +4863,7 @@
                 </span>
                 <span class="event-meta-item">
                   <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5z"/></svg>
-                  Date TBD
+                  Once a month
                 </span>
               </div>
               <button onclick="openContactModal()" class="event-join-btn" style="background:rgba(184,76,26,0.12); border-color:rgba(184,76,26,0.35); color:#e07848;">
@@ -4198,8 +4873,72 @@
             </div>
           </div>
 
+          <!-- Women's Prayer Meeting -->
+          <div class="event-card" id="ev-women" data-emoji="🌸" data-c="#ad1457">
+            <div class="event-date-badge" style="background: #ad1457; box-shadow: 0 4px 12px rgba(173,20,87,0.35);">
+              <span class="event-month">EVERY</span>
+              <span class="event-day" style="font-size:1rem; font-weight:700;">month</span>
+            </div>
+            <div class="event-body">
+              <div class="event-tag" style="background: rgba(173,20,87,0.15); color: #f06292;">Regular Gatherings</div>
+              <h3 class="event-title">Women's Prayer Meeting</h3>
+              <p class="event-desc">Sisters gathering together to pray, share, and encourage one another in faith.</p>
+              <div class="event-meta">
+                <span class="event-meta-item">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                  Ahavat Yeshua Fellowship
+                </span>
+                <span class="event-meta-item">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5z"/></svg>
+                  Once a month
+                </span>
+              </div>
+              <button onclick="openContactModal()" class="event-join-btn" style="background:rgba(173,20,87,0.12); border-color:rgba(173,20,87,0.35); color:#f06292;">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Contact us to join
+              </button>
+            </div>
+          </div>
+
+          <!-- Youth Group -->
+          <div class="event-card" id="ev-youth" data-emoji="⚡" data-c="#2e7d32">
+            <div class="event-date-badge" style="background: #2e7d32; box-shadow: 0 4px 12px rgba(46,125,50,0.35);">
+              <span class="event-month">FRI</span>
+              <span class="event-day" style="font-size:1rem; font-weight:700;">2×/mo</span>
+            </div>
+            <div class="event-body">
+              <div class="event-tag" style="background: rgba(46,125,50,0.15); color: #66bb6a;">Regular Gatherings</div>
+              <h3 class="event-title">Youth Group</h3>
+              <p class="event-desc">Worship, games, and real conversations about faith for young people. Bring a friend!</p>
+              <div class="event-meta">
+                <span class="event-meta-item">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                  Ahavat Yeshua Fellowship
+                </span>
+                <span class="event-meta-item">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5z"/></svg>
+                  Every other Friday
+                </span>
+              </div>
+              <button onclick="openContactModal()" class="event-join-btn" style="background:rgba(46,125,50,0.12); border-color:rgba(46,125,50,0.35); color:#66bb6a;">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Contact us to join
+              </button>
+            </div>
+          </div>
+
+        </div><!-- /events-grid regular -->
+
+        <!-- ── Seasonal Events ── -->
+        <div class="events-section-label" data-group="seasonal" style="margin-top: 2.5rem;">
+          <span class="events-section-line"></span>
+          <span class="events-section-title">Seasonal Events</span>
+          <span class="events-section-line"></span>
+        </div>
+        <div class="events-grid" data-group="seasonal">
+
           <!-- Volleyball Gospel Day -->
-          <div class="event-card camp-card">
+          <div class="event-card camp-card" id="ev-volleyball" data-emoji="🏐" data-c="#1565c0">
             <div class="camp-scroll-strip">
               <div class="camp-scroll-track">
                 <img src="images/volleyball-gospel.png" alt="Volleyball Gospel Day" loading="lazy" onclick="openImageModal('images/volleyball-gospel.png')">
@@ -4212,7 +4951,7 @@
               </div>
             </div>
             <div class="event-body" style="padding-right:1.5rem;">
-              <div class="event-tag" style="background: rgba(21,101,192,0.15); color: #64b5f6;">Special Events</div>
+              <div class="event-tag" style="background: rgba(21,101,192,0.15); color: #64b5f6;">Seasonal Events</div>
               <h3 class="event-title">Volleyball Gospel Day</h3>
               <p class="event-desc">A day of fun, sports, and the Good News — right on the boardwalk. Come play, connect, and share faith in the open air.</p>
               <div class="event-meta">
@@ -4222,7 +4961,7 @@
                 </span>
                 <span class="event-meta-item">
                   <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5z"/></svg>
-                  Date TBD
+                  Summer · Date TBD
                 </span>
               </div>
               <button onclick="openContactModal()" class="event-join-btn" style="background:rgba(21,101,192,0.12); border-color:rgba(21,101,192,0.35); color:#64b5f6;">
@@ -4232,7 +4971,267 @@
             </div>
           </div>
 
+          <!-- Hiking Day -->
+          <div class="event-card camp-card" id="ev-hiking" data-emoji="🥾" data-c="#33691e">
+            <div class="camp-scroll-strip">
+              <div class="camp-scroll-track">
+                <img src="images/camp-hiking.jpg" alt="Hiking Day" loading="lazy" style="object-position: 12% 62%;" onclick="openImageModal('images/camp-hiking.jpg')">
+              </div>
+              <div class="camp-card-overlay">
+                <div class="event-date-badge" style="position:static; background:#33691e; box-shadow:0 4px 16px rgba(0,0,0,0.5);">
+                  <span class="event-month">TBD</span>
+                  <span class="event-day" style="font-size:1rem; font-weight:700;">soon</span>
+                </div>
+              </div>
+            </div>
+            <div class="event-body" style="padding-right:1.5rem;">
+              <div class="event-tag" style="background: rgba(51,105,30,0.15); color: #7cb342;">Seasonal Events</div>
+              <h3 class="event-title">Hiking Day</h3>
+              <p class="event-desc">Fresh air, beautiful trails, and fellowship in God's creation. A 2–3 hour hike together — bring comfortable shoes and a friend.</p>
+              <div class="event-meta">
+                <span class="event-meta-item">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                  Location TBD
+                </span>
+                <span class="event-meta-item">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5z"/></svg>
+                  Seasonal · Date TBD
+                </span>
+              </div>
+              <button onclick="openContactModal()" class="event-join-btn" style="background:rgba(51,105,30,0.12); border-color:rgba(51,105,30,0.35); color:#7cb342;">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Contact us to join
+              </button>
+            </div>
+          </div>
+
+        </div><!-- /events-grid seasonal -->
+
+        <!-- ── Special Events ── -->
+        <div class="events-section-label" data-group="special" style="margin-top: 2.5rem;">
+          <span class="events-section-line"></span>
+          <span class="events-section-title">Special Events</span>
+          <span class="events-section-line"></span>
+        </div>
+        <div class="events-grid" data-group="special">
+
+          <!-- Christmas Gift Drive: Samarkand -->
+          <div class="event-card gift-card fest-gift" id="ev-gifts" data-emoji="🎁" data-c="#00796b" data-sub="Bring school supplies, books or toys" data-sub-ru="Приносите канцтовары, книги или игрушки">
+            <div class="xmas-snow gift-float" aria-hidden="true"><i style="--x:6%;--d:11s;--t:0s;--s:1.0rem">🧸</i><i style="--x:18%;--d:13s;--t:4s;--s:0.9rem">📚</i><i style="--x:31%;--d:12s;--t:8s;--s:0.85rem">✏️</i><i style="--x:44%;--d:14s;--t:2s;--s:0.95rem">🎨</i><i style="--x:57%;--d:12.5s;--t:6s;--s:0.9rem">⚽</i><i style="--x:69%;--d:13.5s;--t:1s;--s:0.85rem">🧩</i><i style="--x:81%;--d:11.5s;--t:5s;--s:0.9rem">🖍️</i><i style="--x:93%;--d:14s;--t:9s;--s:0.95rem">🎒</i></div>
+            <div class="gift-sparks" aria-hidden="true"><i style="--i:0">✦</i><i style="--i:1">✦</i><i style="--i:2">✦</i><i style="--i:3">✦</i></div>
+            <div class="gift-scene" aria-hidden="true"></div>
+            <div class="event-date-badge" style="background: #00796b; box-shadow: 0 4px 12px rgba(0,121,107,0.35);">
+              <span class="event-month">NOW</span>
+              <span class="event-day" style="font-size:1.4rem;">🎁</span>
+            </div>
+            <div class="event-body">
+              <div class="event-tag" style="background: rgba(0,121,107,0.15); color: #26a69a;">Special Events</div>
+              <h3 class="event-title">Christmas Gifts for Kids in Samarkand</h3>
+              <p class="event-desc">We're collecting New Year gifts for 70 children at a church in Samarkand, Uzbekistan 🇺🇿. The local pastor's church will pack them into gift bags and hand them out — and we'll show the photos and video at our service.</p>
+              <div class="event-meta">
+                <span class="event-meta-item">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                  <span data-ru="70 детей: 52 школьника (27 девочек, 25 мальчиков) и 18 малышей 3–6 лет (11 девочек, 7 мальчиков)">70 kids: 52 school-age (27 girls, 25 boys) and 18 ages 3–6 (11 girls, 7 boys)</span>
+                </span>
+                <span class="event-meta-item">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                  <span data-ru="Приносите в церковь Ahavat Yeshua">Bring to Ahavat Yeshua Fellowship</span>
+                </span>
+              </div>
+              <details class="gift-details">
+                <summary data-ru="Как помочь и что приносить">How to help &amp; what to bring</summary>
+                <div class="gift-cols">
+                <div>
+                <p class="gift-h" data-ru="Выберите вариант:">Pick a way to help:</p>
+                <ol class="gift-list">
+                  <li data-ru="Купить одну вещь на многих детей — например, 52 тетради, 52 набора карандашей или несколько рюкзаков">Buy one item for many kids — e.g. 52 notebooks, 52 pencil sets, or a few backpacks</li>
+                  <li data-ru="Взять на себя 2–3 детей и собрать им набор по возрасту">Take on 2–3 children and put together a set for their age</li>
+                  <li data-ru="Принести деньги, если не знаете, что купить, — мы сами сделаем покупки">Bring money if you're not sure what to buy — we'll do the shopping</li>
+                </ol>
+                <p class="gift-note" data-ru="Покупать необязательно! Приносите из дома то, что в хорошем состоянии.">It doesn't have to be new! Bring things from home in good condition.</p>
+                </div>
+                <div>
+                <p class="gift-h" data-ru="✅ Что приносить:">✅ What to bring:</p>
+                <ul class="gift-list">
+                  <li data-ru="Канцтовары: ножницы, карандаши, ластики, точилки, ручки, фломастеры, тетради, блокноты, альбомы для рисования, пластилин, пеналы, рюкзаки">School supplies: scissors, pencils, erasers, sharpeners, pens, markers, notebooks, sketchbooks, play-dough, pencil cases, backpacks</li>
+                  <li data-ru="Книги на русском языке, раскраски">Russian-language books and coloring books</li>
+                  <li data-ru="Мячи (футбольные, волейбольные, мячики для малышей), кубик Рубика, бадминтон">Balls (soccer, volleyball, small balls for little ones), Rubik's cubes, badminton</li>
+                  <li data-ru="Мягкие игрушки 🧸">Stuffed animals 🧸</li>
+                  <li data-ru="Девочкам: наборы для браслетов, резинки, заколки, расчёски">For girls: bracelet kits, hair ties, hair clips, brushes</li>
+                  <li data-ru="Мальчикам: грузовики, динозавры, игрушки-супергерои">For boys: trucks, dinosaurs, superhero toys</li>
+                  <li data-ru="Пазлы, мозаики, лего">Puzzles and LEGO</li>
+                </ul>
+                </div>
+                <div>
+                <p class="gift-h" data-ru="❌ Не приносить:">❌ Please don't bring:</p>
+                <ul class="gift-list">
+                  <li data-ru="Конфеты и сладкое">Candy or sweets</li>
+                  <li data-ru="Одежду и обувь">Clothes or shoes</li>
+                </ul>
+              </div>
+                </div>
+              </details>
+              <div class="gift-actions">
+                <button onclick="openContactModal()" class="event-join-btn" style="background:rgba(0,121,107,0.12); border-color:rgba(0,121,107,0.35); color:#26a69a;">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                <span data-ru="Написать, что принесёте">Tell us what you'll bring</span>
+              </button>
+                <button type="button" class="event-join-btn gift-share-btn" onclick="shareGiftDrive(this)">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V3M7.5 7.5 12 3l4.5 4.5"/><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg>
+                  <span class="gs-lbl" data-ru="Поделиться">Share</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Thanksgiving Day Service -->
+          <div class="event-card thanks-card" id="ev-thanksgiving" data-emoji="🦃" data-c="#e65100">
+            <div class="thanks-garland" aria-hidden="true"><i style="--i:0">🍁</i><i style="--i:1">🍂</i><i style="--i:2">🍁</i><i style="--i:3">🍂</i><i style="--i:4">🍁</i><i style="--i:5">🍂</i><i style="--i:6">🍁</i><i style="--i:7">🍂</i><i style="--i:8">🍁</i></div>
+            <div class="xmas-snow thanks-fall" aria-hidden="true"><i style="--x:10%;--d:10s;--t:0s;--s:0.75rem">🍂</i><i style="--x:28%;--d:12s;--t:3s;--s:0.65rem">🍁</i><i style="--x:46%;--d:11s;--t:6s;--s:0.8rem">🍂</i><i style="--x:63%;--d:13s;--t:1.5s;--s:0.6rem">🍁</i><i style="--x:79%;--d:10.5s;--t:4.5s;--s:0.75rem">🍂</i><i style="--x:92%;--d:12.5s;--t:8s;--s:0.6rem">🍁</i></div>
+            <svg class="fest-scene" viewBox="0 0 320 84" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
+              <defs>
+                <radialGradient id="ts-sun" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#ffe082"/><stop offset=".55" stop-color="#ffb74d" stop-opacity=".8"/><stop offset="1" stop-color="#ff8a65" stop-opacity="0"/></radialGradient>
+              </defs>
+              <circle class="ts-sun" cx="230" cy="60" r="34" fill="url(#ts-sun)"/>
+              <path class="ts-hill" d="M-120 84 L-120 64 Q-10 52 90 62 Q190 72 260 58 Q330 46 440 62 L440 84 Z"/>
+              <g class="ts-wheat" transform="translate(40 34)">
+                <path d="M14 46 L6 4 M14 46 L14 0 M14 46 L22 4 M14 46 L2 12 M14 46 L26 12" stroke-width="1.3" fill="none"/>
+                <g class="ts-grain"><ellipse cx="6" cy="4" rx="2" ry="4.5"/><ellipse cx="14" cy="0" rx="2" ry="4.5"/><ellipse cx="22" cy="4" rx="2" ry="4.5"/><ellipse cx="2" cy="12" rx="2" ry="4" transform="rotate(-25 2 12)"/><ellipse cx="26" cy="12" rx="2" ry="4" transform="rotate(25 26 12)"/></g>
+                <rect x="9" y="30" width="10" height="3" rx="1" class="ts-tie"/>
+              </g>
+              <g class="ts-basket" transform="translate(150 50)">
+                <ellipse cx="10" cy="6" rx="7" ry="5" fill="#d7a35a"/><ellipse cx="22" cy="5" rx="8" ry="5.5" fill="#c98b3c"/><circle cx="31" cy="8" r="4" fill="#c62828"/><circle cx="4" cy="9" r="3.5" fill="#7cb342"/>
+                <path d="M-1 9 L37 9 L33 24 L3 24 Z" class="ts-basket-body"/>
+                <path d="M1 14 L35 14 M2 19 L34 19" stroke-width="1" fill="none" class="ts-weave"/>
+              </g>
+              <g class="ts-pumpkins">
+                <g transform="translate(100 62)"><ellipse cx="0" cy="8" rx="13" ry="9.5" fill="#ef6c00"/><ellipse cx="0" cy="8" rx="6" ry="9.5" fill="#f57c00"/><path d="M-6 8 Q0 -1 6 8" stroke="#e65100" fill="none" stroke-width="1"/><rect x="-1.2" y="-3" width="2.4" height="4.5" rx="1" fill="#5d4037"/></g>
+                <g transform="translate(122 68)"><ellipse cx="0" cy="5" rx="8" ry="6" fill="#ffa726"/><ellipse cx="0" cy="5" rx="3.5" ry="6" fill="#ffb74d"/><rect x="-1" y="-2.5" width="2" height="3.5" rx="1" fill="#5d4037"/></g>
+                <g transform="translate(215 66)"><ellipse cx="0" cy="7" rx="11" ry="8" fill="#ef6c00"/><ellipse cx="0" cy="7" rx="5" ry="8" fill="#f57c00"/><rect x="-1.2" y="-2.5" width="2.4" height="4" rx="1" fill="#5d4037"/><path d="M1 -1 Q7 -6 10 -2" stroke="#558b2f" fill="none" stroke-width="1.2"/></g>
+              </g>
+              <g class="ts-wheat" transform="translate(262 38) scale(.85)">
+                <path d="M14 46 L6 4 M14 46 L14 0 M14 46 L22 4" stroke-width="1.3" fill="none"/>
+                <g class="ts-grain"><ellipse cx="6" cy="4" rx="2" ry="4.5"/><ellipse cx="14" cy="0" rx="2" ry="4.5"/><ellipse cx="22" cy="4" rx="2" ry="4.5"/></g>
+                <rect x="9" y="30" width="10" height="3" rx="1" class="ts-tie"/>
+              </g>
+            </svg>
+            <div class="event-date-badge" style="background: #e65100; box-shadow: 0 4px 12px rgba(230,81,0,0.35);">
+              <span class="event-month">NOV</span>
+              <span class="event-day">28</span>
+            </div>
+            <div class="event-body">
+              <div class="event-tag" style="background: rgba(230,81,0,0.15); color: #ffa040;">Special Events</div>
+              <h3 class="event-title">Thanksgiving Day Service</h3>
+              <p class="event-desc">Let's give thanks to God together! A festive service, a kids' performance, and a shared meal. Invite your friends and family!</p>
+              <div class="event-meta">
+                <span class="event-meta-item">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                  Service · Kids performance · Food
+                </span>
+                <span class="event-meta-item">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                  Ahavat Yeshua Fellowship
+                </span>
+                <span class="event-meta-item">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5z"/></svg>
+                  Saturday, November 28
+                </span>
+              </div>
+              <div class="ev-actions">
+                <div class="ev-cal">
+                  <a class="event-join-btn ev-cal-btn" href="thanksgiving-2026.ics" download="thanksgiving-2026.ics" aria-haspopup="menu" aria-expanded="false" style="background:rgba(230,81,0,0.12); border-color:rgba(230,81,0,0.35); color:#ffa040;">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4M12 13v5M9.5 15.5h5"/></svg>
+                    <span data-ru="В календарь">Add to calendar</span>
+                  </a>
+                  <div class="cal-menu" role="menu" hidden>
+                    <a role="menuitem" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Thanksgiving+Service+-+Ahavat+Yeshua+Fellowship&amp;dates=20261128T120000%2F20261128T150000&amp;ctz=America%2FNew_York&amp;location=46+10th+St%2C+Staten+Island%2C+NY+10306&amp;details=Festive+service%2C+kids%27+performance+and+a+shared+meal.+Invite+your+friends+and+family%21%0Ahttps%3A%2F%2Fahavatyeshua.net" target="_blank" rel="noopener noreferrer">Google Calendar</a>
+                    <a role="menuitem" href="thanksgiving-2026.ics" download="thanksgiving-2026.ics">Apple / Outlook (.ics)</a>
+                  </div>
+                </div>
+                <button onclick="openContactModal()" class="event-join-btn" style="background:rgba(230,81,0,0.12); border-color:rgba(230,81,0,0.35); color:#ffa040;">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Contact us to join
+              </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Christmas Service -->
+          <div class="event-card xmas-card" id="ev-christmas" data-emoji="🎄" data-c="#c62828">
+            <div class="xmas-lights" aria-hidden="true"><i style="--i:0"></i><i style="--i:1"></i><i style="--i:2"></i><i style="--i:3"></i><i style="--i:4"></i><i style="--i:5"></i><i style="--i:6"></i><i style="--i:7"></i><i style="--i:8"></i><i style="--i:9"></i><i style="--i:10"></i><i style="--i:11"></i><i style="--i:12"></i><i style="--i:13"></i></div>
+            <div class="xmas-snow" aria-hidden="true"><i style="--x:8%;--d:9s;--t:0s;--s:0.7rem">❄</i><i style="--x:22%;--d:11s;--t:3s;--s:0.55rem">❄</i><i style="--x:37%;--d:10s;--t:6s;--s:0.8rem">❄</i><i style="--x:52%;--d:12s;--t:1.5s;--s:0.6rem">❄</i><i style="--x:66%;--d:9.5s;--t:4.5s;--s:0.75rem">❄</i><i style="--x:81%;--d:11.5s;--t:2s;--s:0.6rem">❄</i><i style="--x:93%;--d:10.5s;--t:7s;--s:0.7rem">❄</i></div>
+            <svg class="fest-scene" viewBox="0 0 320 84" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
+              <defs>
+                <radialGradient id="xs-glow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#fff8e1" stop-opacity="1"/><stop offset=".35" stop-color="#ffd54f" stop-opacity=".7"/><stop offset="1" stop-color="#ffd54f" stop-opacity="0"/></radialGradient>
+                <linearGradient id="xs-beam" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe082" stop-opacity=".55"/><stop offset="1" stop-color="#ffe082" stop-opacity="0"/></linearGradient>
+                <radialGradient id="xs-baby" cx="50%" cy="60%" r="50%"><stop offset="0" stop-color="#fff3c4"/><stop offset="1" stop-color="#ffb300" stop-opacity="0"/></radialGradient>
+              </defs>
+              <polygon class="xs-beam" points="157,12 163,12 196,64 124,64" fill="url(#xs-beam)"/>
+              <path class="fest-hill" d="M-120 84 L-120 62 Q-20 50 70 60 Q150 70 210 58 Q290 44 440 60 L440 84 Z"/>
+              <path class="fest-hill2" d="M232 84 Q262 44 300 50 Q330 54 440 70 L440 84 Z"/>
+              <g class="xs-cross"><circle cx="292" cy="38" r="12" fill="url(#xs-glow)" opacity=".35"/><rect x="290.5" y="27" width="3" height="22" rx=".8"/><rect x="284.5" y="32" width="15" height="3" rx=".8"/></g>
+              <g class="xs-stable">
+                <polygon points="122,46 160,24 198,46 194,48 160,29 126,48"/>
+                <rect x="130" y="46" width="4" height="22"/><rect x="186" y="46" width="4" height="22"/>
+                <rect x="128" y="45" width="64" height="3"/>
+              </g>
+              <ellipse cx="160" cy="62" rx="20" ry="9" fill="url(#xs-baby)" class="xs-babyglow"/>
+              <g class="xs-manger"><path d="M147 60 L173 60 L169 67 L151 67 Z"/><path d="M150 67 L147 72 M170 67 L173 72" stroke-width="1.6" fill="none"/></g>
+              <path d="M148 60 Q152 56 156 59 Q160 55 164 59 Q168 56 172 60 Z" fill="#e0b84f"/>
+              <ellipse cx="160" cy="57.5" rx="5" ry="2.6" fill="#fff3e0"/>
+              <g class="xs-star"><circle cx="160" cy="10" r="11" fill="url(#xs-glow)"/><path d="M160 1 L161.6 8.4 L169 10 L161.6 11.6 L160 19 L158.4 11.6 L151 10 L158.4 8.4 Z" fill="#fff8e1"/></g>
+            </svg>
+            <div class="event-date-badge" style="background: #c62828; box-shadow: 0 4px 12px rgba(198,40,40,0.35);">
+              <span class="event-month">DEC</span>
+              <span class="event-day">19</span>
+            </div>
+            <div class="event-body">
+              <div class="event-tag" style="background: rgba(198,40,40,0.15); color: #ef5350;">Special Events</div>
+              <h3 class="event-title">Christmas Service</h3>
+              <p class="event-desc">Celebrate the birth of Yeshua the Messiah! A festive service, a kids' performance, and a shared meal. Invite your friends and family!</p>
+              <div class="event-meta">
+                <span class="event-meta-item">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                  Service · Kids performance · Food
+                </span>
+                <span class="event-meta-item">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                  Ahavat Yeshua Fellowship
+                </span>
+                <span class="event-meta-item">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5z"/></svg>
+                  Saturday, December 19
+                </span>
+              </div>
+              <div class="ev-actions">
+                <div class="ev-cal">
+                  <a class="event-join-btn ev-cal-btn" href="christmas-2026.ics" download="christmas-2026.ics" aria-haspopup="menu" aria-expanded="false" style="background:rgba(198,40,40,0.12); border-color:rgba(198,40,40,0.35); color:#ef5350;">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4M12 13v5M9.5 15.5h5"/></svg>
+                    <span data-ru="В календарь">Add to calendar</span>
+                  </a>
+                  <div class="cal-menu" role="menu" hidden>
+                    <a role="menuitem" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Christmas+Service+-+Ahavat+Yeshua+Fellowship&amp;dates=20261219T120000%2F20261219T150000&amp;ctz=America%2FNew_York&amp;location=46+10th+St%2C+Staten+Island%2C+NY+10306&amp;details=Festive+service%2C+kids%27+performance+and+a+shared+meal.+Invite+your+friends+and+family%21%0Ahttps%3A%2F%2Fahavatyeshua.net" target="_blank" rel="noopener noreferrer">Google Calendar</a>
+                    <a role="menuitem" href="christmas-2026.ics" download="christmas-2026.ics">Apple / Outlook (.ics)</a>
+                  </div>
+                </div>
+                <button onclick="openContactModal()" class="event-join-btn" style="background:rgba(198,40,40,0.12); border-color:rgba(198,40,40,0.35); color:#ef5350;">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Contact us to join
+              </button>
+              </div>
+            </div>
+          </div>
+
         </div><!-- /events-grid special -->
+
+        <div class="ev-sheet" id="ev-sheet" hidden>
+          <div class="ev-sheet-backdrop" data-close></div>
+          <div class="ev-sheet-panel" role="dialog" aria-modal="true" aria-label="Event details">
+            <div class="ev-sheet-grab" aria-hidden="true"></div>
+            <button type="button" class="ev-sheet-close" data-close aria-label="Close">✕</button>
+            <div class="ev-sheet-body"></div>
+          </div>
+        </div>
 
         <p style="text-align:center; color: var(--lighter-text); margin-top: 2.5rem; font-size: 0.95rem;">
           Questions about an event?
@@ -4388,6 +5387,29 @@
                 </button>
               </div>
             </div>
+            <div class="doc-card video-card">
+              <a class="video-thumb" href="https://youtu.be/Mz6GDqozCIA" target="_blank" rel="noopener noreferrer" aria-label="Watch">
+                <img src="https://i.ytimg.com/vi/Mz6GDqozCIA/mqdefault.jpg" alt="" loading="lazy" decoding="async">
+                <svg viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="5.5" fill="#FF0033"/><path d="M11.2 5.8v8.4l7.3-4.2z" fill="#fff"/></svg>
+              </a>
+              <div class="doc-card-info">
+                <div>
+                  <span class="doc-card-kicker">Watch (in Russian)</span>
+                  <span class="doc-card-title">Десятина для христиан: обязательно ли отдавать 10%? <span class="doc-card-en">(Tithing for Christians: must we give 10%?)</span></span>
+                  <span class="doc-card-meta">Ahavat Yeshua · YouTube</span>
+                </div>
+              </div>
+              <div class="doc-card-actions">
+                <a class="doc-btn doc-btn-video" href="https://youtu.be/Mz6GDqozCIA" target="_blank" rel="noopener noreferrer">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg>
+                  <span>Watch</span>
+                </a>
+                <button class="doc-btn doc-share doc-share-video" type="button" data-url="https://youtu.be/Mz6GDqozCIA">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3M7.5 7.5 12 3l4.5 4.5"/><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg>
+                  <span>Share</span>
+                </button>
+              </div>
+            </div>
           </div>
           
           <!-- Russian Version -->
@@ -4415,6 +5437,29 @@
                   <span>Скачать</span>
                 </a>
                 <button class="doc-btn doc-share" type="button" data-doc="docs/desyatina-oleg-prosyanko.pdf?v=1">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3M7.5 7.5 12 3l4.5 4.5"/><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg>
+                  <span>Поделиться</span>
+                </button>
+              </div>
+            </div>
+            <div class="doc-card video-card">
+              <a class="video-thumb" href="https://youtu.be/Mz6GDqozCIA" target="_blank" rel="noopener noreferrer" aria-label="Смотреть">
+                <img src="https://i.ytimg.com/vi/Mz6GDqozCIA/mqdefault.jpg" alt="" loading="lazy" decoding="async">
+                <svg viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="5.5" fill="#FF0033"/><path d="M11.2 5.8v8.4l7.3-4.2z" fill="#fff"/></svg>
+              </a>
+              <div class="doc-card-info">
+                <div>
+                  <span class="doc-card-kicker">Посмотреть</span>
+                  <span class="doc-card-title">Десятина для христиан: обязательно ли отдавать 10%?</span>
+                  <span class="doc-card-meta">Ahavat Yeshua · YouTube</span>
+                </div>
+              </div>
+              <div class="doc-card-actions">
+                <a class="doc-btn doc-btn-video" href="https://youtu.be/Mz6GDqozCIA" target="_blank" rel="noopener noreferrer">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg>
+                  <span>Смотреть</span>
+                </a>
+                <button class="doc-btn doc-share doc-share-video" type="button" data-url="https://youtu.be/Mz6GDqozCIA">
                   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3M7.5 7.5 12 3l4.5 4.5"/><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg>
                   <span>Поделиться</span>
                 </button>
@@ -4551,7 +5596,7 @@
       // Tab navigation
       document.addEventListener('DOMContentLoaded', function() {
         // Start typing effect
-        setTimeout(typeEffect, 1000);
+        // (typing effect removed from the home card)
         
         // Tab navigation — one function shared by the desktop menu,
         // the mobile tab bar and every in-page "#section" link.
@@ -4584,6 +5629,8 @@
           }
 
           document.body.classList.toggle('on-home', id === 'home');
+          if (id === 'events' && window.refreshEventDescs) setTimeout(window.refreshEventDescs, 50);
+          if (id === 'events' && window.rebuildEventLists) window.rebuildEventLists();
           moveNavLens();
 
           if (push && location.hash !== '#' + id) {
@@ -4628,7 +5675,8 @@
         });
 
         // "Join us this week" opens the Contact tab
-        document.getElementById('joinUsButton').addEventListener('click', function (e) {
+        const joinBtn = document.getElementById('joinUsButton');
+        if (joinBtn) joinBtn.addEventListener('click', function (e) {
           e.preventDefault();
           goToTab('contact');
         });
@@ -5192,6 +6240,30 @@ function updateAlbumCarousel(album, startIndex, direction = 1) {
   }, 200); // Wait for fade out to complete
 }
 
+// Phones: all photos of an album in one horizontal, snap-scrolling strip
+function buildSwipeStrip(album) {
+  const images = galleryImages[album];
+  const carousel = document.getElementById(`${album}-carousel`);
+  if (!images || !carousel) return;
+  carousel.innerHTML = '';
+  images.forEach((src, i) => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'swipe-photo';
+    btn.setAttribute('aria-label', (i + 1) + ' / ' + images.length);
+    btn.onclick = () => openAlbum(album, i);
+    const img = document.createElement('img');
+    img.alt = '';
+    img.loading = i < 2 ? 'eager' : 'lazy';
+    img.decoding = 'async';
+    photoFallback(img, src);
+    img.src = photoVariant(src, 'thumbs');
+    btn.appendChild(img);
+    carousel.appendChild(btn);
+  });
+  carousel.scrollLeft = 0;
+}
+
 console.log('[carousel] Script loaded - galleryImages available:', typeof galleryImages !== 'undefined');
 
 // Album navigation function
@@ -5335,9 +6407,16 @@ document.addEventListener('DOMContentLoaded', function() {
   // Initialize all carousels with first 3 photos
   console.log('[carousel] Initializing carousels on page load...');
   
-  ['kids', 'main', 'evangelistic', 'easter'].forEach(album => {
-    updateAlbumCarousel(album, 0, 1); // Initialize with first 3 photos
-  });
+  // Desktop: 3 photos + arrows. Phones: every photo in one swipeable strip.
+  const phoneGallery = window.matchMedia('(max-width: 768px)');
+  function initCarousels() {
+    ['kids', 'main', 'evangelistic', 'easter'].forEach(album => {
+      if (phoneGallery.matches) buildSwipeStrip(album);
+      else updateAlbumCarousel(album, 0, 1);
+    });
+  }
+  initCarousels();
+  phoneGallery.addEventListener('change', initCarousels);
 
   // Keep the album header count in sync with the gallery list
   const kidsCountEl = document.getElementById('kids-photo-count');
@@ -5559,6 +6638,257 @@ document.addEventListener('DOMContentLoaded', function() {
   </div>
 
   <script>
+    // Home "Coming up": hide rows whose date has passed, hide the block when empty
+    (function () {
+      const box = document.getElementById('upcoming');
+      if (!box) return;
+      const today = new Date();
+      let shown = 0;
+      box.querySelectorAll('.up-row').forEach(function (row) {
+        row.hidden = today >= new Date(row.dataset.until + 'T00:00:00');
+        if (!row.hidden) shown++;
+      });
+      if (!shown) box.hidden = true;
+    })();
+
+    // Home "Coming up" row → Events tab, scrolled to that exact card (below the sticky header), briefly highlighted
+    function openEventCard(e, id, openDetails) {
+      if (e) { e.preventDefault(); e.stopPropagation(); }
+      const phone = window.matchMedia('(max-width: 768px)').matches;
+      if (phone && window.openEventSheet) {
+        if (window.goToTab) window.goToTab('events');
+        setTimeout(function () {
+          window.openEventSheet(id);
+          if (openDetails) { const d = document.querySelector('#' + id + ' .gift-details'); if (d) d.open = true; }
+        }, 60);
+        return false;
+      }
+      if (window.goToTab) window.goToTab('events', { scroll: false });
+      function place(behavior) {
+        const card = document.getElementById(id);
+        if (!card) return;
+        const header = document.querySelector('header.header');
+        const offset = (header ? header.getBoundingClientRect().bottom : 0) + 12;
+        const top = card.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top: Math.max(0, top), behavior: behavior });
+      }
+      setTimeout(function () {
+        const card = document.getElementById(id);
+        if (!card) return;
+        if (openDetails) { const d = card.querySelector('.gift-details'); if (d) d.open = true; }
+        if (window.refreshEventDescs) window.refreshEventDescs();
+        place(phone ? 'auto' : 'smooth');
+        // Pictures above may finish loading and push the card down — correct once more
+        setTimeout(function () { place(phone ? 'auto' : 'smooth'); }, phone ? 350 : 700);
+        card.classList.remove('ev-flash'); void card.offsetWidth; card.classList.add('ev-flash');
+      }, 60);
+      return false;
+    }
+
+    // Event cards: "Add to calendar" — iPhone opens the .ics directly, others get Google / .ics menu
+    (function () {
+      const isApple = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+        (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+      function closeAll(except) {
+        document.querySelectorAll('.ev-cal .cal-menu').forEach(function (m) {
+          if (m === except) return;
+          m.hidden = true;
+          m.previousElementSibling.setAttribute('aria-expanded', 'false');
+        });
+      }
+      document.querySelectorAll('.ev-cal-btn').forEach(function (btn) {
+        const menu = btn.nextElementSibling;
+        btn.addEventListener('click', function (e) {
+          if (isApple) return;
+          e.preventDefault();
+          const open = menu.hidden;
+          closeAll();
+          menu.hidden = !open;
+          btn.setAttribute('aria-expanded', String(open));
+        });
+        menu.addEventListener('click', function () { closeAll(); });
+      });
+      document.addEventListener('click', function (e) { if (!e.target.closest('.ev-cal')) closeAll(); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeAll(); });
+    })();
+
+    // Phones: event descriptions are cut to 2 lines — add "More" to open the full text
+    (function () {
+      const phone = window.matchMedia('(max-width: 768px)');
+      const descs = Array.from(document.querySelectorAll('#events .event-desc'));
+      function label(card) {
+        const ru = window.getLang && getLang() === 'ru';
+        return card.classList.contains('expanded') ? (ru ? 'Свернуть' : 'Less') : (ru ? 'Подробнее' : 'More');
+      }
+      descs.forEach(function (desc) {
+        const card = desc.closest('.event-card');
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'desc-more';
+        btn.hidden = true;
+        btn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          card.classList.toggle('expanded');
+          btn.textContent = label(card);
+        });
+        desc.after(btn);
+        desc._more = btn;
+      });
+      // Reserve exactly the badge's width next to the title/description (badges differ: "NOV 28" vs "EVERY month")
+      function fitBadges() {
+        document.querySelectorAll('#events .event-card:not(.camp-card)').forEach(function (card) {
+          const badge = card.querySelector('.event-date-badge');
+          const body = card.querySelector('.event-body');
+          if (!badge || !body || !badge.offsetWidth) return;
+          const b = badge.getBoundingClientRect(), r = body.getBoundingClientRect();
+          const padR = parseFloat(getComputedStyle(body).paddingRight) || 0;
+          const space = Math.max(0, r.right - padR - b.left) + 10;
+          card.style.setProperty('--badge-space', space + 'px');
+        });
+      }
+      function refresh() {
+        fitBadges();
+        descs.forEach(function (desc) {
+          const card = desc.closest('.event-card');
+          const btn = desc._more;
+          if (!phone.matches) { btn.hidden = true; return; }
+          const cut = desc.scrollHeight > desc.clientHeight + 2;
+          btn.hidden = !(cut || card.classList.contains('expanded'));
+          btn.textContent = label(card);
+        });
+      }
+      refresh();
+      window.addEventListener('resize', refresh);
+      phone.addEventListener('change', refresh);
+      document.addEventListener('langchange', function () { setTimeout(refresh, 0); });
+      // The Events tab may be hidden on load (sizes are 0) — re-check when it's opened
+      document.addEventListener('click', function (e) {
+        if (e.target.closest('a[href="#events"], [data-section="events"]')) setTimeout(refresh, 80);
+      });
+      window.addEventListener('hashchange', function () { setTimeout(refresh, 80); });
+      window.refreshEventDescs = refresh;
+    })();
+
+    // Phones: build a list per event group from the cards; tapping a row opens that card in a bottom sheet
+    (function () {
+      const phone = window.matchMedia('(max-width: 768px)');
+      const sheet = document.getElementById('ev-sheet');
+      const sheetBody = sheet && sheet.querySelector('.ev-sheet-body');
+      let openCard = null, placeholder = null;
+
+      function txt(el) { return el ? el.textContent.replace(/\s+/g, ' ').trim() : ''; }
+      function rowFor(card) {
+        const title = txt(card.querySelector('.event-title'));
+        const metas = Array.from(card.querySelectorAll('.event-meta-item'));
+        // Prefer the "when" line (clock icon is last), else the first meta, else the description
+        const when = metas.length ? txt(metas[metas.length - 1]) : '';
+        const ru = window.getLang && getLang() === 'ru';
+        const custom = ru ? card.dataset.subRu : card.dataset.sub;
+        const sub = custom || when || txt(card.querySelector('.event-desc'));
+        const m = txt(card.querySelector('.event-date-badge .event-month'));
+        const d = txt(card.querySelector('.event-date-badge .event-day'));
+        const pill = (m + ' ' + d).trim();
+        const row = document.createElement('button');
+        row.type = 'button';
+        row.className = 'up-row';
+        row.style.setProperty('--c', card.dataset.c || 'var(--accent-color)');
+        row.innerHTML =
+          '<span class="up-emoji" aria-hidden="true"></span>' +
+          '<span class="up-main"><span class="up-title"></span><span class="up-sub"></span></span>' +
+          '<span class="up-when"></span><span class="up-arrow" aria-hidden="true">›</span>';
+        row.querySelector('.up-emoji').textContent = card.dataset.emoji || '📅';
+        row.querySelector('.up-title').textContent = title;
+        row.querySelector('.up-sub').textContent = sub;
+        row.querySelector('.up-when').textContent = pill;
+        row.addEventListener('click', function () { openSheet(card.id); });
+        return row;
+      }
+      function build() {
+        document.querySelectorAll('#events .events-grid').forEach(function (grid) {
+          let list = grid.previousElementSibling;
+          if (!list || !list.classList.contains('ev-list')) {
+            list = document.createElement('div');
+            list.className = 'ev-list';
+            grid.before(list);
+          }
+          list.innerHTML = '';
+          grid.querySelectorAll(':scope > .event-card').forEach(function (card) { list.appendChild(rowFor(card)); });
+        });
+      }
+
+      function openSheet(id) {
+        const card = document.getElementById(id);
+        if (!card || !sheet) return;
+        if (openCard) closeSheet(true);
+        placeholder = document.createComment('ev-card');
+        card.before(placeholder);
+        sheetBody.appendChild(card);
+        openCard = card;
+        card.classList.add('expanded');
+        sheet.hidden = false;
+        document.body.classList.add('ev-sheet-open');
+        sheet.querySelector('.ev-sheet-panel').scrollTop = 0;
+        if (history.state && history.state.evSheet) history.replaceState({ tab: 'events', evSheet: id }, '');
+        else history.pushState({ tab: 'events', evSheet: id }, '', location.hash || '#events');
+        if (window.refreshEventDescs) window.refreshEventDescs();
+      }
+      function closeSheet(silent) {
+        if (!openCard) return;
+        openCard.classList.remove('expanded');
+        placeholder.replaceWith(openCard);
+        openCard = null; placeholder = null;
+        sheet.hidden = true;
+        document.body.classList.remove('ev-sheet-open');
+        if (!silent && history.state && history.state.evSheet) history.back();
+      }
+      window.openEventSheet = openSheet;
+
+      if (sheet) {
+        sheet.addEventListener('click', function (e) { if (e.target.closest('[data-close]')) closeSheet(); });
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeSheet(); });
+        window.addEventListener('popstate', function () { if (openCard) closeSheet(true); });
+        phone.addEventListener('change', function () { if (!phone.matches) closeSheet(); });
+      }
+      build();
+      document.addEventListener('langchange', function () { setTimeout(build, 0); });
+      window.rebuildEventLists = build;
+      window.addEventListener('load', build);
+    })();
+
+    // Gift drive: share the announcement (share sheet on phones, copy on desktop)
+    async function shareGiftDrive(btn) {
+      const ru = window.getLang && getLang() === 'ru';
+      const url = 'https://ahavatyeshua.net/#events';
+      const text = ru
+        ? '🎁 Рождественские подарки детям в Самарканде, Узбекистан 🇺🇿\n\n' +
+          'Церковь Ahavat Yeshua собирает новогодние подарки для 70 детей: 52 школьника и 18 малышей 3–6 лет.\n\n' +
+          '✅ Канцтовары, книги на русском, раскраски, мячи, мягкие игрушки, пазлы, лего\n' +
+          '❌ Без сладостей, одежды и обуви\n\n' +
+          'Можно принести вещи из дома в хорошем состоянии или деньги — мы сами купим.\n\n' +
+          'Полный список: ' + url
+        : '🎁 Christmas gifts for kids in Samarkand, Uzbekistan 🇺🇿\n\n' +
+          'Ahavat Yeshua Fellowship is collecting New Year gifts for 70 children: 52 school-age kids and 18 little ones aged 3–6.\n\n' +
+          '✅ School supplies, Russian books, coloring books, balls, stuffed animals, puzzles, LEGO\n' +
+          '❌ No candy, clothes or shoes\n\n' +
+          'Gently used items from home are welcome, or bring money and we will do the shopping.\n\n' +
+          'Full list: ' + url;
+      if (navigator.share) {
+        try { await navigator.share({ title: ru ? 'Подарки детям в Самарканде' : 'Gifts for kids in Samarkand', text: text }); }
+        catch (err) { /* share sheet closed */ }
+        return;
+      }
+      try {
+        await navigator.clipboard.writeText(text);
+        const lbl = btn.querySelector('.gs-lbl');
+        const old = lbl.textContent;
+        lbl.textContent = ru ? 'Скопировано!' : 'Copied!';
+        btn.classList.add('done');
+        setTimeout(function () { lbl.textContent = old; btn.classList.remove('done'); }, 1800);
+      } catch (err) {
+        window.prompt(ru ? 'Скопируйте текст:' : 'Copy this text:', text);
+      }
+    }
+
     // Events pills — scroll to section
     function scrollToEventGroup(group, btn) {
       document.querySelectorAll('.event-filter-pill').forEach(p => p.classList.remove('active'));
@@ -5571,7 +6901,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Image modal with prev/next
     const campImages = [
       'images/sauna-trip.png',
-      'images/volleyball-gospel.png'
+      'images/volleyball-gospel.png',
+      'images/camp-hiking.jpg'
     ];
     let modalIndex = 0;
 
@@ -5617,6 +6948,12 @@ document.addEventListener('DOMContentLoaded', function() {
         d.setDate(d.getDate() + diff);
         return d;
       }
+      // Monday prayer: today if it's Monday before 9 PM, otherwise next Monday
+      const mon = new Date();
+      if (!(mon.getDay() === 1 && mon.getHours() < 21)) mon.setDate(mon.getDate() + ((1 - mon.getDay() + 7) % 7 || 7));
+      const pm = document.getElementById('prayer-badge-month'), pd = document.getElementById('prayer-badge-day');
+      if (pm) pm.textContent = t(MONTHS[mon.getMonth()]);
+      if (pd) pd.textContent = mon.getDate();
       const thu = nextWeekday(4); // Thursday
       const tue = nextWeekday(2); // Tuesday
       document.getElementById('brooklyn-badge-month').textContent = t(MONTHS[thu.getMonth()]);
@@ -5875,7 +7212,30 @@ document.addEventListener('DOMContentLoaded', function() {
   <script>
     // Give tab: share the sermon PDF (as a file where the phone allows it, otherwise the link)
     (function () {
-      document.querySelectorAll('.doc-share').forEach(function (btn) {
+      document.querySelectorAll('.doc-share-video').forEach(function (btn) {
+        btn.addEventListener('click', async function () {
+          const ru = (window.getLang && getLang() === 'ru');
+          const url = btn.dataset.url;
+          const title = 'Десятина для христиан: обязательно ли отдавать 10%?';
+          const text = ru ? 'Видео «' + title + '» — Ahavat Yeshua Fellowship'
+                          : 'Video: «' + title + '» (Tithing for Christians) — Ahavat Yeshua Fellowship';
+          const label = btn.querySelector('span');
+          function flash(msg) {
+            const old = label.textContent; label.textContent = msg; btn.classList.add('done');
+            setTimeout(function () { label.textContent = old; btn.classList.remove('done'); }, 1800);
+          }
+          try {
+            if (navigator.share) { await navigator.share({ title: title, text: text, url: url }); return; }
+            await navigator.clipboard.writeText(text + '\n' + url);
+            flash(ru ? 'Ссылка скопирована' : 'Link copied');
+          } catch (err) {
+            if (err && err.name === 'AbortError') return;
+            try { await navigator.clipboard.writeText(text + '\n' + url); flash(ru ? 'Ссылка скопирована' : 'Link copied'); }
+            catch (e) { window.prompt(ru ? 'Скопируйте ссылку:' : 'Copy this link:', url); }
+          }
+        });
+      });
+      document.querySelectorAll('.doc-share:not(.doc-share-video)').forEach(function (btn) {
         btn.addEventListener('click', async function () {
           const ru = (window.getLang && getLang() === 'ru');
           const url = new URL(btn.dataset.doc, location.href).href;
