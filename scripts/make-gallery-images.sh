@@ -5,7 +5,7 @@
 #   images/<album>/large/<name>.webp    longest side 1800px (full-screen viewer)
 #
 # Usage: scripts/make-gallery-images.sh [album-folder ...]
-#   No arguments = all four albums. Existing copies are skipped unless the
+#   No arguments = all albums. Existing copies are skipped unless the
 #   original is newer, so it is safe to re-run after adding photos.
 # Needs: cwebp (brew install webp) and sips (built into macOS).
 
@@ -14,7 +14,7 @@ cd "$(dirname "$0")/.."
 
 albums=("$@")
 if [ ${#albums[@]} -eq 0 ]; then
-  albums=(images/main-service images/kids-ministry images/evangelistic-events images/easter-2026)
+  albums=(images/main-service images/kids-ministry images/evangelistic-events images/easter-2026 images/summer-camp)
 fi
 
 make_copy() { # src dest max_side quality
