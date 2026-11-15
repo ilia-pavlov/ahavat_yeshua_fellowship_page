@@ -4064,6 +4064,7 @@
         'Kids Ministry': 'Детское служение',
         'Evangelistic Events': 'Евангелизации',
         'Easter': 'Пасха',
+        'Summer Camp': 'Летний лагерь',
         'Experience the warmth and joy of our church family through these captured moments of faith, fellowship, and community life.':
           'Почувствуйте тепло и радость нашей церковной семьи в этих моментах веры, общения и жизни общины.',
         'Photos': 'фото',
@@ -4445,6 +4446,10 @@
                 <span style="font-size: 1.2rem;">✝️</span>
                 <span style="color: var(--light-text); font-weight: 500;">Easter</span>
               </button>
+              <button class="section-pill" onclick="scrollToAlbum('camp', this)" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: linear-gradient(45deg, var(--accent-color), rgba(255,255,255,0.1)); border: none; border-radius: 25px; backdrop-filter: blur(10px); cursor: pointer; transition: all 0.3s ease; text-decoration: none; font-family: inherit; font-size: inherit;">
+                <span style="font-size: 1.2rem;">🏕️</span>
+                <span style="color: var(--light-text); font-weight: 500;">Summer Camp</span>
+              </button>
            </div>
           
           <div style="max-width: 600px; margin: 0 auto;">
@@ -4626,6 +4631,48 @@
                     <div style="text-align: center; color: white;">
                       <div style="font-size: 2rem; margin-bottom: 0.5rem;">✝️</div>
                       <div style="font-size: 1.2rem; font-weight: 600;">12 Photos</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Album 5: Summer Camp -->
+          <div class="album-section">
+            <div class="album-header" style="text-align: center; margin-bottom: 2rem;">
+              <h3 style="color: var(--light-text); font-size: 2rem; margin-bottom: 0.5rem;">Summer Camp</h3>
+              <p style="color: var(--lighter-text); font-size: 1rem;"><span id="camp-photo-count">27</span> Photos</p>
+            </div>
+            <div class="album-carousel-container" style="position: relative; max-width: 1200px; margin: 0 auto; padding: 0 60px;">
+              <button class="album-nav album-nav-left" onclick="navigateAlbumPreview('camp', -1)" style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); background: var(--accent-color); color: white; border: none; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 20px; font-weight: bold; z-index: 10; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">‹</button>
+              <button class="album-nav album-nav-right" onclick="navigateAlbumPreview('camp', 1)" style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); background: var(--accent-color); color: white; border: none; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 20px; font-weight: bold; z-index: 10; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">›</button>
+
+              <div class="album-carousel" id="camp-carousel" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; overflow: hidden;">
+                <div class="album-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openAlbum('camp', 0)">
+                  <img src="images/summer-camp/thumbs/gallery1.webp" onerror="this.onerror=null;this.src='images/summer-camp/gallery1.jpg'" loading="lazy" decoding="async" alt="Summer Camp" style="width: 100%; height: 280px; object-fit: cover; display: block; transition: transform 0.5s ease;">
+                  <div class="album-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9)); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease;">
+                    <div style="text-align: center; color: white;">
+                      <div style="font-size: 2rem; margin-bottom: 0.5rem;">🏕️</div>
+                      <div style="font-size: 1.2rem; font-weight: 600;">27 Photos</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="album-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openAlbum('camp', 1)">
+                  <img src="images/summer-camp/thumbs/gallery2.webp" onerror="this.onerror=null;this.src='images/summer-camp/gallery2.jpg'" loading="lazy" decoding="async" alt="Summer Camp" style="width: 100%; height: 280px; object-fit: cover; display: block; transition: transform 0.5s ease;">
+                  <div class="album-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9)); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease;">
+                    <div style="text-align: center; color: white;">
+                      <div style="font-size: 2rem; margin-bottom: 0.5rem;">🏕️</div>
+                      <div style="font-size: 1.2rem; font-weight: 600;">27 Photos</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="album-photo" style="overflow: hidden; border-radius: 12px; position: relative; background: var(--card-bg); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onclick="openAlbum('camp', 2)">
+                  <img src="images/summer-camp/thumbs/gallery3.webp" onerror="this.onerror=null;this.src='images/summer-camp/gallery3.jpg'" loading="lazy" decoding="async" alt="Summer Camp" style="width: 100%; height: 280px; object-fit: cover; display: block; transition: transform 0.5s ease;">
+                  <div class="album-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9)); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease;">
+                    <div style="text-align: center; color: white;">
+                      <div style="font-size: 2rem; margin-bottom: 0.5rem;">🏕️</div>
+                      <div style="font-size: 1.2rem; font-weight: 600;">27 Photos</div>
                     </div>
                   </div>
                 </div>
@@ -5899,7 +5946,8 @@ const galleryImages = {
   kids: ['images/kids-ministry/gallery1.jpg', 'images/kids-ministry/gallery2.jpg', 'images/kids-ministry/gallery3.jpg', 'images/kids-ministry/gallery4.jpg', 'images/kids-ministry/gallery5.jpg', 'images/kids-ministry/gallery6.jpg', 'images/kids-ministry/gallery7.jpg', 'images/kids-ministry/gallery8.jpg', 'images/kids-ministry/gallery9.jpg', 'images/kids-ministry/gallery10.jpg', 'images/kids-ministry/gallery11.jpg', 'images/kids-ministry/gallery12.jpg'],
   main: ['images/main-service/gallery1.jpg', 'images/main-service/gallery2.jpg', 'images/main-service/gallery3.jpg', 'images/main-service/gallery4.jpg', 'images/main-service/gallery5.jpg', 'images/main-service/gallery6.jpg', 'images/main-service/gallery7.jpg', 'images/main-service/gallery8.jpg', 'images/main-service/gallery9.jpg', 'images/main-service/gallery10.jpg', 'images/main-service/gallery11.jpg', 'images/main-service/gallery12.jpg', 'images/main-service/gallery13.jpg', 'images/main-service/gallery14.jpg', 'images/main-service/gallery15.jpg', 'images/main-service/gallery16.jpg', 'images/main-service/gallery17.jpg', 'images/main-service/gallery18.jpg', 'images/main-service/gallery19.jpg'],
   evangelistic: ['images/evangelistic-events/gallery1.jpg', 'images/evangelistic-events/gallery2.jpg', 'images/evangelistic-events/gallery3.jpg', 'images/evangelistic-events/gallery4.jpg', 'images/evangelistic-events/gallery5.jpg', 'images/evangelistic-events/gallery6.jpg', 'images/evangelistic-events/gallery7.jpg', 'images/evangelistic-events/gallery8.jpg', 'images/evangelistic-events/gallery9.jpg', 'images/evangelistic-events/gallery10.jpg', 'images/evangelistic-events/gallery12.jpg', 'images/evangelistic-events/gallery13.jpg', 'images/evangelistic-events/gallery14.jpg', 'images/evangelistic-events/gallery15.jpg', 'images/evangelistic-events/gallery16.jpg'],
-  easter: ['images/easter-2026/gallery1.jpeg', 'images/easter-2026/gallery2.jpeg', 'images/easter-2026/gallery3.jpeg', 'images/easter-2026/gallery4.jpeg', 'images/easter-2026/gallery5.jpeg', 'images/easter-2026/gallery6.jpeg', 'images/easter-2026/gallery7.jpeg', 'images/easter-2026/gallery8.jpeg', 'images/easter-2026/gallery9.jpeg', 'images/easter-2026/gallery10.jpeg', 'images/easter-2026/gallery11.jpeg', 'images/easter-2026/gallery12.jpeg']
+  easter: ['images/easter-2026/gallery1.jpeg', 'images/easter-2026/gallery2.jpeg', 'images/easter-2026/gallery3.jpeg', 'images/easter-2026/gallery4.jpeg', 'images/easter-2026/gallery5.jpeg', 'images/easter-2026/gallery6.jpeg', 'images/easter-2026/gallery7.jpeg', 'images/easter-2026/gallery8.jpeg', 'images/easter-2026/gallery9.jpeg', 'images/easter-2026/gallery10.jpeg', 'images/easter-2026/gallery11.jpeg', 'images/easter-2026/gallery12.jpeg'],
+  camp: ['images/summer-camp/gallery1.jpg', 'images/summer-camp/gallery2.jpg', 'images/summer-camp/gallery3.jpg', 'images/summer-camp/gallery4.jpg', 'images/summer-camp/gallery5.jpg', 'images/summer-camp/gallery6.jpg', 'images/summer-camp/gallery7.jpg', 'images/summer-camp/gallery8.jpg', 'images/summer-camp/gallery9.jpg', 'images/summer-camp/gallery10.jpg', 'images/summer-camp/gallery11.jpg', 'images/summer-camp/gallery12.jpg', 'images/summer-camp/gallery13.jpg', 'images/summer-camp/gallery14.jpg', 'images/summer-camp/gallery15.jpg', 'images/summer-camp/gallery16.jpg', 'images/summer-camp/gallery17.jpg', 'images/summer-camp/gallery18.jpg', 'images/summer-camp/gallery19.jpg', 'images/summer-camp/gallery20.jpg', 'images/summer-camp/gallery21.jpg', 'images/summer-camp/gallery22.jpg', 'images/summer-camp/gallery23.jpg', 'images/summer-camp/gallery24.jpg', 'images/summer-camp/gallery25.jpg', 'images/summer-camp/gallery26.jpg', 'images/summer-camp/gallery27.jpg']
 };
 
 // Album preview navigation state - TOP LEVEL DECLARATION
@@ -5907,7 +5955,8 @@ const albumPreviewState = {
   kids: { currentIndex: 0 },
   main: { currentIndex: 0 },
   evangelistic: { currentIndex: 0 },
-  easter: { currentIndex: 0 }
+  easter: { currentIndex: 0 },
+  camp: { currentIndex: 0 }
 };
 
 function navigateAlbumPreview(album, direction) {
@@ -5969,7 +6018,8 @@ function updateAlbumCarousel(album, startIndex) {
       kids: '👶',
       main: '⛪',
       evangelistic: '📢',
-      easter: '✝️'
+      easter: '✝️',
+      camp: '🏕️'
     };
     
     photoDiv.innerHTML = `
@@ -6121,14 +6171,16 @@ const galleryImages = {
   kids: ['images/kids-ministry/gallery1.jpg', 'images/kids-ministry/gallery2.jpg', 'images/kids-ministry/gallery3.jpg', 'images/kids-ministry/gallery4.jpg', 'images/kids-ministry/gallery5.jpg', 'images/kids-ministry/gallery6.jpg', 'images/kids-ministry/gallery7.jpg', 'images/kids-ministry/gallery8.jpg', 'images/kids-ministry/gallery9.jpg', 'images/kids-ministry/gallery10.jpg', 'images/kids-ministry/gallery11.jpg', 'images/kids-ministry/gallery12.jpg'],
   main: ['images/main-service/gallery1.jpg', 'images/main-service/gallery2.jpg', 'images/main-service/gallery3.jpg', 'images/main-service/gallery4.jpg', 'images/main-service/gallery5.jpg', 'images/main-service/gallery6.jpg', 'images/main-service/gallery7.jpg', 'images/main-service/gallery8.jpg', 'images/main-service/gallery9.jpg', 'images/main-service/gallery10.jpg', 'images/main-service/gallery11.jpg', 'images/main-service/gallery12.jpg', 'images/main-service/gallery13.jpg', 'images/main-service/gallery14.jpg', 'images/main-service/gallery15.jpg', 'images/main-service/gallery16.jpg', 'images/main-service/gallery17.jpg', 'images/main-service/gallery18.jpg', 'images/main-service/gallery19.jpg'],
   evangelistic: ['images/evangelistic-events/gallery1.jpg', 'images/evangelistic-events/gallery2.jpg', 'images/evangelistic-events/gallery3.jpg', 'images/evangelistic-events/gallery4.jpg', 'images/evangelistic-events/gallery5.jpg', 'images/evangelistic-events/gallery6.jpg', 'images/evangelistic-events/gallery7.jpg', 'images/evangelistic-events/gallery8.jpg', 'images/evangelistic-events/gallery9.jpg', 'images/evangelistic-events/gallery10.jpg', 'images/evangelistic-events/gallery12.jpg', 'images/evangelistic-events/gallery13.jpg', 'images/evangelistic-events/gallery14.jpg', 'images/evangelistic-events/gallery15.jpg', 'images/evangelistic-events/gallery16.jpg'],
-  easter: ['images/easter-2026/gallery1.jpeg', 'images/easter-2026/gallery2.jpeg', 'images/easter-2026/gallery3.jpeg', 'images/easter-2026/gallery4.jpeg', 'images/easter-2026/gallery5.jpeg', 'images/easter-2026/gallery6.jpeg', 'images/easter-2026/gallery7.jpeg', 'images/easter-2026/gallery8.jpeg', 'images/easter-2026/gallery9.jpeg', 'images/easter-2026/gallery10.jpeg', 'images/easter-2026/gallery11.jpeg', 'images/easter-2026/gallery12.jpeg']
+  easter: ['images/easter-2026/gallery1.jpeg', 'images/easter-2026/gallery2.jpeg', 'images/easter-2026/gallery3.jpeg', 'images/easter-2026/gallery4.jpeg', 'images/easter-2026/gallery5.jpeg', 'images/easter-2026/gallery6.jpeg', 'images/easter-2026/gallery7.jpeg', 'images/easter-2026/gallery8.jpeg', 'images/easter-2026/gallery9.jpeg', 'images/easter-2026/gallery10.jpeg', 'images/easter-2026/gallery11.jpeg', 'images/easter-2026/gallery12.jpeg'],
+  camp: ['images/summer-camp/gallery1.jpg', 'images/summer-camp/gallery2.jpg', 'images/summer-camp/gallery3.jpg', 'images/summer-camp/gallery4.jpg', 'images/summer-camp/gallery5.jpg', 'images/summer-camp/gallery6.jpg', 'images/summer-camp/gallery7.jpg', 'images/summer-camp/gallery8.jpg', 'images/summer-camp/gallery9.jpg', 'images/summer-camp/gallery10.jpg', 'images/summer-camp/gallery11.jpg', 'images/summer-camp/gallery12.jpg', 'images/summer-camp/gallery13.jpg', 'images/summer-camp/gallery14.jpg', 'images/summer-camp/gallery15.jpg', 'images/summer-camp/gallery16.jpg', 'images/summer-camp/gallery17.jpg', 'images/summer-camp/gallery18.jpg', 'images/summer-camp/gallery19.jpg', 'images/summer-camp/gallery20.jpg', 'images/summer-camp/gallery21.jpg', 'images/summer-camp/gallery22.jpg', 'images/summer-camp/gallery23.jpg', 'images/summer-camp/gallery24.jpg', 'images/summer-camp/gallery25.jpg', 'images/summer-camp/gallery26.jpg', 'images/summer-camp/gallery27.jpg']
 };
 
 const albumPreviewState = {
   kids: { currentIndex: 0 },
   main: { currentIndex: 0 },
   evangelistic: { currentIndex: 0 },
-  easter: { currentIndex: 0 }
+  easter: { currentIndex: 0 },
+  camp: { currentIndex: 0 }
 };
 
 // Album carousel navigation function
@@ -6215,7 +6267,8 @@ function updateAlbumCarousel(album, startIndex, direction = 1) {
         kids: '👶',
         main: '⛪',
         evangelistic: '📢',
-        easter: '✝️'
+        easter: '✝️',
+        camp: '🏕️'
       };
       
       photoDiv.innerHTML = `
@@ -6284,22 +6337,9 @@ function scrollToAlbum(albumType, buttonElement) {
     console.log('[navigation] Added active class to button:', buttonElement.textContent.trim());
   }
   
-  // Find the album section using text content
-  const albumSections = document.querySelectorAll('.album-section');
-  let albumElement;
-  
-  albumSections.forEach(section => {
-    const h3 = section.querySelector('h3');
-    if (h3) {
-      const text = h3.textContent.toLowerCase();
-      if ((albumType === 'kids' && text.includes('kids')) ||
-          (albumType === 'main' && text.includes('main')) ||
-          (albumType === 'evangelistic' && text.includes('evangelistic')) ||
-          (albumType === 'easter' && text.includes('easter'))) {
-        albumElement = section;
-      }
-    }
-  });
+  // Find the album section by its carousel id (works in both EN and RU)
+  const carouselEl = document.getElementById(albumType + '-carousel');
+  const albumElement = carouselEl ? carouselEl.closest('.album-section') : null;
   
   if (albumElement) {
     console.log('[navigation] Found album element:', albumElement.querySelector('h3')?.textContent);
@@ -6410,7 +6450,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Desktop: 3 photos + arrows. Phones: every photo in one swipeable strip.
   const phoneGallery = window.matchMedia('(max-width: 768px)');
   function initCarousels() {
-    ['kids', 'main', 'evangelistic', 'easter'].forEach(album => {
+    ['kids', 'main', 'evangelistic', 'easter', 'camp'].forEach(album => {
       if (phoneGallery.matches) buildSwipeStrip(album);
       else updateAlbumCarousel(album, 0, 1);
     });
@@ -6427,6 +6467,8 @@ document.addEventListener('DOMContentLoaded', function() {
   if (evangelisticCountEl) evangelisticCountEl.textContent = galleryImages.evangelistic.length;
   const easterCountEl = document.getElementById('easter-photo-count');
   if (easterCountEl) easterCountEl.textContent = galleryImages.easter.length;
+  const campCountEl = document.getElementById('camp-photo-count');
+  if (campCountEl) campCountEl.textContent = galleryImages.camp.length;
   
   // Close on background click
   const lightbox = document.getElementById('lightbox');
